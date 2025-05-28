@@ -23,9 +23,9 @@ export const appRoutes: Route[] = [
         data: {
             layout: 'empty',
         },
-        resolve: {
-            initialData: initialDataResolver,
-        },
+        // resolve: {
+        //     initialData: initialDataResolver,
+        // },
         children: [
             {
                 path: 'profile/e',
