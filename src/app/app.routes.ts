@@ -9,7 +9,7 @@ import { LayoutComponent } from 'app/layout/layout.component';
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 export const appRoutes: Route[] = [
     // Redirect empty path to '/example'
-    // { path: '', pathMatch: 'full', redirectTo: 'profile' },
+    { path: '', pathMatch: 'full', redirectTo: 'employer/HR-social-media' },
 
     // No layout
     {
@@ -28,7 +28,7 @@ export const appRoutes: Route[] = [
         // },
         children: [
             {
-                path: 'profile/e',
+                path: 'employer/HR-social-media',
                 loadChildren: () =>
                     import('app/modules/profile/profile.routes'),
             },
