@@ -11,45 +11,44 @@ export const appRoutes: Route[] = [
     // Redirect empty path to '/example'
     { path: '', pathMatch: 'full', redirectTo: 'employer/HR-social-media' },
 
-    // No layout
     {
-        path: 'profile',
+        path: 'employer/HR-social-media',
         loadChildren: () => import('app/modules/profile/profile.routes'),
     },
-    // Empty layout
-    {
-        path: '',
-        component: LayoutComponent,
-        data: {
-            layout: 'empty',
-        },
-        // resolve: {
-        //     initialData: initialDataResolver,
-        // },
-        children: [
-            {
-                path: 'employer/HR-social-media',
-                loadChildren: () =>
-                    import('app/modules/profile/profile.routes'),
-            },
-        ],
-    },
-    // Modern layout
-    {
-        path: '',
-        component: LayoutComponent,
-        data: {
-            layout: 'modern',
-        },
-        resolve: {
-            initialData: initialDataResolver,
-        },
-        children: [
-            {
-                path: 'profile/m',
-                loadChildren: () =>
-                    import('app/modules/profile/profile.routes'),
-            },
-        ],
-    },
+
+    // {
+    //     path: '',
+    //     component: LayoutComponent,
+    //     data: {
+    //         layout: 'empty',
+    //     },
+    //     // resolve: {
+    //     //     initialData: initialDataResolver,
+    //     // },
+    //     children: [
+    //         {
+    //             path: 'employer/HR-social-media',
+    //             loadChildren: () =>
+    //                 import('app/modules/profile/profile.routes'),
+    //         },
+    //     ],
+    // },
+
+    // {
+    //     path: '',
+    //     component: LayoutComponent,
+    //     data: {
+    //         layout: 'modern',
+    //     },
+    //     resolve: {
+    //         initialData: initialDataResolver,
+    //     },
+    //     children: [
+    //         {
+    //             path: 'employer/HR-social-media',
+    //             loadChildren: () =>
+    //                 import('app/modules/profile/profile.routes'),
+    //         },
+    //     ],
+    // },
 ];

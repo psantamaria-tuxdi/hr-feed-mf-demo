@@ -68,7 +68,6 @@ const themes = {
 const config = {
     darkMode: ['selector', '.dark'],
     content: ['./src/**/*.{html,scss,ts}'],
-    important: true,
     theme: {
         fontSize: {
             xs: '0.625rem',
@@ -296,6 +295,9 @@ const config = {
         // Other third party and/or custom plugins
         require('@tailwindcss/typography')({ modifiers: ['sm', 'lg'] }),
     ],
+    // Encapsulate Tailwind CSS into this selector, to avoid conflicts with host or other micro-frontends
+    important: 'mf-hr-root',
+    prefix: 'tw-',
 };
 
 module.exports = config;

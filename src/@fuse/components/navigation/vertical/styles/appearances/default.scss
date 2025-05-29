@@ -455,16 +455,16 @@ fuse-vertical-navigation-group-item {
             color: currentColor;
 
             .fuse-vertical-navigation-item-icon {
-                @apply text-current opacity-60;
+                @apply tw-text-current tw-opacity-60;
             }
 
             .fuse-vertical-navigation-item-title-wrapper {
                 .fuse-vertical-navigation-item-title {
-                    @apply text-current opacity-80;
+                    @apply tw-text-current tw-opacity-80;
                 }
 
                 .fuse-vertical-navigation-item-subtitle {
-                    @apply text-current opacity-50;
+                    @apply tw-text-current tw-opacity-50;
                 }
             }
         }
@@ -481,18 +481,18 @@ fuse-vertical-navigation-collapsable-item {
             &:not(.fuse-vertical-navigation-item-disabled) {
                 &.fuse-vertical-navigation-item-active,
                 &.fuse-vertical-navigation-item-active-forced {
-                    @apply bg-gray-800 bg-opacity-5 dark:bg-white dark:bg-opacity-12;
+                    @apply tw-bg-gray-800 tw-bg-opacity-5 dark:tw-bg-white dark:tw-bg-opacity-12;
 
                     .fuse-vertical-navigation-item-icon {
-                        @apply opacity-100;
+                        @apply tw-opacity-100;
                     }
 
                     .fuse-vertical-navigation-item-title {
-                        @apply opacity-100;
+                        @apply tw-opacity-100;
                     }
 
                     .fuse-vertical-navigation-item-subtitle {
-                        @apply opacity-100;
+                        @apply tw-opacity-100;
                     }
                 }
             }
@@ -502,19 +502,19 @@ fuse-vertical-navigation-collapsable-item {
                     .fuse-vertical-navigation-item-active
                 ):not(.fuse-vertical-navigation-item-disabled) {
                 &:hover {
-                    @apply bg-gray-800 bg-opacity-5 dark:bg-white dark:bg-opacity-12;
+                    @apply tw-bg-gray-800 tw-bg-opacity-5 dark:tw-bg-white dark:tw-bg-opacity-12;
 
                     .fuse-vertical-navigation-item-icon {
-                        @apply opacity-100;
+                        @apply tw-opacity-100;
                     }
 
                     .fuse-vertical-navigation-item-title,
                     .fuse-vertical-navigation-item-arrow {
-                        @apply opacity-100;
+                        @apply tw-opacity-100;
                     }
 
                     .fuse-vertical-navigation-item-subtitle {
-                        @apply opacity-100;
+                        @apply tw-opacity-100;
                     }
                 }
             }
@@ -529,16 +529,16 @@ fuse-vertical-navigation-collapsable-item {
         > .fuse-vertical-navigation-item-wrapper {
             .fuse-vertical-navigation-item {
                 .fuse-vertical-navigation-item-icon {
-                    @apply opacity-100;
+                    @apply tw-opacity-100;
                 }
 
                 .fuse-vertical-navigation-item-title,
                 .fuse-vertical-navigation-item-arrow {
-                    @apply opacity-100;
+                    @apply tw-opacity-100;
                 }
 
                 .fuse-vertical-navigation-item-subtitle {
-                    @apply opacity-100;
+                    @apply tw-opacity-100;
                 }
             }
         }
@@ -551,7 +551,7 @@ fuse-vertical-navigation-group-item {
         .fuse-vertical-navigation-item {
             .fuse-vertical-navigation-item-title-wrapper {
                 .fuse-vertical-navigation-item-title {
-                    @apply text-primary-600 opacity-100 dark:text-primary-400;
+                    @apply tw-text-primary-600 tw-opacity-100 dark:tw-text-primary-400;
                 }
             }
         }
