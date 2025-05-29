@@ -14,6 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { FuseCardComponent } from '@fuse/components/card';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
     selector: 'profile',
@@ -35,6 +36,7 @@ import { FuseCardComponent } from '@fuse/components/card';
     ],
 })
 export class ProfileComponent {
+    baseUrl = environment.baseUrl;
     /**
      * Constructor
      */

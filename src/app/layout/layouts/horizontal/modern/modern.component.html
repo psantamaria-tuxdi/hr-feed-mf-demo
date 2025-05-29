@@ -16,7 +16,7 @@
             <div class="tw-flex tw-h-20 tw-items-center tw-px-8 tw-pt-6">
                 <img
                     class="tw-w-24"
-                    src="http://localhost:4202/images/logo/logo-text-on-dark.svg"
+                    [src]="`${baseUrl}/images/logo/logo-text-on-dark.svg`"
                     alt="Logo image"
                 />
             </div>
@@ -36,14 +36,14 @@
                 <div class="tw-hidden lg:tw-flex">
                     <img
                         class="tw-w-24 dark:tw-hidden"
-                        src="http://localhost:4202/images/logo/logo-text.svg"
+                        [src]="`${baseUrl}/images/logo/logo-text.svg`"
                     />
                     <img
                         class="tw-hidden tw-w-24 dark:tw-flex"
-                        src="http://localhost:4202/images/logo/logo-text-on-dark.svg"
+                        [src]="`${baseUrl}/images/logo/logo-text-on-dark.svg`"
                     />
                 </div>
-                <img class="tw-flex tw-w-8 lg:tw-hidden" src="http://localhost:4202/images/logo/logo.svg" />
+                <img class="tw-flex tw-w-8 lg:tw-hidden" [src]="`${baseUrl}/images/logo/logo.svg`" />
             </div>
             <!-- Horizontal navigation -->
             <fuse-horizontal-navigation

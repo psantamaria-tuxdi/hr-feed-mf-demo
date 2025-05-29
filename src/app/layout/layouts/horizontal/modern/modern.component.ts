@@ -20,6 +20,7 @@ import { QuickChatComponent } from 'app/layout/common/quick-chat/quick-chat.comp
 // import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
 // import { UserComponent } from 'app/layout/common/user/user.component';
 import { Subject, takeUntil } from 'rxjs';
+import { environment } from '../../../../../environments/environment.development';
 
 @Component({
     selector: 'modern-layout',
@@ -43,6 +44,7 @@ import { Subject, takeUntil } from 'rxjs';
     ],
 })
 export class ModernLayoutComponent implements OnInit, OnDestroy {
+    baseUrl = environment.baseUrl;
     isScreenSmall: boolean;
     navigation: Navigation;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
