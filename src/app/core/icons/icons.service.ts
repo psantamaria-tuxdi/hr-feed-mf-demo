@@ -14,19 +14,19 @@ export class IconsService {
         // Register icon sets
         matIconRegistry.addSvgIconSet(
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/material-twotone.svg'
+                'http://localhost:4202/icons/material-twotone.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'mat_outline',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/material-outline.svg'
+                'http://localhost:4202/icons/material-outline.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'mat_solid',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/material-solid.svg'
+                'http://localhost:4202/icons/material-solid.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
@@ -36,19 +36,19 @@ export class IconsService {
         matIconRegistry.addSvgIconSetInNamespace(
             'heroicons_outline',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/heroicons-outline.svg'
+                'http://localhost:4202/icons/heroicons-outline.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'heroicons_solid',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/heroicons-solid.svg'
+                'http://localhost:4202/icons/heroicons-solid.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'heroicons_mini',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/heroicons-mini.svg'
+                'http://localhost:4202/icons/heroicons-mini.svg'
             )
         );
     }

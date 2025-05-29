@@ -1,50 +1,50 @@
-<div class="flex min-w-0 flex-auto flex-col">
+<div class="tw-flex tw-min-w-0 tw-flex-auto tw-flex-col">
     <!-- Header -->
-    <div class="bg-card flex flex-col shadow">
+    <div class="tw-bg-card tw-flex tw-flex-col tw-shadow">
         <!-- Cover image -->
         <div>
             <img
-                class="h-40 object-cover lg:h-80"
-                src="images/pages/profile/cover.jpg"
+                class="tw-h-40 tw-object-cover lg:tw-h-80"
+                src="http://localhost:4202/images/pages/profile/cover.jpg"
                 alt="Cover image"
             />
         </div>
 
         <!-- User info -->
         <div
-            class="bg-card mx-auto flex w-full max-w-5xl flex-0 flex-col items-center px-8 lg:h-18 lg:flex-row"
+            class="tw-bg-card tw-mx-auto tw-flex tw-w-full tw-max-w-5xl tw-flex-0 tw-flex-col tw-items-center tw-px-8 lg:tw-h-18 lg:tw-flex-row"
         >
             <!-- Avatar -->
-            <div class="-mt-26 rounded-full lg:-mt-22">
+            <div class="tw--mt-26 tw-rounded-full lg:tw--mt-22">
                 <img
-                    class="ring-bg-card h-32 w-32 rounded-full ring-4"
-                    src="images/avatars/male-04.jpg"
+                    class="tw-ring-bg-card tw-h-32 tw-w-32 tw-rounded-full tw-ring-4"
+                    src="http://localhost:4202/images/avatars/male-04.jpg"
                     alt="User avatar"
                 />
             </div>
 
             <!-- Details -->
             <div
-                class="mt-4 flex flex-col items-center lg:ml-8 lg:mt-0 lg:items-start"
+                class="tw-mt-4 tw-flex tw-flex-col tw-items-center lg:tw-ml-8 lg:tw-mt-0 lg:tw-items-start"
             >
-                <div class="text-lg font-bold leading-none">Brian Hughes</div>
-                <div class="text-secondary">London, UK</div>
+                <div class="tw-text-lg tw-font-bold tw-leading-none">Brian Hughes</div>
+                <div class="tw-text-secondary">London, UK</div>
             </div>
 
             <!-- Separator -->
-            <div class="mx-8 hidden h-8 border-l-2 lg:flex"></div>
+            <div class="tw-mx-8 tw-hidden tw-h-8 tw-border-l-2 lg:tw-flex"></div>
 
             <!-- Stats -->
-            <div class="mt-6 flex items-center space-x-6 lg:mt-0">
-                <div class="flex flex-col items-center">
-                    <span class="font-bold">200k</span>
-                    <span class="text-secondary text-sm font-medium"
+            <div class="tw-mt-6 tw-flex tw-items-center tw-space-x-6 lg:tw-mt-0">
+                <div class="tw-flex tw-flex-col tw-items-center">
+                    <span class="tw-font-bold">200k</span>
+                    <span class="tw-text-secondary tw-text-sm tw-font-medium"
                         >FOLLOWERS</span
                     >
                 </div>
-                <div class="flex flex-col items-center">
-                    <span class="font-bold">1.2k</span>
-                    <span class="text-secondary text-sm font-medium"
+                <div class="tw-flex tw-flex-col tw-items-center">
+                    <span class="tw-font-bold">1.2k</span>
+                    <span class="tw-text-secondary tw-text-sm tw-font-medium"
                         >FOLLOWING</span
                     >
                 </div>
@@ -52,60 +52,60 @@
 
             <!-- Menu -->
             <div
-                class="mb-4 mt-8 flex items-center space-x-6 lg:m-0 lg:ml-auto"
+                class="tw-mb-4 tw-mt-8 tw-flex tw-items-center tw-space-x-6 lg:tw-m-0 lg:tw-ml-auto"
             >
-                <a class="font-medium" [routerLink]="['./']"> Home </a>
-                <a class="text-secondary" [routerLink]="['./']"> About </a>
-                <a class="text-secondary" [routerLink]="['./']"> Followers </a>
-                <a class="text-secondary" [routerLink]="['./']"> Gallery </a>
+                <a class="tw-font-medium" [routerLink]="['./']"> Home </a>
+                <a class="tw-text-secondary" [routerLink]="['./']"> About </a>
+                <a class="tw-text-secondary" [routerLink]="['./']"> Followers </a>
+                <a class="tw-text-secondary" [routerLink]="['./']"> Gallery </a>
             </div>
         </div>
     </div>
 
     <!-- Main -->
     <div
-        class="mx-auto flex w-full max-w-5xl flex-auto justify-center p-6 sm:p-8"
+        class="tw-mx-auto tw-flex tw-w-full tw-max-w-5xl tw-flex-auto tw-justify-center tw-p-6 sm:tw-p-8"
     >
         <!-- Column -->
-        <div class="mr-8 hidden flex-col items-start lg:flex">
+        <div class="tw-mr-8 tw-hidden tw-flex-col tw-items-start lg:tw-flex">
             <!-- About me -->
-            <fuse-card class="flex w-full max-w-80 flex-col p-8">
-                <div class="text-2xl font-semibold leading-tight">About Me</div>
-                <div class="mt-4">
+            <fuse-card class="tw-flex tw-w-full tw-max-w-80 tw-flex-col tw-p-8">
+                <div class="tw-text-2xl tw-font-semibold tw-leading-tight">About Me</div>
+                <div class="tw-mt-4">
                     I’m a friendly kitchen assistant who suffers from a severe
                     phobia of buttons.
                     <br /><br />
                     Brother of Elijah Jay Watkins, who has phobia of buttons and
                     trust issues.
                 </div>
-                <hr class="my-6 w-full border-t" />
-                <div class="flex flex-col">
-                    <div class="flex items-center">
+                <hr class="tw-my-6 tw-w-full tw-border-t" />
+                <div class="tw-flex tw-flex-col">
+                    <div class="tw-flex tw-items-center">
                         <mat-icon
-                            class="mr-3 icon-size-5"
+                            class="tw-mr-3 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:map-pin'"
                         ></mat-icon>
-                        <span class="leading-none">London, UK</span>
+                        <span class="tw-leading-none">London, UK</span>
                     </div>
-                    <div class="mt-4 flex items-center">
+                    <div class="tw-mt-4 tw-flex tw-items-center">
                         <mat-icon
-                            class="mr-3 icon-size-5"
+                            class="tw-mr-3 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:briefcase'"
                         ></mat-icon>
-                        <span class="leading-none"
+                        <span class="tw-leading-none"
                             >ACME Corp. Lead UX Designer</span
                         >
                     </div>
-                    <div class="mt-4 flex items-center">
+                    <div class="tw-mt-4 tw-flex tw-items-center">
                         <mat-icon
-                            class="mr-3 icon-size-5"
+                            class="tw-mr-3 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:cake'"
                         ></mat-icon>
-                        <span class="leading-none">April, 24</span>
+                        <span class="tw-leading-none">April, 24</span>
                     </div>
                 </div>
                 <a
-                    class="mt-8 px-6"
+                    class="tw-mt-8 tw-px-6"
                     mat-flat-button
                     [color]="'primary'"
                     [routerLink]="['./']"
@@ -116,19 +116,19 @@
 
             <!-- Followers -->
             <fuse-card
-                class="mt-8 flex w-full max-w-80 flex-col px-8 pb-4 pt-6"
+                class="tw-mt-8 tw-flex tw-w-full tw-max-w-80 tw-flex-col tw-px-8 tw-pb-4 tw-pt-6"
             >
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-semibold leading-tight">
+                <div class="tw-flex tw-items-center tw-justify-between">
+                    <div class="tw-text-2xl tw-font-semibold tw-leading-tight">
                         Followers
                     </div>
-                    <div class="-mr-3">
+                    <div class="tw--mr-3">
                         <button
                             mat-icon-button
                             [matMenuTriggerFor]="listCard08Menu"
                         >
                             <mat-icon
-                                class="icon-size-5"
+                                class="tw-icon-size-5"
                                 [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                             ></mat-icon>
                         </button>
@@ -137,99 +137,99 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="flex flex-col">
-                    <div class="mt-6 flex justify-between">
+                <div class="tw-flex tw-flex-col">
+                    <div class="tw-mt-6 tw-flex tw-justify-between">
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-01.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-01.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-01.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-01.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-02.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-02.jpg"
-                            alt="Card cover image"
-                        />
-                    </div>
-                    <div class="mt-3 flex justify-between">
-                        <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-03.jpg"
-                            alt="Card cover image"
-                        />
-                        <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-04.jpg"
-                            alt="Card cover image"
-                        />
-                        <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-03.jpg"
-                            alt="Card cover image"
-                        />
-                        <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-04.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                     </div>
-                    <div class="mt-3 flex justify-between">
+                    <div class="tw-mt-3 tw-flex tw-justify-between">
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-05.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-03.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-06.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-05.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-03.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-06.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-04.jpg"
                             alt="Card cover image"
                         />
                     </div>
-                    <div class="mt-3 flex justify-between">
+                    <div class="tw-mt-3 tw-flex tw-justify-between">
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-07.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-05.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-06.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/male-08.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-05.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded-full"
-                            src="images/avatars/female-08.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-06.jpg"
+                            alt="Card cover image"
+                        />
+                    </div>
+                    <div class="tw-mt-3 tw-flex tw-justify-between">
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-07.jpg"
+                            alt="Card cover image"
+                        />
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
+                            alt="Card cover image"
+                        />
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-08.jpg"
+                            alt="Card cover image"
+                        />
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-08.jpg"
                             alt="Card cover image"
                         />
                     </div>
                 </div>
-                <div class="-mx-3 mt-6 flex items-center">
+                <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center">
                     <a
-                        class="px-3"
+                        class="tw-px-3"
                         mat-button
                         [color]="'primary'"
                         [routerLink]="['./']"
@@ -241,19 +241,19 @@
 
             <!-- Gallery -->
             <fuse-card
-                class="mt-8 flex w-full max-w-80 flex-col px-8 pb-4 pt-6"
+                class="tw-mt-8 tw-flex tw-w-full tw-max-w-80 tw-flex-col tw-px-8 tw-pb-4 tw-pt-6"
             >
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-semibold leading-tight">
+                <div class="tw-flex tw-items-center tw-justify-between">
+                    <div class="tw-text-2xl tw-font-semibold tw-leading-tight">
                         Gallery
                     </div>
-                    <div class="-mr-3">
+                    <div class="tw--mr-3">
                         <button
                             mat-icon-button
                             [matMenuTriggerFor]="listCard09Menu"
                         >
                             <mat-icon
-                                class="icon-size-5"
+                                class="tw-icon-size-5"
                                 [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                             ></mat-icon>
                         </button>
@@ -263,99 +263,99 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="flex flex-col">
-                    <div class="mt-6 flex justify-between">
+                <div class="tw-flex tw-flex-col">
+                    <div class="tw-mt-6 tw-flex tw-justify-between">
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/14-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/14-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/15-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/15-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/16-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/16-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/17-640x480.jpg"
-                            alt="Card cover image"
-                        />
-                    </div>
-                    <div class="mt-3 flex justify-between">
-                        <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/18-640x480.jpg"
-                            alt="Card cover image"
-                        />
-                        <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/19-640x480.jpg"
-                            alt="Card cover image"
-                        />
-                        <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/20-640x480.jpg"
-                            alt="Card cover image"
-                        />
-                        <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/21-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/17-640x480.jpg"
                             alt="Card cover image"
                         />
                     </div>
-                    <div class="mt-3 flex justify-between">
+                    <div class="tw-mt-3 tw-flex tw-justify-between">
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/22-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/18-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/23-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/19-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/24-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/20-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/25-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/21-640x480.jpg"
                             alt="Card cover image"
                         />
                     </div>
-                    <div class="mt-3 flex justify-between">
+                    <div class="tw-mt-3 tw-flex tw-justify-between">
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/26-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/22-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/27-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/23-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/28-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/24-640x480.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="h-14 w-14 rounded object-cover"
-                            src="images/cards/29-640x480.jpg"
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/25-640x480.jpg"
+                            alt="Card cover image"
+                        />
+                    </div>
+                    <div class="tw-mt-3 tw-flex tw-justify-between">
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/26-640x480.jpg"
+                            alt="Card cover image"
+                        />
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/27-640x480.jpg"
+                            alt="Card cover image"
+                        />
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/28-640x480.jpg"
+                            alt="Card cover image"
+                        />
+                        <img
+                            class="tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/29-640x480.jpg"
                             alt="Card cover image"
                         />
                     </div>
                 </div>
-                <div class="-mx-3 mt-6 flex items-center">
+                <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center">
                     <a
-                        class="px-3"
+                        class="tw-px-3"
                         mat-button
                         [color]="'primary'"
                         [routerLink]="['./']"
@@ -367,19 +367,19 @@
 
             <!-- Groups -->
             <fuse-card
-                class="mt-8 flex w-full max-w-80 flex-col px-8 pb-4 pt-6"
+                class="tw-mt-8 tw-flex tw-w-full tw-max-w-80 tw-flex-col tw-px-8 tw-pb-4 tw-pt-6"
             >
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-semibold leading-tight">
+                <div class="tw-flex tw-items-center tw-justify-between">
+                    <div class="tw-text-2xl tw-font-semibold tw-leading-tight">
                         Groups
                     </div>
-                    <div class="-mr-3">
+                    <div class="tw--mr-3">
                         <button
                             mat-icon-button
                             [matMenuTriggerFor]="listCard02Menu"
                         >
                             <mat-icon
-                                class="icon-size-5"
+                                class="tw-icon-size-5"
                                 [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                             ></mat-icon>
                         </button>
@@ -388,91 +388,91 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="mt-5 flex flex-col">
-                    <div class="flex items-center">
+                <div class="tw-mt-5 tw-flex tw-flex-col">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="mr-4 h-14 w-14 rounded object-cover"
-                            src="images/cards/coffee-shop-01-320x200.jpg"
+                            class="tw-mr-4 tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/coffee-shop-01-320x200.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="font-medium leading-none">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-font-medium tw-leading-none">
                                 The Port Cafe
                             </div>
-                            <div class="mt-1 truncate text-md leading-none">
+                            <div class="tw-mt-1 tw-truncate tw-text-md tw-leading-none">
                                 Best cafe of the downtown New York
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 1.2k followers
                             </div>
                         </div>
                     </div>
-                    <div class="mt-6 flex items-center">
+                    <div class="tw-mt-6 tw-flex tw-items-center">
                         <img
-                            class="mr-4 h-14 w-14 rounded object-cover"
-                            src="images/cards/coffee-shop-02-512x512.jpg"
+                            class="tw-mr-4 tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/coffee-shop-02-512x512.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="font-medium leading-none">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-font-medium tw-leading-none">
                                 Design House LLC.
                             </div>
-                            <div class="mt-1 truncate text-md leading-none">
+                            <div class="tw-mt-1 tw-truncate tw-text-md tw-leading-none">
                                 UI/UX, brand and product design
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 957 followers
                             </div>
                         </div>
                     </div>
-                    <div class="mt-6 flex items-center">
+                    <div class="tw-mt-6 tw-flex tw-items-center">
                         <img
-                            class="mr-4 h-14 w-14 rounded object-cover"
-                            src="images/cards/coffee-shop-03-320x320.jpg"
+                            class="tw-mr-4 tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/coffee-shop-03-320x320.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="font-medium leading-none">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-font-medium tw-leading-none">
                                 Crax Laser Tag
                             </div>
-                            <div class="mt-1 truncate text-md leading-none">
+                            <div class="tw-mt-1 tw-truncate tw-text-md tw-leading-none">
                                 30% off with group of 6 people
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 342 followers
                             </div>
                         </div>
                     </div>
-                    <div class="mt-6 flex items-center">
+                    <div class="tw-mt-6 tw-flex tw-items-center">
                         <img
-                            class="mr-4 h-14 w-14 rounded object-cover"
-                            src="images/cards/sneakers-01-320x200.jpg"
+                            class="tw-mr-4 tw-h-14 tw-w-14 tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/sneakers-01-320x200.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="font-medium leading-none">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-font-medium tw-leading-none">
                                 Roadster Clothing Inc.
                             </div>
-                            <div class="mt-1 truncate text-md leading-none">
+                            <div class="tw-mt-1 tw-truncate tw-text-md tw-leading-none">
                                 $25 off on orders $500 and over
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 4.7k followers
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="-mx-3 mt-6 flex items-center">
+                <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center">
                     <a
-                        class="px-3"
+                        class="tw-px-3"
                         mat-button
                         [color]="'primary'"
                         [routerLink]="['./']"
@@ -484,17 +484,17 @@
 
             <!-- News -->
             <fuse-card
-                class="mt-8 flex w-full max-w-80 flex-col px-8 pb-4 pt-6"
+                class="tw-mt-8 tw-flex tw-w-full tw-max-w-80 tw-flex-col tw-px-8 tw-pb-4 tw-pt-6"
             >
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-semibold leading-tight">News</div>
-                    <div class="-mr-3">
+                <div class="tw-flex tw-items-center tw-justify-between">
+                    <div class="tw-text-2xl tw-font-semibold tw-leading-tight">News</div>
+                    <div class="tw--mr-3">
                         <button
                             mat-icon-button
                             [matMenuTriggerFor]="listCard01Menu"
                         >
                             <mat-icon
-                                class="icon-size-5"
+                                class="tw-icon-size-5"
                                 [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                             ></mat-icon>
                         </button>
@@ -503,10 +503,10 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="mt-5 flex flex-col">
-                    <div class="flex">
+                <div class="tw-mt-5 tw-flex tw-flex-col">
+                    <div class="tw-flex">
                         <mat-icon
-                            class="mr-2 mt-0.5 icon-size-5"
+                            class="tw-mr-2 tw-mt-0.5 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:bell'"
                         ></mat-icon>
                         <div>
@@ -514,9 +514,9 @@
                             Friday.
                         </div>
                     </div>
-                    <div class="mt-5 flex">
+                    <div class="tw-mt-5 tw-flex">
                         <mat-icon
-                            class="mr-2 mt-0.5 icon-size-5"
+                            class="tw-mr-2 tw-mt-0.5 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:bell'"
                         ></mat-icon>
                         <div>
@@ -528,9 +528,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="mt-5 flex">
+                    <div class="tw-mt-5 tw-flex">
                         <mat-icon
-                            class="mr-2 mt-0.5 icon-size-5"
+                            class="tw-mr-2 tw-mt-0.5 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:bell'"
                         ></mat-icon>
                         <div>
@@ -544,9 +544,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="-mx-3 mt-4 flex items-center">
+                <div class="tw--mx-3 tw-mt-4 tw-flex tw-items-center">
                     <a
-                        class="px-3"
+                        class="tw-px-3"
                         mat-button
                         [color]="'primary'"
                         [routerLink]="['./']"
@@ -558,19 +558,19 @@
 
             <!-- Activity Feed -->
             <fuse-card
-                class="mt-8 flex w-full max-w-80 flex-col px-8 pb-4 pt-6"
+                class="tw-mt-8 tw-flex tw-w-full tw-max-w-80 tw-flex-col tw-px-8 tw-pb-4 tw-pt-6"
             >
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-semibold leading-tight">
+                <div class="tw-flex tw-items-center tw-justify-between">
+                    <div class="tw-text-2xl tw-font-semibold tw-leading-tight">
                         Activity Feed
                     </div>
-                    <div class="-mr-3">
+                    <div class="tw--mr-3">
                         <button
                             mat-icon-button
                             [matMenuTriggerFor]="listCard04Menu"
                         >
                             <mat-icon
-                                class="icon-size-5"
+                                class="tw-icon-size-5"
                                 [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                             ></mat-icon>
                         </button>
@@ -579,81 +579,81 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="mt-5 flex flex-col">
-                    <div class="flex">
+                <div class="tw-mt-5 tw-flex tw-flex-col">
+                    <div class="tw-flex">
                         <img
-                            class="mr-4 h-10 w-10 rounded-full"
-                            src="images/avatars/female-01.jpg"
+                            class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-01.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="leading-tight">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-leading-tight">
                                 Amelia Edwards commented on John Silverton's
                                 photo
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 4 minutes ago
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex">
+                    <div class="tw-mt-8 tw-flex">
                         <img
-                            class="mr-4 h-10 w-10 rounded-full"
-                            src="images/avatars/male-01.jpg"
+                            class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-01.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="leading-tight">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-leading-tight">
                                 Lew Silverton changed his profile photo
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 25 minutes ago
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex">
+                    <div class="tw-mt-8 tw-flex">
                         <img
-                            class="mr-4 h-10 w-10 rounded-full"
-                            src="images/avatars/male-15.jpg"
+                            class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/male-15.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="leading-tight">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-leading-tight">
                                 Brian Hughes liked your photo
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 3 hours ago
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex">
+                    <div class="tw-mt-8 tw-flex">
                         <img
-                            class="mr-4 h-10 w-10 rounded-full"
-                            src="images/avatars/female-15.jpg"
+                            class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/female-15.jpg"
                             alt="Card cover image"
                         />
-                        <div class="flex min-w-0 flex-col">
-                            <div class="leading-tight">
+                        <div class="tw-flex tw-min-w-0 tw-flex-col">
+                            <div class="tw-leading-tight">
                                 Marleah Eagleston commented on John Silverton's
                                 photo
                             </div>
                             <div
-                                class="text-secondary mt-2 text-md leading-none"
+                                class="tw-text-secondary tw-mt-2 tw-text-md tw-leading-none"
                             >
                                 Yesterday
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="-mx-3 mt-6 flex items-center">
+                <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center">
                     <a
-                        class="px-3"
+                        class="tw-px-3"
                         mat-button
                         [color]="'primary'"
                         [routerLink]="['./']"
@@ -665,21 +665,21 @@
         </div>
 
         <!-- Column -->
-        <div class="flex flex-col items-start">
+        <div class="tw-flex tw-flex-col tw-items-start">
             <!-- Create Post -->
-            <fuse-card class="flex w-full max-w-140 flex-col p-6 pb-6 sm:p-8">
-                <div class="text-xl font-semibold">Create Post</div>
-                <div class="mt-8 flex flex-col items-start sm:flex-row">
-                    <div class="mb-6 flex items-center sm:mb-0">
+            <fuse-card class="tw-flex tw-w-full tw-max-w-140 tw-flex-col tw-p-6 tw-pb-6 sm:tw-p-8">
+                <div class="tw-text-xl tw-font-semibold">Create Post</div>
+                <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
+                    <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
                         <img
-                            class="mr-4 h-12 w-12 min-w-12 rounded-full"
-                            src="images/avatars/brian-hughes.jpg"
+                            class="tw-mr-4 tw-h-12 tw-w-12 tw-min-w-12 tw-rounded-full"
+                            src="http://localhost:4202/images/avatars/brian-hughes.jpg"
                             alt="Card cover image"
                         />
-                        <div class="sm:hidden">Brian Hughes</div>
+                        <div class="sm:tw-hidden">Brian Hughes</div>
                     </div>
                     <mat-form-field
-                        class="w-full"
+                        class="tw-w-full"
                         [subscriptSizing]="'dynamic'"
                     >
                         <textarea
@@ -690,79 +690,79 @@
                         ></textarea>
                     </mat-form-field>
                 </div>
-                <div class="-mx-3 mt-6 flex items-center sm:mt-8">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center sm:tw-mt-8">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:photo'"
                         ></mat-icon>
-                        <span class="ml-2">Photo / Video</span>
+                        <span class="tw-ml-2">Photo / Video</span>
                     </button>
-                    <button class="mr-1 hidden px-3 sm:inline-flex" mat-button>
+                    <button class="tw-mr-1 tw-hidden tw-px-3 sm:tw-inline-flex" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:user-circle'"
                         ></mat-icon>
-                        <span class="ml-2">Tag Friends</span>
+                        <span class="tw-ml-2">Tag Friends</span>
                     </button>
-                    <button class="mr-1 hidden px-3 sm:inline-flex" mat-button>
+                    <button class="tw-mr-1 tw-hidden tw-px-3 sm:tw-inline-flex" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:face-smile'"
                         ></mat-icon>
-                        <span class="ml-2">Feeling</span>
+                        <span class="tw-ml-2">Feeling</span>
                     </button>
                     <button
-                        class="px-3"
+                        class="tw-px-3"
                         mat-button
                         [matMenuTriggerFor]="postCardMenu01"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-horizontal'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu01="matMenu">
-                        <button class="sm:hidden" mat-menu-item>
-                            <span class="flex items-center">
+                        <button class="sm:tw-hidden" mat-menu-item>
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:user-circle'"
                                 ></mat-icon>
                                 <span>Tag Friends</span>
                             </span>
                         </button>
-                        <button class="sm:hidden" mat-menu-item>
-                            <span class="flex items-center">
+                        <button class="sm:tw-hidden" mat-menu-item>
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:face-smile'"
                                 ></mat-icon>
                                 <span>Feeling</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:play'"
                                 ></mat-icon>
                                 <span>Live</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:sparkles'"
                                 ></mat-icon>
                                 <span>Gif</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:map-pin'"
                                 ></mat-icon>
                                 <span>Check in</span>
@@ -774,75 +774,75 @@
 
             <!-- Post 1 -->
             <fuse-card
-                class="mt-8 flex w-full max-w-140 flex-col"
+                class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col"
                 #expandableCard02="fuseCard"
             >
-                <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8">
+                <div class="tw-mx-6 tw-mb-4 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
                     <img
-                        class="mr-4 h-10 w-10 rounded-full"
-                        src="images/avatars/female-01.jpg"
+                        class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                        src="http://localhost:4202/images/avatars/female-01.jpg"
                         alt="Card cover image"
                     />
-                    <div class="flex flex-col">
-                        <span class="font-semibold leading-none"
+                    <div class="tw-flex tw-flex-col">
+                        <span class="tw-font-semibold tw-leading-none"
                             >Caroline Lundu</span
                         >
-                        <span class="text-secondary mt-1 text-sm leading-none"
+                        <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
                             >29 minutes ago</span
                         >
                     </div>
                     <button
-                        class="-mr-4 ml-auto"
+                        class="tw--mr-4 tw-ml-auto"
                         mat-icon-button
                         [matMenuTriggerFor]="postCardMenu02"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu02="matMenu">
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:arrow-up-tray'"
                                 ></mat-icon>
                                 <span>Save post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:eye-slash'"
                                 ></mat-icon>
                                 <span>Hide post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:clock'"
                                 ></mat-icon>
                                 <span>Snooze for 30 days</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:minus-circle'"
                                 ></mat-icon>
                                 <span>Hide all</span>
                             </span>
                         </button>
-                        <mat-divider class="my-2"></mat-divider>
+                        <mat-divider class="tw-my-2"></mat-divider>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="
                                         'heroicons_solid:exclamation-triangle'
                                     "
@@ -851,9 +851,9 @@
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:bell'"
                                 ></mat-icon>
                                 <span>Turn on notifications for this post</span>
@@ -861,97 +861,97 @@
                         </button>
                     </mat-menu>
                 </div>
-                <div class="mx-6 mb-6 mt-2 sm:mx-8">
+                <div class="tw-mx-6 tw-mb-6 tw-mt-2 sm:tw-mx-8">
                     Look at that sky! I so want to be there.. Can we arrange a
                     trip? Is that a possibility? Please!!!
                 </div>
-                <div class="relative mb-4">
+                <div class="tw-relative tw-mb-4">
                     <img
-                        class="h-80 object-cover"
-                        src="images/cards/14-640x480.jpg"
+                        class="tw-h-80 tw-object-cover"
+                        src="http://localhost:4202/images/cards/14-640x480.jpg"
                         alt="Card cover image"
                     />
                     <div
-                        class="absolute bottom-0 left-0 m-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-700"
+                        class="tw-absolute tw-bottom-0 tw-left-0 tw-m-4 tw-flex tw-h-8 tw-w-8 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-bg-gray-700"
                         [matTooltip]="'Barmouth / UK'"
                         [matTooltipPosition]="'right'"
                     >
                         <mat-icon
-                            class="text-gray-100 icon-size-4"
+                            class="tw-text-gray-100 tw-icon-size-4"
                             [svgIcon]="'heroicons_solid:map-pin'"
                         ></mat-icon>
                     </div>
                 </div>
-                <div class="mx-3 flex items-center sm:mx-5">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="text-red-500 icon-size-5"
+                            class="tw-text-red-500 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:heart'"
                         ></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="tw-ml-2">Unlike</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="
                                 'heroicons_solid:chat-bubble-left-ellipsis'
                             "
                         ></mat-icon>
-                        <span class="ml-2">Comment</span>
+                        <span class="tw-ml-2">Comment</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:share'"
                         ></mat-icon>
-                        <span class="ml-2">Share</span>
+                        <span class="tw-ml-2">Share</span>
                     </button>
                 </div>
-                <hr class="mx-6 mb-6 mt-4 border-b sm:mx-8" />
+                <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
                 <div
-                    class="mx-6 mb-4 flex flex-col sm:mx-8 sm:mb-6 sm:flex-row sm:items-center"
+                    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
                 >
-                    <div class="flex items-center">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="text-card m-0.5 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-02.jpg"
+                            class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-04.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-09.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-09.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
                             alt="Card cover image"
                         />
-                        <div class="ml-3 text-md tracking-tight">
+                        <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                             You and 24 more liked this
                         </div>
                     </div>
-                    <div class="hidden flex-auto sm:flex"></div>
-                    <div class="mt-4 flex items-center sm:mt-0">
-                        <button class="-ml-2 mr-1 px-3 sm:ml-0" mat-button>
+                    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+                    <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+                        <button class="tw--ml-2 tw-mr-1 tw-px-3 sm:tw-ml-0" mat-button>
                             4 shares
                         </button>
                         <button
-                            class="px-3 sm:-mr-4"
+                            class="tw-px-3 sm:tw--mr-4"
                             mat-button
                             (click)="
                                 expandableCard02.expanded =
                                     !expandableCard02.expanded
                             "
                         >
-                            <span class="mr-1">5 Comments</span>
+                            <span class="tw-mr-1">5 Comments</span>
                             <mat-icon
-                                class="rotate-0 transition-transform duration-150 ease-in-out icon-size-5"
+                                class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
                                 [ngClass]="{
                                     'rotate-180': expandableCard02.expanded,
                                 }"
@@ -962,16 +962,16 @@
                 </div>
 
                 <ng-container fuseCardExpansion>
-                    <hr class="m-0 border-b" />
-                    <div class="mx-4 mb-3 mt-6 flex flex-col sm:mx-8">
-                        <div class="flex items-start">
+                    <hr class="tw-m-0 tw-border-b" />
+                    <div class="tw-mx-4 tw-mb-3 tw-mt-6 tw-flex tw-flex-col sm:tw-mx-8">
+                        <div class="tw-flex tw-items-start">
                             <img
-                                class="mr-5 h-12 w-12 rounded-full"
-                                src="images/avatars/brian-hughes.jpg"
+                                class="tw-mr-5 tw-h-12 tw-w-12 tw-rounded-full"
+                                src="http://localhost:4202/images/avatars/brian-hughes.jpg"
                                 alt="Card cover image"
                             />
                             <mat-form-field
-                                class="w-full"
+                                class="tw-w-full"
                                 [subscriptSizing]="'dynamic'"
                             >
                                 <textarea
@@ -982,122 +982,122 @@
                                 ></textarea>
                             </mat-form-field>
                         </div>
-                        <div class="-mr-3 ml-auto mt-3 flex items-center">
+                        <div class="tw--mr-3 tw-ml-auto tw-mt-3 tw-flex tw-items-center">
                             <button mat-icon-button>
                                 <mat-icon
-                                    class="icon-size-5"
+                                    class="tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:sparkles'"
                                 ></mat-icon>
                             </button>
                             <button mat-icon-button>
                                 <mat-icon
-                                    class="icon-size-5"
+                                    class="tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:face-smile'"
                                 ></mat-icon>
                             </button>
                             <button mat-icon-button>
                                 <mat-icon
-                                    class="icon-size-5"
+                                    class="tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:photo'"
                                 ></mat-icon>
                             </button>
                         </div>
                     </div>
-                    <hr class="mx-4 my-0 border-b sm:mx-8" />
-                    <div class="max-h-120 overflow-y-auto">
-                        <div class="relative mx-4 my-6 flex flex-col sm:mx-8">
-                            <div class="flex items-start">
+                    <hr class="tw-mx-4 tw-my-0 tw-border-b sm:tw-mx-8" />
+                    <div class="tw-max-h-120 tw-overflow-y-auto">
+                        <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
+                            <div class="tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/male-05.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/male-05.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Rutherford Brannan</b> Oh, I’m in..
                                         Let’s arrange a trip for the next
                                         weekend if you want!
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Hide replies</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>17 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-12 mt-8 flex items-start">
+                            <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/female-01.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/female-01.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Caroline Lundu</b> Yes!! Let's talk
                                         about it on lunch!
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>15 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-12 mt-8 flex items-start">
+                            <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/female-08.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/female-08.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Barbara Cotilla</b> Count me in !!!
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>12 min</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-8 flex items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/male-11.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/male-11.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Alan Marti</b> The color of the sky
                                         doesn’t look natural at all, do you
@@ -1107,59 +1107,59 @@
                                         exact sky.
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Hide replies</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>24 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-12 mt-8 flex items-start">
+                            <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/female-01.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/female-01.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Caroline Lundu</b> Hey, Alan! You
                                         must be fun at parties!
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>22 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-12 mt-8 flex items-start">
+                            <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/male-11.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/male-11.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Alan Marti</b> Caroline, I'm telling
                                         the truth, and if you cannot stand the
@@ -1167,99 +1167,99 @@
                                         anymore...
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>20 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-12 mt-8 flex items-start">
+                            <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/female-01.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/female-01.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Caroline Lundu</b> Dude! Relax! I'm
                                         just messing with you...
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>18 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-12 mt-8 flex items-start">
+                            <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/male-11.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/male-11.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Alan Marti</b> Sorry! I had a bad
                                         morning, let's talk about this in couple
                                         hours, I need to relax a bit :(
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>16 min</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-8 flex items-start">
+                            <div class="tw-mt-8 tw-flex tw-items-start">
                                 <img
-                                    class="mr-4 h-8 w-8 rounded-full"
-                                    src="images/avatars/female-05.jpg"
+                                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                                    src="http://localhost:4202/images/avatars/female-05.jpg"
                                     alt="Card cover image"
                                 />
-                                <div class="mt-0.5 flex flex-col">
+                                <div class="tw-mt-0.5 tw-flex tw-flex-col">
                                     <span>
                                         <b>Marleah Eagleston</b> Count me in,
                                         too!
                                     </span>
                                     <div
-                                        class="text-secondary mt-2 flex items-center text-sm"
+                                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
                                     >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Like</span
                                         >
                                         <span
-                                            class="mr-2 cursor-pointer hover:underline"
+                                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                             >Reply</span
                                         >
-                                        <span class="mr-2">&bull;</span>
+                                        <span class="tw-mr-2">&bull;</span>
                                         <span>34 min</span>
                                     </div>
                                 </div>
@@ -1270,73 +1270,73 @@
             </fuse-card>
 
             <!-- Post 2 -->
-            <fuse-card class="mt-8 flex w-full max-w-140 flex-col">
-                <div class="mx-6 mb-1 mt-6 flex items-center sm:mx-8">
+            <fuse-card class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col">
+                <div class="tw-mx-6 tw-mb-1 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
                     <img
-                        class="mr-4 h-10 w-10 rounded-full"
-                        src="images/avatars/female-01.jpg"
+                        class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                        src="http://localhost:4202/images/avatars/female-01.jpg"
                         alt="Card cover image"
                     />
-                    <div class="flex flex-col">
-                        <span class="font-semibold leading-none"
+                    <div class="tw-flex tw-flex-col">
+                        <span class="tw-font-semibold tw-leading-none"
                             >Caroline Lundu</span
                         >
-                        <span class="text-secondary mt-1 text-sm leading-none"
+                        <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
                             >29 minutes ago</span
                         >
                     </div>
                     <button
-                        class="-mr-4 ml-auto"
+                        class="tw--mr-4 tw-ml-auto"
                         mat-icon-button
                         [matMenuTriggerFor]="postCardMenu08"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu08="matMenu">
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:arrow-up-tray'"
                                 ></mat-icon>
                                 <span>Save post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:eye-slash'"
                                 ></mat-icon>
                                 <span>Hide post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:clock'"
                                 ></mat-icon>
                                 <span>Snooze for 30 days</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:minus-circle'"
                                 ></mat-icon>
                                 <span>Hide all</span>
                             </span>
                         </button>
-                        <mat-divider class="my-2"></mat-divider>
+                        <mat-divider class="tw-my-2"></mat-divider>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="
                                         'heroicons_solid:exclamation-triangle'
                                     "
@@ -1345,9 +1345,9 @@
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:bell'"
                                 ></mat-icon>
                                 <span>Turn on notifications for this post</span>
@@ -1355,7 +1355,7 @@
                         </button>
                     </mat-menu>
                 </div>
-                <div class="m-6 sm:mx-8">
+                <div class="tw-m-6 sm:tw-mx-8">
                     <p>
                         We'll put a happy little sky in here. We touch the
                         canvas, the canvas takes what it wants. A little happy
@@ -1364,73 +1364,73 @@
                         hand; and it comes in very handy when you're doing these
                         little delicate things. This is the fun part.
                     </p>
-                    <p class="mt-4">
+                    <p class="tw-mt-4">
                         Isn't it great to do something you can't fail at? Little
                         trees and bushes grow however makes them happy. Trees
                         get lonely too, so we'll give him a little friend. There
                         are no mistakes. You can fix anything that happens.
                     </p>
                 </div>
-                <div class="mx-3 flex items-center sm:mx-5">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="text-red-500 icon-size-5"
+                            class="tw-text-red-500 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:heart'"
                         ></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="tw-ml-2">Unlike</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="
                                 'heroicons_solid:chat-bubble-left-ellipsis'
                             "
                         ></mat-icon>
-                        <span class="ml-2">Comment</span>
+                        <span class="tw-ml-2">Comment</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:share'"
                         ></mat-icon>
-                        <span class="ml-2">Share</span>
+                        <span class="tw-ml-2">Share</span>
                     </button>
                 </div>
-                <hr class="mx-6 mb-6 mt-4 border-b sm:mx-8" />
+                <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
                 <div
-                    class="mx-6 mb-4 flex flex-col sm:mx-8 sm:mb-6 sm:flex-row sm:items-center"
+                    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
                 >
-                    <div class="flex items-center">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="text-card m-0.5 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-02.jpg"
+                            class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-04.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-09.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-09.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
                             alt="Card cover image"
                         />
-                        <div class="ml-3 text-md tracking-tight">
+                        <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                             You and 24 more liked this
                         </div>
                     </div>
-                    <div class="hidden flex-auto sm:flex"></div>
-                    <div class="mt-4 flex items-center sm:mt-0">
-                        <button class="-ml-2 mr-1 px-3 sm:ml-0" mat-button>
+                    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+                    <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+                        <button class="tw--ml-2 tw-mr-1 tw-px-3 sm:tw-ml-0" mat-button>
                             4 shares
                         </button>
-                        <button class="px-3 sm:-mr-3" mat-button>
+                        <button class="tw-px-3 sm:tw--mr-3" mat-button>
                             No comments
                         </button>
                     </div>
@@ -1438,73 +1438,73 @@
             </fuse-card>
 
             <!-- Post 3 -->
-            <fuse-card class="mt-8 flex w-full max-w-140 flex-col">
-                <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8">
+            <fuse-card class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col">
+                <div class="tw-mx-6 tw-mb-4 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
                     <img
-                        class="mr-4 h-10 w-10 rounded-full"
-                        src="images/avatars/female-14.jpg"
+                        class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                        src="http://localhost:4202/images/avatars/female-14.jpg"
                         alt="Card cover image"
                     />
-                    <div class="flex flex-col">
-                        <span class="font-semibold leading-none"
+                    <div class="tw-flex tw-flex-col">
+                        <span class="tw-font-semibold tw-leading-none"
                             >Marleah Eagleston</span
                         >
-                        <span class="text-secondary mt-1 text-sm leading-none"
+                        <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
                             >29 minutes ago</span
                         >
                     </div>
                     <button
-                        class="-mr-4 ml-auto"
+                        class="tw--mr-4 tw-ml-auto"
                         mat-icon-button
                         [matMenuTriggerFor]="postCardMenu04"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu04="matMenu">
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:arrow-up-tray'"
                                 ></mat-icon>
                                 <span>Save post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:eye-slash'"
                                 ></mat-icon>
                                 <span>Hide post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:clock'"
                                 ></mat-icon>
                                 <span>Snooze for 30 days</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:minus-circle'"
                                 ></mat-icon>
                                 <span>Hide all</span>
                             </span>
                         </button>
-                        <mat-divider class="my-2"></mat-divider>
+                        <mat-divider class="tw-my-2"></mat-divider>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="
                                         'heroicons_solid:exclamation-triangle'
                                     "
@@ -1513,9 +1513,9 @@
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:bell'"
                                 ></mat-icon>
                                 <span>Turn on notifications for this post</span>
@@ -1523,95 +1523,95 @@
                         </button>
                     </mat-menu>
                 </div>
-                <div class="mx-6 mb-6 mt-2 sm:mx-8">
+                <div class="tw-mx-6 tw-mb-6 tw-mt-2 sm:tw-mx-8">
                     Look at that sky! I so want to be there.. Can we arrange a
                     trip? Is that a possibility? Please!!!
                 </div>
-                <div class="mx-6 mb-4 flex sm:mx-8">
-                    <div class="flex h-80 pr-1">
+                <div class="tw-mx-6 tw-mb-4 tw-flex sm:tw-mx-8">
+                    <div class="tw-flex tw-h-80 tw-pr-1">
                         <img
-                            class="rounded object-cover"
-                            src="images/cards/17-640x480.jpg"
+                            class="tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/17-640x480.jpg"
                             alt="Card cover image"
                         />
                     </div>
                     <div class="flex flex-col pl-1">
                         <div class="flex h-40 pb-1">
                             <img
-                                class="rounded object-cover"
-                                src="images/cards/18-640x480.jpg"
+                                class="tw-rounded tw-object-cover"
+                                src="http://localhost:4202/images/cards/18-640x480.jpg"
                                 alt="Card cover image"
                             />
                         </div>
-                        <div class="flex h-40 pt-1">
+                        <div class="tw-flex tw-h-40 tw-pt-1">
                             <img
-                                class="rounded object-cover"
-                                src="images/cards/19-640x480.jpg"
+                                class="tw-rounded tw-object-cover"
+                                src="http://localhost:4202/images/cards/19-640x480.jpg"
                                 alt="Card cover image"
                             />
                         </div>
                     </div>
                 </div>
-                <div class="mx-3 flex items-center sm:mx-5">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="text-red-500 icon-size-5"
+                            class="tw-text-red-500 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:heart'"
                         ></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="tw-ml-2">Unlike</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="
                                 'heroicons_solid:chat-bubble-left-ellipsis'
                             "
                         ></mat-icon>
-                        <span class="ml-2">Comment</span>
+                        <span class="tw-ml-2">Comment</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:share'"
                         ></mat-icon>
-                        <span class="ml-2">Share</span>
+                        <span class="tw-ml-2">Share</span>
                     </button>
                 </div>
-                <hr class="mx-6 mb-6 mt-4 border-b sm:mx-8" />
+                <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
                 <div
-                    class="mx-6 mb-4 flex flex-col sm:mx-8 sm:mb-6 sm:flex-row sm:items-center"
+                    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
                 >
-                    <div class="flex items-center">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="text-card m-0.5 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-02.jpg"
+                            class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-04.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-09.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-09.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
                             alt="Card cover image"
                         />
-                        <div class="ml-3 text-md tracking-tight">
+                        <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                             You and 24 more liked this
                         </div>
                     </div>
-                    <div class="hidden flex-auto sm:flex"></div>
-                    <div class="mt-4 flex items-center sm:mt-0">
-                        <button class="-ml-2 mr-1 px-3 sm:ml-0" mat-button>
+                    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+                    <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+                        <button class="tw--ml-2 tw-mr-1 tw-px-3 sm:tw-ml-0" mat-button>
                             4 shares
                         </button>
-                        <button class="px-3 sm:-mr-3" mat-button>
+                        <button class="tw-px-3 sm:tw--mr-3" mat-button>
                             No comments
                         </button>
                     </div>
@@ -1619,73 +1619,73 @@
             </fuse-card>
 
             <!-- Post 4 -->
-            <fuse-card class="mt-8 flex w-full max-w-140 flex-col">
-                <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8">
+            <fuse-card class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col">
+                <div class="tw-mx-6 tw-mb-4 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
                     <img
-                        class="mr-4 h-10 w-10 rounded-full"
-                        src="images/avatars/female-01.jpg"
+                        class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                        src="http://localhost:4202/images/avatars/female-01.jpg"
                         alt="Card cover image"
                     />
-                    <div class="flex flex-col">
-                        <span class="font-medium leading-none"
+                    <div class="tw-flex tw-flex-col">
+                        <span class="tw-font-medium tw-leading-none"
                             >Caroline Lundu</span
                         >
-                        <span class="text-secondary mt-1 text-sm leading-none"
+                        <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
                             >29 minutes ago</span
                         >
                     </div>
                     <button
-                        class="-mr-4 ml-auto"
+                        class="tw--mr-4 tw-ml-auto"
                         mat-icon-button
                         [matMenuTriggerFor]="postCardMenu10"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu10="matMenu">
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:arrow-up-tray'"
                                 ></mat-icon>
                                 <span>Save post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:eye-slash'"
                                 ></mat-icon>
                                 <span>Hide post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:clock'"
                                 ></mat-icon>
                                 <span>Snooze for 30 days</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:minus-circle'"
                                 ></mat-icon>
                                 <span>Hide all</span>
                             </span>
                         </button>
-                        <mat-divider class="my-2"></mat-divider>
+                        <mat-divider class="tw-my-2"></mat-divider>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="
                                         'heroicons_solid:exclamation-triangle'
                                     "
@@ -1694,9 +1694,9 @@
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:bell'"
                                 ></mat-icon>
                                 <span>Turn on notifications for this post</span>
@@ -1704,95 +1704,95 @@
                         </button>
                     </mat-menu>
                 </div>
-                <div class="mx-6 mb-6 mt-2 sm:mx-8">
+                <div class="tw-mx-6 tw-mb-6 tw-mt-2 sm:tw-mx-8">
                     Hey!! I never saw this one, it was amazing.. I think I’m
                     going to buy myself a set and try his technique at home!
                 </div>
-                <div class="mx-6 mb-4 sm:mx-8">
-                    <div class="flex flex-col overflow-hidden rounded border">
+                <div class="tw-mx-6 tw-mb-4 sm:tw-mx-8">
+                    <div class="tw-flex tw-flex-col tw-overflow-hidden tw-rounded tw-border">
                         <div class="flex h-80">
                             <img
-                                class="object-cover"
-                                src="images/cards/36-640x480.jpg"
+                                class="tw-object-cover"
+                                src="http://localhost:4202/images/cards/36-640x480.jpg"
                                 alt="Card cover image"
                             />
                         </div>
-                        <div class="m-4">
-                            <div class="text-lg font-medium">
+                        <div class="tw-m-4">
+                            <div class="tw-text-lg tw-font-medium">
                                 Take a look behind the scenes of Rob Boss
                                 episodes
                             </div>
-                            <div class="text-secondary mt-1">
+                            <div class="tw-text-secondary tw-mt-1">
                                 We'll put a happy little sky in here. We touch
                                 the canvas, the canvas takes what it wants. A
                                 little happy sunlight shining through there.
                             </div>
-                            <div class="text-hint mt-2 text-sm">
+                            <div class="tw-text-hint tw-mt-2 tw-text-sm">
                                 example.com
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mx-3 flex items-center sm:mx-5">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="text-red-500 icon-size-5"
+                            class="tw-text-red-500 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:heart'"
                         ></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="tw-ml-2">Unlike</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="
                                 'heroicons_solid:chat-bubble-left-ellipsis'
                             "
                         ></mat-icon>
-                        <span class="ml-2">Comment</span>
+                        <span class="tw-ml-2">Comment</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:share'"
                         ></mat-icon>
-                        <span class="ml-2">Share</span>
+                        <span class="tw-ml-2">Share</span>
                     </button>
                 </div>
-                <hr class="mx-6 mb-6 mt-4 border-b sm:mx-8" />
+                <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
                 <div
-                    class="mx-6 mb-4 flex flex-col sm:mx-8 sm:mb-6 sm:flex-row sm:items-center"
+                    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
                 >
-                    <div class="flex items-center">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="text-card m-0.5 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-02.jpg"
+                            class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-04.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-09.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-09.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
                             alt="Card cover image"
                         />
-                        <div class="ml-3 text-md tracking-tight">
+                        <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                             You and 24 more liked this
                         </div>
                     </div>
-                    <div class="hidden flex-auto sm:flex"></div>
-                    <div class="mt-4 flex items-center sm:mt-0">
-                        <button class="-ml-2 mr-1 px-3 sm:ml-0" mat-button>
+                    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+                    <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+                        <button class="tw--ml-2 tw-mr-1 tw-px-3 sm:tw-ml-0" mat-button>
                             4 shares
                         </button>
-                        <button class="px-3 sm:-mr-3" mat-button>
+                        <button class="tw-px-3 sm:tw--mr-3" mat-button>
                             No comments
                         </button>
                     </div>
@@ -1800,73 +1800,73 @@
             </fuse-card>
 
             <!-- Post 5 -->
-            <fuse-card class="mt-8 flex w-full max-w-140 flex-col">
-                <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8">
+            <fuse-card class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col">
+                <div class="tw-mx-6 tw-mb-4 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
                     <img
-                        class="mr-4 h-10 w-10 rounded-full"
-                        src="images/avatars/female-14.jpg"
+                        class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                        src="http://localhost:4202/images/avatars/female-14.jpg"
                         alt="Card cover image"
                     />
-                    <div class="flex flex-col">
-                        <span class="font-semibold leading-none"
+                    <div class="tw-flex tw-flex-col">
+                        <span class="tw-font-semibold tw-leading-none"
                             >Marleah Eagleston</span
                         >
-                        <span class="text-secondary mt-1 text-sm leading-none"
+                        <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
                             >29 minutes ago</span
                         >
                     </div>
                     <button
-                        class="-mr-4 ml-auto"
+                        class="tw--mr-4 tw-ml-auto"
                         mat-icon-button
                         [matMenuTriggerFor]="postCardMenu03"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu03="matMenu">
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:arrow-up-tray'"
                                 ></mat-icon>
                                 <span>Save post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:eye-slash'"
                                 ></mat-icon>
                                 <span>Hide post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:clock'"
                                 ></mat-icon>
                                 <span>Snooze for 30 days</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:minus-circle'"
                                 ></mat-icon>
                                 <span>Hide all</span>
                             </span>
                         </button>
-                        <mat-divider class="my-2"></mat-divider>
+                        <mat-divider class="tw-my-2"></mat-divider>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="
                                         'heroicons_solid:exclamation-triangle'
                                     "
@@ -1875,9 +1875,9 @@
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:bell'"
                                 ></mat-icon>
                                 <span>Turn on notifications for this post</span>
@@ -1885,86 +1885,86 @@
                         </button>
                     </mat-menu>
                 </div>
-                <div class="mx-6 mb-6 mt-2 sm:mx-8">
+                <div class="tw-mx-6 tw-mb-6 tw-mt-2 sm:tw-mx-8">
                     Look at that sky! I so want to be there.. Can we arrange a
                     trip? Is that a possibility? Please!!!
                 </div>
-                <div class="mx-6 mb-4 flex sm:mx-8">
-                    <div class="flex h-80 pr-1">
+                <div class="tw-mx-6 tw-mb-4 tw-flex sm:tw-mx-8">
+                    <div class="tw-flex tw-h-80 tw-pr-1">
                         <img
-                            class="rounded object-cover"
-                            src="images/cards/15-640x480.jpg"
+                            class="tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/15-640x480.jpg"
                             alt="Card cover image"
                         />
                     </div>
-                    <div class="flex h-80 pl-1">
+                    <div class="tw-flex tw-h-80 tw-pl-1">
                         <img
-                            class="rounded object-cover"
-                            src="images/cards/16-640x480.jpg"
+                            class="tw-rounded tw-object-cover"
+                            src="http://localhost:4202/images/cards/16-640x480.jpg"
                             alt="Card cover image"
                         />
                     </div>
                 </div>
-                <div class="mx-3 flex items-center sm:mx-5">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="text-red-500 icon-size-5"
+                            class="tw-text-red-500 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:heart'"
                         ></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="tw-ml-2">Unlike</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="
                                 'heroicons_solid:chat-bubble-left-ellipsis'
                             "
                         ></mat-icon>
-                        <span class="ml-2">Comment</span>
+                        <span class="tw-ml-2">Comment</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:share'"
                         ></mat-icon>
-                        <span class="ml-2">Share</span>
+                        <span class="tw-ml-2">Share</span>
                     </button>
                 </div>
-                <hr class="mx-6 mb-6 mt-4 border-b sm:mx-8" />
+                <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
                 <div
-                    class="mx-6 mb-4 flex flex-col sm:mx-8 sm:mb-6 sm:flex-row sm:items-center"
+                    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
                 >
-                    <div class="flex items-center">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="text-card m-0.5 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-02.jpg"
+                            class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-04.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-09.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-09.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
                             alt="Card cover image"
                         />
-                        <div class="ml-3 text-md tracking-tight">
+                        <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                             You and 24 more liked this
                         </div>
                     </div>
-                    <div class="hidden flex-auto sm:flex"></div>
-                    <div class="mt-4 flex items-center sm:mt-0">
-                        <button class="-ml-2 mr-1 px-3 sm:ml-0" mat-button>
+                    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+                    <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+                        <button class="tw--ml-2 tw-mr-1 tw-px-3 sm:tw-ml-0" mat-button>
                             4 shares
                         </button>
-                        <button class="px-3 sm:-mr-3" mat-button>
+                        <button class="tw-px-3 sm:tw--mr-3" mat-button>
                             No comments
                         </button>
                     </div>
@@ -1972,73 +1972,73 @@
             </fuse-card>
 
             <!-- Post 6 -->
-            <fuse-card class="mt-8 flex w-full max-w-140 flex-col">
-                <div class="mx-6 mb-4 mt-6 flex items-center sm:mx-8">
+            <fuse-card class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col">
+                <div class="tw-mx-6 tw-mb-4 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
                     <img
-                        class="mr-4 h-10 w-10 rounded-full"
-                        src="images/avatars/female-01.jpg"
+                        class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+                        src="http://localhost:4202/images/avatars/female-01.jpg"
                         alt="Card cover image"
                     />
-                    <div class="flex flex-col">
-                        <span class="font-semibold leading-none"
+                    <div class="tw-flex tw-flex-col">
+                        <span class="tw-font-semibold tw-leading-none"
                             >Caroline Lundu</span
                         >
-                        <span class="text-secondary mt-1 text-sm leading-none"
+                        <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
                             >29 minutes ago</span
                         >
                     </div>
                     <button
-                        class="-mr-4 ml-auto"
+                        class="tw--mr-4 tw-ml-auto"
                         mat-icon-button
                         [matMenuTriggerFor]="postCardMenu09"
                     >
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:ellipsis-vertical'"
                         ></mat-icon>
                     </button>
                     <mat-menu #postCardMenu09="matMenu">
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:arrow-up-tray'"
                                 ></mat-icon>
                                 <span>Save post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:eye-slash'"
                                 ></mat-icon>
                                 <span>Hide post</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:clock'"
                                 ></mat-icon>
                                 <span>Snooze for 30 days</span>
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:minus-circle'"
                                 ></mat-icon>
                                 <span>Hide all</span>
                             </span>
                         </button>
-                        <mat-divider class="my-2"></mat-divider>
+                        <mat-divider class="tw-my-2"></mat-divider>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="
                                         'heroicons_solid:exclamation-triangle'
                                     "
@@ -2047,9 +2047,9 @@
                             </span>
                         </button>
                         <button mat-menu-item>
-                            <span class="flex items-center">
+                            <span class="tw-flex tw-items-center">
                                 <mat-icon
-                                    class="mr-3 icon-size-5"
+                                    class="tw-mr-3 tw-icon-size-5"
                                     [svgIcon]="'heroicons_solid:bell'"
                                 ></mat-icon>
                                 <span>Turn on notifications for this post</span>
@@ -2057,94 +2057,94 @@
                         </button>
                     </mat-menu>
                 </div>
-                <div class="mx-6 mb-6 mt-2 sm:mx-8">
+                <div class="tw-mx-6 tw-mb-6 tw-mt-2 sm:tw-mx-8">
                     Hey!! I never saw this episode, it was amazing.. I think I’m
                     going to buy myself a set and try his technique at home!
                 </div>
-                <div class="mx-6 mb-4 sm:mx-8">
+                <div class="tw-mx-6 tw-mb-4 sm:tw-mx-8">
                     <div class="flex overflow-hidden rounded border">
                         <div class="w-40 flex-0">
                             <img
                                 class="h-full w-full object-cover"
-                                src="images/cards/35-640x480.jpg"
+                                src="http://localhost:4202/images/cards/35-640x480.jpg"
                                 alt="Card cover image"
                             />
                         </div>
-                        <div class="m-4">
-                            <div class="text-lg font-medium">
+                        <div class="tw-m-4">
+                            <div class="tw-text-lg tw-font-medium">
                                 Rob Boss - Season 09 Episode 04
                             </div>
-                            <div class="text-secondary mt-1">
+                            <div class="tw-text-secondary tw-mt-1">
                                 We'll put a happy little sky in here. We touch
                                 the canvas, the canvas takes what it wants. A
                                 little happy sunlight shining through there.
                             </div>
-                            <div class="text-hint mt-2 text-sm">
+                            <div class="tw-text-hint tw-mt-2 tw-text-sm">
                                 example.com
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mx-3 flex items-center sm:mx-5">
-                    <button class="mr-1 px-3" mat-button>
+                <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="text-red-500 icon-size-5"
+                            class="tw-text-red-500 tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:heart'"
                         ></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="tw-ml-2">Unlike</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="
                                 'heroicons_solid:chat-bubble-left-ellipsis'
                             "
                         ></mat-icon>
-                        <span class="ml-2">Comment</span>
+                        <span class="tw-ml-2">Comment</span>
                     </button>
-                    <button class="mr-1 px-3" mat-button>
+                    <button class="tw-mr-1 tw-px-3" mat-button>
                         <mat-icon
-                            class="icon-size-5"
+                            class="tw-icon-size-5"
                             [svgIcon]="'heroicons_solid:share'"
                         ></mat-icon>
-                        <span class="ml-2">Share</span>
+                        <span class="tw-ml-2">Share</span>
                     </button>
                 </div>
-                <hr class="mx-6 mb-6 mt-4 border-b sm:mx-8" />
+                <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
                 <div
-                    class="mx-6 mb-4 flex flex-col sm:mx-8 sm:mb-6 sm:flex-row sm:items-center"
+                    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
                 >
-                    <div class="flex items-center">
+                    <div class="tw-flex tw-items-center">
                         <img
-                            class="text-card m-0.5 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-02.jpg"
+                            class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-02.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/female-04.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/female-04.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-09.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-09.jpg"
                             alt="Card cover image"
                         />
                         <img
-                            class="text-card m-0.5 -ml-3 h-6 w-6 rounded-full ring-2 ring-white"
-                            src="images/avatars/male-07.jpg"
+                            class="tw-text-card tw-m-0.5 tw--ml-3 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                            src="http://localhost:4202/images/avatars/male-07.jpg"
                             alt="Card cover image"
                         />
-                        <div class="ml-3 text-md tracking-tight">
+                        <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                             You and 24 more liked this
                         </div>
                     </div>
-                    <div class="hidden flex-auto sm:flex"></div>
-                    <div class="mt-4 flex items-center sm:mt-0">
-                        <button class="-ml-2 mr-1 px-3 sm:ml-0" mat-button>
+                    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+                    <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+                        <button class="tw--ml-2 tw-mr-1 tw-px-3 sm:tw-ml-0" mat-button>
                             4 shares
                         </button>
-                        <button class="px-3 sm:-mr-3" mat-button>
+                        <button class="tw-px-3 sm:tw--mr-3" mat-button>
                             No comments
                         </button>
                     </div>
