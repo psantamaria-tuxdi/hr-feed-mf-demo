@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
+    selector: 'hr-feed-app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    imports: [RouterOutlet],
+    styleUrls: [
+        '../styles/splash-screen.css',
+        '../styles/inter.css',
+        '../@fuse/styles/tailwind.scss',
+        '../@fuse/styles/themes.scss',
+        '../styles/vendors.scss',
+        '../@fuse/styles/main.scss',
+        '../styles/styles.scss',
+        '../styles/tailwind.scss',
+    ],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false,
 })
 export class AppComponent {
     /**

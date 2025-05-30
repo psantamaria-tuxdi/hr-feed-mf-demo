@@ -34,7 +34,7 @@ fuse-alert {
 
             .fuse-alert-default-icon {
                 .mat-icon {
-                    @apply icon-size-5;
+                    @apply tw-icon-size-5;
                 }
             }
 
@@ -99,7 +99,7 @@ fuse-alert {
             line-height: 32px !important;
 
             .mat-icon {
-                @apply icon-size-4;
+                @apply tw-icon-size-4;
             }
         }
     }
@@ -127,7 +127,7 @@ fuse-alert {
             position: relative;
             overflow: hidden;
             border-radius: 6px;
-            @apply bg-card shadow-md;
+            @apply tw-bg-card tw-shadow-md;
 
             .fuse-alert-border {
                 position: absolute;
@@ -138,7 +138,7 @@ fuse-alert {
             }
 
             .fuse-alert-message {
-                @apply text-gray-600;
+                @apply tw-text-gray-600;
             }
         }
 
@@ -146,32 +146,32 @@ fuse-alert {
         &.fuse-alert-type-primary {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-primary;
+                    @apply tw-bg-primary;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-primary;
+                    @apply tw-text-primary;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-primary-400;
+                        @apply tw-bg-primary-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-primary-400;
+                        @apply tw-text-primary-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -181,32 +181,32 @@ fuse-alert {
         &.fuse-alert-type-accent {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-accent;
+                    @apply tw-bg-accent;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-accent;
+                    @apply tw-text-accent;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-accent-400;
+                        @apply tw-bg-accent-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-accent-400;
+                        @apply tw-text-accent-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -216,32 +216,32 @@ fuse-alert {
         &.fuse-alert-type-warn {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-warn;
+                    @apply tw-bg-warn;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-warn;
+                    @apply tw-text-warn;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-warn-400;
+                        @apply tw-bg-warn-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-warn-400;
+                        @apply tw-text-warn-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -251,32 +251,32 @@ fuse-alert {
         &.fuse-alert-type-basic {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-gray-600;
+                    @apply tw-bg-gray-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-gray-600;
+                    @apply tw-text-gray-600;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-gray-400;
+                        @apply tw-bg-gray-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-gray-400;
+                        @apply tw-text-gray-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -286,32 +286,32 @@ fuse-alert {
         &.fuse-alert-type-info {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-blue-600;
+                    @apply tw-bg-blue-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-blue-700;
+                    @apply tw-text-blue-700;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-blue-400;
+                        @apply tw-bg-blue-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-blue-400;
+                        @apply tw-text-blue-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -321,32 +321,32 @@ fuse-alert {
         &.fuse-alert-type-success {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-green-500;
+                    @apply tw-bg-green-500;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-green-500;
+                    @apply tw-text-green-500;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-green-400;
+                        @apply tw-bg-green-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-green-400;
+                        @apply tw-text-green-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -356,32 +356,32 @@ fuse-alert {
         &.fuse-alert-type-warning {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-amber-500;
+                    @apply tw-bg-amber-500;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-amber-500;
+                    @apply tw-text-amber-500;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-amber-400;
+                        @apply tw-bg-amber-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-amber-400;
+                        @apply tw-text-amber-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -391,32 +391,32 @@ fuse-alert {
         &.fuse-alert-type-error {
             .fuse-alert-container {
                 .fuse-alert-border {
-                    @apply bg-red-600;
+                    @apply tw-bg-red-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-icon {
-                    @apply text-red-700;
+                    @apply tw-text-red-700;
                 }
 
                 .dark & {
-                    @apply bg-gray-700;
+                    @apply tw-bg-gray-700;
 
                     .fuse-alert-border {
-                        @apply bg-red-400;
+                        @apply tw-bg-red-400;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-icon {
-                        @apply text-red-400;
+                        @apply tw-text-red-400;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-300;
+                        @apply tw-text-gray-300;
                     }
 
                     code {
-                        @apply bg-gray-400 text-gray-800;
+                        @apply tw-bg-gray-400 tw-text-gray-800;
                     }
                 }
             }
@@ -429,29 +429,29 @@ fuse-alert {
             border-radius: 6px;
 
             .fuse-alert-dismiss-button {
-                @apply text-white;
+                @apply tw-text-white;
             }
         }
 
         /* Primary */
         &.fuse-alert-type-primary {
             .fuse-alert-container {
-                @apply bg-primary-600;
+                @apply tw-bg-primary-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-primary-100;
+                    @apply tw-text-primary-100;
                 }
 
                 code {
-                    @apply bg-primary-200 text-primary-800;
+                    @apply tw-bg-primary-200 tw-text-primary-800;
                 }
             }
         }
@@ -459,22 +459,22 @@ fuse-alert {
         /* Accent */
         &.fuse-alert-type-accent {
             .fuse-alert-container {
-                @apply bg-accent-600;
+                @apply tw-bg-accent-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-accent-100;
+                    @apply tw-text-accent-100;
                 }
 
                 code {
-                    @apply bg-accent-200 text-accent-800;
+                    @apply tw-bg-accent-200 tw-text-accent-800;
                 }
             }
         }
@@ -482,22 +482,22 @@ fuse-alert {
         /* Warn */
         &.fuse-alert-type-warn {
             .fuse-alert-container {
-                @apply bg-warn-600;
+                @apply tw-bg-warn-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-warn-100;
+                    @apply tw-text-warn-100;
                 }
 
                 code {
-                    @apply bg-warn-200 text-warn-800;
+                    @apply tw-bg-warn-200 tw-text-warn-800;
                 }
             }
         }
@@ -505,22 +505,22 @@ fuse-alert {
         /* Basic */
         &.fuse-alert-type-basic {
             .fuse-alert-container {
-                @apply bg-gray-600;
+                @apply tw-bg-gray-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-gray-100;
+                    @apply tw-text-gray-100;
                 }
 
                 code {
-                    @apply bg-gray-200 text-gray-800;
+                    @apply tw-bg-gray-200 tw-text-gray-800;
                 }
             }
         }
@@ -528,22 +528,22 @@ fuse-alert {
         /* Info */
         &.fuse-alert-type-info {
             .fuse-alert-container {
-                @apply bg-blue-600;
+                @apply tw-bg-blue-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-blue-100;
+                    @apply tw-text-blue-100;
                 }
 
                 code {
-                    @apply bg-blue-200 text-blue-800;
+                    @apply tw-bg-blue-200 tw-text-blue-800;
                 }
             }
         }
@@ -551,22 +551,22 @@ fuse-alert {
         /* Success */
         &.fuse-alert-type-success {
             .fuse-alert-container {
-                @apply bg-green-600;
+                @apply tw-bg-green-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-green-100;
+                    @apply tw-text-green-100;
                 }
 
                 code {
-                    @apply bg-green-200 text-gray-800;
+                    @apply tw-bg-green-200 tw-text-gray-800;
                 }
             }
         }
@@ -574,22 +574,22 @@ fuse-alert {
         /* Warning */
         &.fuse-alert-type-warning {
             .fuse-alert-container {
-                @apply bg-amber-500;
+                @apply tw-bg-amber-500;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-amber-100;
+                    @apply tw-text-amber-100;
                 }
 
                 code {
-                    @apply bg-amber-200 text-amber-800;
+                    @apply tw-bg-amber-200 tw-text-amber-800;
                 }
             }
         }
@@ -597,22 +597,22 @@ fuse-alert {
         /* Error */
         &.fuse-alert-type-error {
             .fuse-alert-container {
-                @apply bg-red-600;
+                @apply tw-bg-red-600;
 
                 .fuse-alert-icon {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-title {
-                    @apply text-white;
+                    @apply tw-text-white;
                 }
 
                 .fuse-alert-message {
-                    @apply text-red-100;
+                    @apply tw-text-red-100;
                 }
 
                 code {
-                    @apply bg-red-200 text-red-800;
+                    @apply tw-bg-red-200 tw-text-red-800;
                 }
             }
         }
@@ -627,39 +627,39 @@ fuse-alert {
         /* Primary */
         &.fuse-alert-type-primary {
             .fuse-alert-container {
-                @apply bg-primary-50 ring-1 ring-inset ring-primary-400;
+                @apply tw-bg-primary-50 tw-ring-1 tw-ring-inset tw-ring-primary-400;
 
                 .fuse-alert-icon {
-                    @apply text-primary-600;
+                    @apply tw-text-primary-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-primary-900;
+                    @apply tw-text-primary-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-primary-700;
+                    @apply tw-text-primary-700;
                 }
 
                 code {
-                    @apply bg-primary-200 text-primary-800;
+                    @apply tw-bg-primary-200 tw-text-primary-800;
                 }
 
                 .dark & {
-                    @apply bg-primary-600;
+                    @apply tw-bg-primary-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-primary-200;
+                        @apply tw-text-primary-200;
                     }
                 }
             }
@@ -668,39 +668,39 @@ fuse-alert {
         /* Accent */
         &.fuse-alert-type-accent {
             .fuse-alert-container {
-                @apply bg-accent-100 ring-1 ring-inset ring-accent-400;
+                @apply tw-bg-accent-100 tw-ring-1 tw-ring-inset tw-ring-accent-400;
 
                 .fuse-alert-icon {
-                    @apply text-accent-600;
+                    @apply tw-text-accent-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-accent-900;
+                    @apply tw-text-accent-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-accent-700;
+                    @apply tw-text-accent-700;
                 }
 
                 code {
-                    @apply bg-accent-200 text-accent-800;
+                    @apply tw-bg-accent-200 tw-text-accent-800;
                 }
 
                 .dark & {
-                    @apply bg-accent-600;
+                    @apply tw-bg-accent-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-accent-200;
+                        @apply tw-text-accent-200;
                     }
                 }
             }
@@ -709,39 +709,39 @@ fuse-alert {
         /* Warn */
         &.fuse-alert-type-warn {
             .fuse-alert-container {
-                @apply bg-warn-50 ring-1 ring-inset ring-warn-400;
+                @apply tw-bg-warn-50 tw-ring-1 tw-ring-inset tw-ring-warn-400;
 
                 .fuse-alert-icon {
-                    @apply text-warn-600;
+                    @apply tw-text-warn-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-warn-900;
+                    @apply tw-text-warn-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-warn-700;
+                    @apply tw-text-warn-700;
                 }
 
                 code {
-                    @apply bg-warn-200 text-warn-800;
+                    @apply tw-bg-warn-200 tw-text-warn-800;
                 }
 
                 .dark & {
-                    @apply bg-warn-600;
+                    @apply tw-bg-warn-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-warn-200;
+                        @apply tw-text-warn-200;
                     }
                 }
             }
@@ -750,39 +750,39 @@ fuse-alert {
         /* Basic */
         &.fuse-alert-type-basic {
             .fuse-alert-container {
-                @apply bg-gray-100 ring-1 ring-inset ring-gray-400;
+                @apply tw-bg-gray-100 tw-ring-1 tw-ring-inset tw-ring-gray-400;
 
                 .fuse-alert-icon {
-                    @apply text-gray-600;
+                    @apply tw-text-gray-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-gray-900;
+                    @apply tw-text-gray-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-gray-700;
+                    @apply tw-text-gray-700;
                 }
 
                 code {
-                    @apply bg-gray-200 text-gray-800;
+                    @apply tw-bg-gray-200 tw-text-gray-800;
                 }
 
                 .dark & {
-                    @apply bg-gray-600;
+                    @apply tw-bg-gray-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-200;
+                        @apply tw-text-gray-200;
                     }
                 }
             }
@@ -791,39 +791,39 @@ fuse-alert {
         /* Info */
         &.fuse-alert-type-info {
             .fuse-alert-container {
-                @apply bg-blue-50 ring-1 ring-inset ring-blue-400;
+                @apply tw-bg-blue-50 tw-ring-1 tw-ring-inset tw-ring-blue-400;
 
                 .fuse-alert-icon {
-                    @apply text-blue-600;
+                    @apply tw-text-blue-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-blue-900;
+                    @apply tw-text-blue-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-blue-700;
+                    @apply tw-text-blue-700;
                 }
 
                 code {
-                    @apply bg-blue-200 text-blue-800;
+                    @apply tw-bg-blue-200 tw-text-blue-800;
                 }
 
                 .dark & {
-                    @apply bg-blue-600;
+                    @apply tw-bg-blue-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-blue-200;
+                        @apply tw-text-blue-200;
                     }
                 }
             }
@@ -832,39 +832,39 @@ fuse-alert {
         /* Success */
         &.fuse-alert-type-success {
             .fuse-alert-container {
-                @apply bg-green-50 ring-1 ring-inset ring-green-400;
+                @apply tw-bg-green-50 tw-ring-1 tw-ring-inset tw-ring-green-400;
 
                 .fuse-alert-icon {
-                    @apply text-green-600;
+                    @apply tw-text-green-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-green-900;
+                    @apply tw-text-green-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-green-700;
+                    @apply tw-text-green-700;
                 }
 
                 code {
-                    @apply bg-green-200 text-green-800;
+                    @apply tw-bg-green-200 tw-text-green-800;
                 }
 
                 .dark & {
-                    @apply bg-green-600;
+                    @apply tw-bg-green-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-green-200;
+                        @apply tw-text-green-200;
                     }
                 }
             }
@@ -873,39 +873,39 @@ fuse-alert {
         /* Warning */
         &.fuse-alert-type-warning {
             .fuse-alert-container {
-                @apply bg-amber-50 ring-1 ring-inset ring-amber-400;
+                @apply tw-bg-amber-50 tw-ring-1 tw-ring-inset tw-ring-amber-400;
 
                 .fuse-alert-icon {
-                    @apply text-amber-600;
+                    @apply tw-text-amber-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-amber-900;
+                    @apply tw-text-amber-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-amber-700;
+                    @apply tw-text-amber-700;
                 }
 
                 code {
-                    @apply bg-amber-200 text-amber-800;
+                    @apply tw-bg-amber-200 tw-text-amber-800;
                 }
 
                 .dark & {
-                    @apply bg-amber-600;
+                    @apply tw-bg-amber-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-amber-200;
+                        @apply tw-text-amber-200;
                     }
                 }
             }
@@ -914,39 +914,39 @@ fuse-alert {
         /* Error */
         &.fuse-alert-type-error {
             .fuse-alert-container {
-                @apply bg-red-50 ring-1 ring-inset ring-red-400;
+                @apply tw-bg-red-50 tw-ring-1 tw-ring-inset tw-ring-red-400;
 
                 .fuse-alert-icon {
-                    @apply text-red-600;
+                    @apply tw-text-red-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-red-900;
+                    @apply tw-text-red-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-red-700;
+                    @apply tw-text-red-700;
                 }
 
                 code {
-                    @apply bg-red-200 text-red-800;
+                    @apply tw-bg-red-200 tw-text-red-800;
                 }
 
                 .dark & {
-                    @apply bg-red-600;
+                    @apply tw-bg-red-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-red-200;
+                        @apply tw-text-red-200;
                     }
                 }
             }
@@ -962,39 +962,39 @@ fuse-alert {
         /* Primary */
         &.fuse-alert-type-primary {
             .fuse-alert-container {
-                @apply bg-primary-50;
+                @apply tw-bg-primary-50;
 
                 .fuse-alert-icon {
-                    @apply text-primary-600;
+                    @apply tw-text-primary-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-primary-900;
+                    @apply tw-text-primary-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-primary-700;
+                    @apply tw-text-primary-700;
                 }
 
                 code {
-                    @apply bg-primary-200 text-primary-800;
+                    @apply tw-bg-primary-200 tw-text-primary-800;
                 }
 
                 .dark & {
-                    @apply bg-primary-600;
+                    @apply tw-bg-primary-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-primary-200;
+                        @apply tw-text-primary-200;
                     }
                 }
             }
@@ -1003,39 +1003,39 @@ fuse-alert {
         /* Accent */
         &.fuse-alert-type-accent {
             .fuse-alert-container {
-                @apply bg-accent-100;
+                @apply tw-bg-accent-100;
 
                 .fuse-alert-icon {
-                    @apply text-accent-600;
+                    @apply tw-text-accent-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-accent-900;
+                    @apply tw-text-accent-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-accent-700;
+                    @apply tw-text-accent-700;
                 }
 
                 code {
-                    @apply bg-accent-200 text-accent-800;
+                    @apply tw-bg-accent-200 tw-text-accent-800;
                 }
 
                 .dark & {
-                    @apply bg-accent-600;
+                    @apply tw-bg-accent-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-accent-200;
+                        @apply tw-text-accent-200;
                     }
                 }
             }
@@ -1044,39 +1044,39 @@ fuse-alert {
         /* Warn */
         &.fuse-alert-type-warn {
             .fuse-alert-container {
-                @apply bg-warn-50;
+                @apply tw-bg-warn-50;
 
                 .fuse-alert-icon {
-                    @apply text-warn-600;
+                    @apply tw-text-warn-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-warn-900;
+                    @apply tw-text-warn-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-warn-700;
+                    @apply tw-text-warn-700;
                 }
 
                 code {
-                    @apply bg-warn-200 text-warn-800;
+                    @apply tw-bg-warn-200 tw-text-warn-800;
                 }
 
                 .dark & {
-                    @apply bg-warn-600;
+                    @apply tw-bg-warn-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-warn-200;
+                        @apply tw-text-warn-200;
                     }
                 }
             }
@@ -1085,39 +1085,39 @@ fuse-alert {
         /* Basic */
         &.fuse-alert-type-basic {
             .fuse-alert-container {
-                @apply bg-gray-100;
+                @apply tw-bg-gray-100;
 
                 .fuse-alert-icon {
-                    @apply text-gray-600;
+                    @apply tw-text-gray-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-gray-900;
+                    @apply tw-text-gray-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-gray-700;
+                    @apply tw-text-gray-700;
                 }
 
                 code {
-                    @apply bg-gray-200 text-gray-800;
+                    @apply tw-bg-gray-200 tw-text-gray-800;
                 }
 
                 .dark & {
-                    @apply bg-gray-600;
+                    @apply tw-bg-gray-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-gray-200;
+                        @apply tw-text-gray-200;
                     }
                 }
             }
@@ -1126,39 +1126,39 @@ fuse-alert {
         /* Info */
         &.fuse-alert-type-info {
             .fuse-alert-container {
-                @apply bg-blue-50;
+                @apply tw-bg-blue-50;
 
                 .fuse-alert-icon {
-                    @apply text-blue-600;
+                    @apply tw-text-blue-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-blue-900;
+                    @apply tw-text-blue-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-blue-700;
+                    @apply tw-text-blue-700;
                 }
 
                 code {
-                    @apply bg-blue-200 text-blue-800;
+                    @apply tw-bg-blue-200 tw-text-blue-800;
                 }
 
                 .dark & {
-                    @apply bg-blue-600;
+                    @apply tw-bg-blue-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-blue-200;
+                        @apply tw-text-blue-200;
                     }
                 }
             }
@@ -1167,39 +1167,39 @@ fuse-alert {
         /* Success */
         &.fuse-alert-type-success {
             .fuse-alert-container {
-                @apply bg-green-50;
+                @apply tw-bg-green-50;
 
                 .fuse-alert-icon {
-                    @apply text-green-600;
+                    @apply tw-text-green-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-green-900;
+                    @apply tw-text-green-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-green-700;
+                    @apply tw-text-green-700;
                 }
 
                 code {
-                    @apply bg-green-200 text-green-800;
+                    @apply tw-bg-green-200 tw-text-green-800;
                 }
 
                 .dark & {
-                    @apply bg-green-600;
+                    @apply tw-bg-green-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-green-200;
+                        @apply tw-text-green-200;
                     }
                 }
             }
@@ -1208,39 +1208,39 @@ fuse-alert {
         /* Warning */
         &.fuse-alert-type-warning {
             .fuse-alert-container {
-                @apply bg-amber-50;
+                @apply tw-bg-amber-50;
 
                 .fuse-alert-icon {
-                    @apply text-amber-600;
+                    @apply tw-text-amber-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-amber-900;
+                    @apply tw-text-amber-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-amber-700;
+                    @apply tw-text-amber-700;
                 }
 
                 code {
-                    @apply bg-amber-200 text-amber-800;
+                    @apply tw-bg-amber-200 tw-text-amber-800;
                 }
 
                 .dark & {
-                    @apply bg-amber-600;
+                    @apply tw-bg-amber-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-amber-200;
+                        @apply tw-text-amber-200;
                     }
                 }
             }
@@ -1249,39 +1249,39 @@ fuse-alert {
         /* Error */
         &.fuse-alert-type-error {
             .fuse-alert-container {
-                @apply bg-red-50;
+                @apply tw-bg-red-50;
 
                 .fuse-alert-icon {
-                    @apply text-red-600;
+                    @apply tw-text-red-600;
                 }
 
                 .fuse-alert-title,
                 .fuse-alert-dismiss-button {
-                    @apply text-red-900;
+                    @apply tw-text-red-900;
                 }
 
                 .fuse-alert-message {
-                    @apply text-red-700;
+                    @apply tw-text-red-700;
                 }
 
                 code {
-                    @apply bg-red-200 text-red-800;
+                    @apply tw-bg-red-200 tw-text-red-800;
                 }
 
                 .dark & {
-                    @apply bg-red-600;
+                    @apply tw-bg-red-600;
 
                     .fuse-alert-icon {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-title,
                     .fuse-alert-dismiss-button {
-                        @apply text-white;
+                        @apply tw-text-white;
                     }
 
                     .fuse-alert-message {
-                        @apply text-red-200;
+                        @apply tw-text-red-200;
                     }
                 }
             }

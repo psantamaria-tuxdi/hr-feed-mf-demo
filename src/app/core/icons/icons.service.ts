@@ -1,9 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class IconsService {
+    baseUrl = environment.baseUrl;
     /**
      * Constructor
      */
@@ -14,41 +16,43 @@ export class IconsService {
         // Register icon sets
         matIconRegistry.addSvgIconSet(
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/material-twotone.svg'
+                this.baseUrl + '/icons/material-twotone.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'mat_outline',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/material-outline.svg'
+                this.baseUrl + '/icons/material-outline.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'mat_solid',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/material-solid.svg'
+                this.baseUrl + '/icons/material-solid.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'feather',
-            domSanitizer.bypassSecurityTrustResourceUrl('icons/feather.svg')
+            domSanitizer.bypassSecurityTrustResourceUrl(
+                this.baseUrl + '/icons/feather.svg'
+            )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'heroicons_outline',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/heroicons-outline.svg'
+                this.baseUrl + '/icons/heroicons-outline.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'heroicons_solid',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/heroicons-solid.svg'
+                this.baseUrl + '/icons/heroicons-solid.svg'
             )
         );
         matIconRegistry.addSvgIconSetInNamespace(
             'heroicons_mini',
             domSanitizer.bypassSecurityTrustResourceUrl(
-                'icons/heroicons-mini.svg'
+                this.baseUrl + '/icons/heroicons-mini.svg'
             )
         );
     }

@@ -1,4 +1,4 @@
-# Fuse - Admin template and Starter project for Angular
+# HR Feed - Micro Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 

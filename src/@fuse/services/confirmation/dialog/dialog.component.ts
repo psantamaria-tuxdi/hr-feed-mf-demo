@@ -12,7 +12,7 @@ import { FuseConfirmationConfig } from '@fuse/services/confirmation/confirmation
         `
             .fuse-confirmation-dialog-panel {
                 @screen md {
-                    @apply w-128;
+                    @apply tw-w-128;
                 }
 
                 .mat-mdc-dialog-container {
