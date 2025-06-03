@@ -64,8 +64,8 @@
 
     /* Set the background and foreground colors */
     mf-hr-root,
-    .dark,
-    .light {
+    .tw-dark,
+    .tw-light {
         @apply tw-text-default tw-bg-default #{'!important'};
     }
 
@@ -132,8 +132,8 @@
         }
 
         mf-hr-root,
-        .dark,
-        .light {
+        .tw-dark,
+        .tw-light {
             background: none !important;
         }
     }
