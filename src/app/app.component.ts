@@ -12,7 +12,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
         '../@fuse/styles/main.scss',
         '../styles/styles.scss',
         '../styles/tailwind.scss',
+        '../styles/arandano-overrides.scss',
     ],
+    host: {
+        style: "overflow: auto;  width: 100%; height: 100%; display: flex;",
+    },
     encapsulation: ViewEncapsulation.None,
     standalone: false,
 })
