@@ -296,7 +296,7 @@ const config = {
         require('@tailwindcss/typography')({ modifiers: ['sm', 'lg'] }),
     ],
     // Encapsulate Tailwind CSS into this selector, to avoid conflicts with host or other micro-frontends
-    important: 'mf-hr-root',
+    important: '.mf-hr-tw-container',
     prefix: 'tw-',
 };
 
