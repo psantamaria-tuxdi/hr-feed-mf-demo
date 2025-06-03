@@ -11,28 +11,28 @@ export const appRoutes: Route[] = [
     // Redirect empty path to '/example'
     { path: '', pathMatch: 'full', redirectTo: 'employer/HR-social-media' },
 
-    {
-        path: 'employer/HR-social-media',
-        loadChildren: () => import('app/modules/profile/profile.routes'),
-    },
-
     // {
-    //     path: '',
-    //     component: LayoutComponent,
-    //     data: {
-    //         layout: 'empty',
-    //     },
-    //     // resolve: {
-    //     //     initialData: initialDataResolver,
-    //     // },
-    //     children: [
-    //         {
-    //             path: 'employer/HR-social-media',
-    //             loadChildren: () =>
-    //                 import('app/modules/profile/profile.routes'),
-    //         },
-    //     ],
+    //     path: 'employer/HR-social-media',
+    //     loadChildren: () => import('app/modules/profile/profile.routes'),
     // },
+
+    {
+        path: '',
+        component: LayoutComponent,
+        data: {
+            layout: 'empty',
+        },
+        // resolve: {
+        //     initialData: initialDataResolver,
+        // },
+        children: [
+            {
+                path: 'employer/HR-social-media',
+                loadChildren: () =>
+                    import('app/modules/profile/profile.routes'),
+            },
+        ],
+    },
 
     // {
     //     path: '',
