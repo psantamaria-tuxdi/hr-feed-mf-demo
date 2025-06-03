@@ -34,6 +34,7 @@ import { environment } from '../../../environments/environment.development';
         MatTooltipModule,
         NgClass,
     ],
+    standalone: true,
 })
 export class ProfileComponent {
     baseUrl = environment.baseUrl;
