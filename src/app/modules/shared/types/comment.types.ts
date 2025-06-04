@@ -1,4 +1,4 @@
-import { User } from "../../../core/user/user.types";
+import { Author } from "./author.types";
 
 export interface Comments {
     count: number;
@@ -6,10 +6,15 @@ export interface Comments {
 }
 
 export interface Item {
-    id: string;
-    author: User;
+    _id: string;
+    author: Author;
     content: string;
-    timestamp: Date;
+    isLikedByCurrentUser: boolean;
+    replies: Reply[];
+    createdAt: string;
     likes: number;
-    replies?: Item[];
+}
+
+export interface Reply extends Omit<Item, 'replies'> {
+    parentCommentId: string;
 }
