@@ -246,13 +246,13 @@ $dark-base: (
     );
 
     /* Generate and encapsulate Angular Material themes */
-    #{map.get($theme, selector)} .light,
-    #{map.get($theme, selector)}.light {
+    #{map.get($theme, selector)} .tw-light,
+    #{map.get($theme, selector)}.tw-light {
         @include mat.all-component-colors($light-theme);
     }
 
-    #{map.get($theme, selector)} .dark,
-    #{map.get($theme, selector)}.dark {
+    #{map.get($theme, selector)} .tw-dark,
+    #{map.get($theme, selector)}.tw-dark {
         @include mat.all-component-colors($dark-theme);
     }
 }

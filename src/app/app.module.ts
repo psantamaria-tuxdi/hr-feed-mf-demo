@@ -103,7 +103,7 @@ import { MockApiService } from './mock-api';
       },
       fuse: {
         layout: 'empty',
-        scheme: 'light',
+        scheme: 'tw-light',
         screens: {
           sm: '600px',
           md: '960px',

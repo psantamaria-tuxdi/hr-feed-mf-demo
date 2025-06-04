@@ -1,3 +1,5 @@
+// TODO: Delete this file if it is not needed
+
 import { provideHttpClient } from '@angular/common/http';
 import {
     ApplicationConfig,

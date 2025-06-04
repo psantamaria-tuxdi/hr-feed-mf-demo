@@ -1,5 +1,5 @@
 // Types
-export type Scheme = 'auto' | 'dark' | 'light';
+export type Scheme = 'auto' | 'tw-dark' | 'tw-light';
 export type Screens = { [key: string]: string };
 export type Theme = 'theme-default' | string;
 export type Themes = { id: string; name: string }[];

@@ -31,7 +31,7 @@ import { ModernLayoutComponent } from './layouts/horizontal/modern/modern.compon
 export class LayoutComponent implements OnInit, OnDestroy {
     config: FuseConfig;
     layout: string;
-    scheme: 'dark' | 'light';
+    scheme: 'tw-dark' | 'tw-light';
     theme: string;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -78,8 +78,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
                         options.scheme = mql.breakpoints[
                             '(prefers-color-scheme: dark)'
                         ]
-                            ? 'dark'
-                            : 'light';
+                            ? 'tw-dark'
+                            : 'tw-light';
                     }
 
                     return options;
@@ -204,7 +204,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
      */
     private _updateScheme(): void {
         // Remove class names for all schemes
-        this._document.body.classList.remove('light', 'dark');
+        this._document.body.classList.remove('tw-light', 'tw-dark');
 
         // Add class name for the currently selected scheme
         this._document.body.classList.add(this.scheme);

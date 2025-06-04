@@ -44,16 +44,7 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["src/@fuse/styles"]
                         },
-                        "styles": [
-                            "src/styles/splash-screen.css",
-                            "src/styles/inter.css",
-                            "src/@fuse/styles/tailwind.scss",
-                            "src/@fuse/styles/themes.scss",
-                            "src/styles/vendors.scss",
-                            "src/@fuse/styles/main.scss",
-                            "src/styles/styles.scss",
-                            "src/styles/tailwind.scss"
-                        ],
+                        "styles": [],
                         "scripts": [],
                         "main": "src/main.ts",
                         "extraWebpackConfig": "webpack.config.js",
