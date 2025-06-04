@@ -14,8 +14,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
         '../styles/arandano-overrides.scss',
     ],
     host: {
-        style: "overflow: auto;  width: 100%; height: 100%; display: flex;",
-        class: 'mf-hr-tw-container',
+        style: 'overflow: auto; width: 100%; height: 100%; display: flex;',
+        class: 'mf-tw-container',
     },
     encapsulation: ViewEncapsulation.None,
     standalone: false,
