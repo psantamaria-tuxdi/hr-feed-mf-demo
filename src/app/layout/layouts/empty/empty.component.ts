@@ -8,7 +8,6 @@ import { Subject } from 'rxjs';
     templateUrl: './empty.component.html',
     encapsulation: ViewEncapsulation.None,
     imports: [RouterOutlet],
-    standalone: true,
 })
 export class EmptyLayoutComponent implements OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();

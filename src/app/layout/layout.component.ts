@@ -27,7 +27,6 @@ import { ModernLayoutComponent } from './layouts/horizontal/modern/modern.compon
         ModernLayoutComponent,
         // SettingsComponent,
     ],
-    standalone: true,
 })
 export class LayoutComponent implements OnInit, OnDestroy {
     config: FuseConfig;

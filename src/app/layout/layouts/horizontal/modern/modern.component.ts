@@ -42,7 +42,6 @@ import { environment } from '../../../../../environments/environment.development
         RouterOutlet,
         QuickChatComponent,
     ],
-    standalone: true,
 })
 export class ModernLayoutComponent implements OnInit, OnDestroy {
     baseUrl = environment.baseUrl;
