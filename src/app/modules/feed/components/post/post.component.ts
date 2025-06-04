@@ -1,3 +1,4 @@
+import { DatePipe, NgClass } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -5,8 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
-import { DatePipe, NgClass } from '@angular/common';
-import { postMock } from './post.mock';
+import { CommentsComponent } from '../comments/comments.component';
 
 @Component({
     selector: 'hr-post',
@@ -17,10 +17,11 @@ import { postMock } from './post.mock';
         MatMenuModule,
         MatDividerModule,
         DatePipe,
-        NgClass
+        NgClass,
+        CommentsComponent,
     ],
     templateUrl: './post.component.html',
 })
 export class PostComponent {
-    post = input<Post>(postMock);
+    post = input.required<Post>();
 }
