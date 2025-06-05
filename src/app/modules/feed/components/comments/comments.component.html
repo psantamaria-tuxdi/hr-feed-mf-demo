@@ -1,0 +1,76 @@
+<hr class="tw-m-0 tw-border-b" />
+
+<!-- TODO AddComment component -->
+
+<div class="tw-max-h-120 tw-overflow-y-auto">
+    <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
+        @for (item of comments().items; track item._id) {
+            <!-- Comment -->
+            <div
+                [ngClass]="{ 'tw-mt-8': !$first }"
+                class="tw-flex tw-items-start"
+            >
+                <img
+                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                    [src]="item.author.avatar"
+                    alt="Author avatar"
+                />
+                <div class="tw-mt-0.5 tw-flex tw-flex-col">
+                    <span>
+                        <b>{{ item.author.name }}</b> {{ item.content }}
+                    </span>
+                    <div
+                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
+                    >
+                        <span
+                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                            >Me gusta</span
+                        >
+                        <span
+                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                            >Responder</span
+                        >
+                        <span
+                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                            >Eliminar</span
+                        >
+                        <span class="tw-mr-2">&bull;</span>
+                        <!-- TODO timeago pipe -->
+                        <span>{{ item.createdAt | date }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Replies -->
+            @for (reply of item.replies; track reply._id) {
+                <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
+                    <img
+                        class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                        [src]="reply.author.avatar"
+                        alt="Author avatar"
+                    />
+                    <div class="tw-mt-0.5 tw-flex tw-flex-col">
+                        <span>
+                            <b>{{ reply.author.name }}</b> {{ reply.content }}
+                        </span>
+                        <div
+                            class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
+                        >
+                            <span
+                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                >Me gusta</span
+                            >
+                            <span
+                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                >Eliminar</span
+                            >
+                            <span class="tw-mr-2">&bull;</span>
+                            <!-- TODO timeago pipe -->
+                            <span>{{ reply.createdAt | date }}</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

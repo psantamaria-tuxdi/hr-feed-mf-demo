@@ -1,0 +1,157 @@
+<fuse-card
+    class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col"
+    #expandableCard="fuseCard"
+>
+    <!-- Header -->
+    <div class="tw-mx-6 tw-mb-1 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
+        <img
+            class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+            [src]="post().author.avatar"
+            alt="Author avatar"
+        />
+        <div class="tw-flex tw-flex-col">
+            <span class="tw-font-semibold tw-leading-none">{{
+                post().author.name
+            }}</span>
+            <!-- TODO timeago pipe -->
+            <span
+                class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
+                >{{ post().createdAt | date }}</span
+            >
+        </div>
+
+        <!-- Menu -->
+        <!-- TODO menu only available for some roles -->
+        <button
+            class="tw--mr-4 tw-ml-auto"
+            mat-icon-button
+            [matMenuTriggerFor]="postMenu"
+        >
+            <mat-icon
+                class="tw-icon-size-5"
+                [svgIcon]="'heroicons_solid:ellipsis-vertical'"
+            ></mat-icon>
+        </button>
+        <mat-menu #postMenu="matMenu">
+            <button mat-menu-item>
+                <span class="tw-flex tw-items-center">
+                    <mat-icon
+                        class="tw-mr-3 tw-icon-size-5"
+                        [svgIcon]="'heroicons_solid:pencil'"
+                    ></mat-icon>
+                    <span>Editar publicación</span>
+                </span>
+            </button>
+            <button mat-menu-item>
+                <span class="tw-flex tw-items-center">
+                    <mat-icon
+                        class="tw-mr-3 tw-icon-size-5"
+                        [svgIcon]="'mat_solid:delete'"
+                    ></mat-icon>
+                    <span>Eliminar</span>
+                </span>
+            </button>
+        </mat-menu>
+    </div>
+
+    <!-- Content -->
+    <!-- TODO create content component. Add images -->
+    <div class="tw-m-6 sm:tw-mx-8">
+        <p>
+            {{ post().content.text }}
+        </p>
+    </div>
+
+    <!-- Actions -->
+    <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+        <button class="tw-mr-1 tw-px-3" mat-button>
+            @if (post().engagement.likes.isLikedByCurrentUser) {
+                <mat-icon
+                    class="tw-text-red-500 tw-icon-size-5"
+                    [svgIcon]="'heroicons_solid:heart'"
+                ></mat-icon>
+            } @else {
+                <mat-icon
+                    class="tw-text-secondary tw-icon-size-5"
+                    [svgIcon]="'heroicons_outline:heart'"
+                ></mat-icon>
+            }
+            <span class="tw-ml-2">Me gusta</span>
+        </button>
+        <button class="tw-mr-1 tw-px-3" mat-button>
+            <mat-icon
+                class="tw-icon-size-5"
+                [svgIcon]="'heroicons_solid:chat-bubble-left-ellipsis'"
+            ></mat-icon>
+            <span class="tw-ml-2">Comentar</span>
+        </button>
+    </div>
+
+    <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
+
+    <!-- Engagement -->
+    <div
+        class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
+    >
+        <!-- Likes -->
+        @let likes = post().engagement.likes;
+
+        <div class="tw-flex tw-items-center">
+            @for (user of likes.topLikers; track user._id) {
+                <img
+                    [ngClass]="{
+                        'tw--ml-3': !$first,
+                    }"
+                    class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                    [src]="user.avatar"
+                    alt="User avatar"
+                />
+            }
+            <div class="tw-ml-3 tw-text-md tw-tracking-tight">
+                <!-- TODO likes count pipe, add missing logic -->
+                @if (likes.count > 0) {
+                    @if (likes.isLikedByCurrentUser) {
+                        A ti y a {{ likes.count }} personas más les gusta esto
+                    } @else {
+                        A {{ likes.count }} personas les gusta esto
+                    }
+                }
+            </div>
+        </div>
+        <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+
+        <!-- Comments -->
+        @let comments = post().engagement.comments;
+
+        <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+            @if (comments.count === 0) {
+                <button class="tw-px-3 sm:tw--mr-3" mat-button>
+                    Sin comentarios
+                </button>
+            }
+            @if (comments.count > 0) {
+                <button
+                    class="tw-px-3 sm:tw--mr-4"
+                    mat-button
+                    (click)="expandableCard.expanded = !expandableCard.expanded"
+                >
+                    <span class="tw-mr-1"
+                        >{{ comments.count }} comentarios</span
+                    >
+                    <mat-icon
+                        class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
+                        [ngClass]="{
+                            'tw-rotate-180': expandableCard.expanded,
+                        }"
+                        [svgIcon]="'heroicons_mini:chevron-down'"
+                    ></mat-icon>
+                </button>
+            }
+        </div>
+    </div>
+
+    <!-- Expandable content -->
+    <ng-container fuseCardExpansion>
+        <hr-comments [comments]="comments" />
+    </ng-container>
+</fuse-card>
