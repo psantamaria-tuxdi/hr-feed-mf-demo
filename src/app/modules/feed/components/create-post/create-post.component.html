@@ -1,0 +1,76 @@
+<!-- Create Post -->
+<fuse-card
+    class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col tw-p-6 tw-pb-6 sm:tw-p-8"
+>
+    <div class="tw-text-xl tw-font-semibold">Crear publicación</div>
+    <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
+        <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
+            <!-- TODO: resolve url avatar -->
+            <img
+                class="tw-mr-4 tw-h-12 tw-w-12 tw-min-w-12 tw-rounded-full"
+                [src]="`${baseUrl}/images/avatars/brian-hughes.jpg`"
+                alt="Card cover image"
+            />
+            <!-- TODO: resolve user name -->
+            <div class="sm:tw-hidden">Brian Hughes</div>
+        </div>
+        <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
+            <textarea
+                matInput
+                [placeholder]="'¿Qué tienes en mente?'"
+                [rows]="3"
+                cdkTextareaAutosize
+            ></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center sm:tw-mt-8">
+        <button class="tw-mr-1 tw-px-3" mat-button>
+            <mat-icon
+                class="tw-icon-size-5"
+                [svgIcon]="'heroicons_solid:photo'"
+            ></mat-icon>
+            <span class="tw-ml-2">Foto / Video</span>
+        </button>
+        <button
+            class="tw-mr-1 tw-px-3"
+            mat-button
+            [matMenuTriggerFor]="postCardMenu01"
+        >
+            <mat-icon
+                class="tw-icon-size-5"
+                [svgIcon]="'heroicons_solid:ellipsis-horizontal'"
+            ></mat-icon>
+        </button>
+        <div class="tw-flex tw-grow tw-justify-end">
+            <button
+                class="tw-ml-3 tw-px-6 sm:tw-inline-flex"
+                mat-flat-button
+                [color]="'primary'"
+            >
+                Publicar
+            </button>
+        </div>
+
+        <mat-menu #postCardMenu01="matMenu" class="mf-tw-container">
+            <button mat-menu-item>
+                <span class="tw-flex tw-items-center">
+                    <mat-icon
+                        class="tw-mr-3 tw-icon-size-5"
+                        [svgIcon]="'heroicons_solid:paper-clip'"
+                    ></mat-icon>
+                    <span>Archivo</span>
+                </span>
+            </button>
+            <button mat-menu-item>
+                <span class="tw-flex tw-items-center">
+                    <mat-icon
+                        class="tw-mr-3 tw-icon-size-5"
+                        [svgIcon]="'heroicons_solid:user-circle'"
+                    ></mat-icon>
+                    <span>Etiquetar personas</span>
+                </span>
+            </button>
+        </mat-menu>
+    </div>
+</fuse-card>
