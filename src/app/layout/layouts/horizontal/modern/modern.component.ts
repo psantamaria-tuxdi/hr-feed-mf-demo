@@ -20,7 +20,7 @@ import { QuickChatComponent } from 'app/layout/common/quick-chat/quick-chat.comp
 // import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
 // import { UserComponent } from 'app/layout/common/user/user.component';
 import { Subject, takeUntil } from 'rxjs';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'modern-layout',
