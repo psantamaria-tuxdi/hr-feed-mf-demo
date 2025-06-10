@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { FuseCardComponent } from '@fuse/components/card';
-import { environment } from 'environments/environment.development';
+import { environment } from 'environments/environment';
 
 @Component({
     selector: 'hr-create-post',
