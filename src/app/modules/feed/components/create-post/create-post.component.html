@@ -1,18 +1,15 @@
-<!-- Create Post -->
 <fuse-card
     class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col tw-p-6 tw-pb-6 sm:tw-p-8"
 >
     <div class="tw-text-xl tw-font-semibold">Crear publicación</div>
     <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
         <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
-            <!-- TODO: resolve url avatar -->
             <img
                 class="tw-mr-4 tw-h-12 tw-w-12 tw-min-w-12 tw-rounded-full"
-                [src]="`${baseUrl}/images/avatars/brian-hughes.jpg`"
+                [src]="user()?.avatar"
                 alt="Card cover image"
             />
-            <!-- TODO: resolve user name -->
-            <div class="sm:tw-hidden">Brian Hughes</div>
+            <div class="sm:tw-hidden">{{ user()?.name }}</div>
         </div>
         <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
             <textarea
@@ -30,18 +27,19 @@
                 class="tw-icon-size-5"
                 [svgIcon]="'heroicons_solid:photo'"
             ></mat-icon>
-            <span class="tw-ml-2">Foto / Video</span>
+            <span class="tw-ml-2">Foto</span>
         </button>
-        <button
+        <!-- TODO add this menu when we have support for menu actions -->
+        <!-- <button
             class="tw-mr-1 tw-px-3"
             mat-button
-            [matMenuTriggerFor]="postCardMenu01"
+            [matMenuTriggerFor]="createPostMenu"
         >
             <mat-icon
                 class="tw-icon-size-5"
                 [svgIcon]="'heroicons_solid:ellipsis-horizontal'"
             ></mat-icon>
-        </button>
+        </button> -->
         <button
             class="tw-ml-auto tw-mr-3 tw-px-6"
             mat-flat-button
@@ -50,7 +48,7 @@
             Publicar
         </button>
 
-        <mat-menu #postCardMenu01="matMenu" class="mf-tw-container">
+        <!-- <mat-menu #createPostMenu="matMenu" class="mf-tw-container">
             <button mat-menu-item>
                 <span class="tw-flex tw-items-center">
                     <mat-icon
@@ -69,6 +67,6 @@
                     <span>Etiquetar personas</span>
                 </span>
             </button>
-        </mat-menu>
+        </mat-menu> -->
     </div>
 </fuse-card>
