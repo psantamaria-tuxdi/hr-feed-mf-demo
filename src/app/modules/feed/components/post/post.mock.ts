@@ -7,11 +7,11 @@ export const postMock: Post = {
     author: {
         _id: 'user-1',
         name: 'Caroline Lundu',
-        avatar: 'images/avatars/female-01.jpg',
+        avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
     },
     content: {
         text: 'Look at that sky! I so want to be there.. Can we arrange a trip? Is that a possibility? Please!!!',
-        images: ['images/cards/14-640x480.jpg'],
+        images: ['http://localhost:4202/images/cards/14-640x480.jpg'],
     },
     engagement: {
         likes: {
@@ -21,22 +21,22 @@ export const postMock: Post = {
                 {
                     _id: 'user-2',
                     name: 'Laverne Dodson',
-                    avatar: 'images/avatars/female-02.jpg',
+                    avatar: 'http://localhost:4202/images/avatars/female-02.jpg',
                 },
                 {
                     _id: 'user-3',
                     name: 'Elsie Melendez',
-                    avatar: 'images/avatars/female-04.jpg',
+                    avatar: 'http://localhost:4202/images/avatars/female-04.jpg',
                 },
                 {
                     _id: 'user-4',
                     name: 'Barber Johnson',
-                    avatar: 'images/avatars/male-09.jpg',
+                    avatar: 'http://localhost:4202/images/avatars/male-09.jpg',
                 },
                 {
                     _id: 'user-5',
                     name: 'Meyer Roach',
-                    avatar: 'images/avatars/male-07.jpg',
+                    avatar: 'http://localhost:4202/images/avatars/male-07.jpg',
                 },
             ],
         },
@@ -48,7 +48,7 @@ export const postMock: Post = {
                     author: {
                         _id: 'user-6',
                         name: 'Rutherford Brannan',
-                        avatar: 'images/avatars/male-05.jpg',
+                        avatar: 'http://localhost:4202/images/avatars/male-05.jpg',
                     },
                     content:
                         "Oh, I'm in.. Let's arrange a trip for the next weekend if you want!",
@@ -63,7 +63,7 @@ export const postMock: Post = {
                             author: {
                                 _id: 'user-1',
                                 name: 'Caroline Lundu',
-                                avatar: 'images/avatars/female-01.jpg',
+                                avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
                             },
                             content: "Yes!! Let's talk about it on lunch!",
                             createdAt: '2024-01-15T10:45:00Z',
@@ -76,7 +76,7 @@ export const postMock: Post = {
                             author: {
                                 _id: 'user-7',
                                 name: 'Barbara Cotilla',
-                                avatar: 'images/avatars/female-08.jpg',
+                                avatar: 'http://localhost:4202/images/avatars/female-08.jpg',
                             },
                             content: 'Count me in !!!',
                             createdAt: '2024-01-15T10:48:00Z',
@@ -90,7 +90,7 @@ export const postMock: Post = {
                     author: {
                         _id: 'user-8',
                         name: 'Alan Marti',
-                        avatar: 'images/avatars/male-11.jpg',
+                        avatar: 'http://localhost:4202/images/avatars/male-11.jpg',
                     },
                     content:
                         "The color of the sky doesn't look natural at all, do you really think this is natural? I'd say Photoshop! Your trip isn't going to worth it since you won't be seeing this exact sky.",
@@ -104,7 +104,7 @@ export const postMock: Post = {
                             author: {
                                 _id: 'user-1',
                                 name: 'Caroline Lundu',
-                                avatar: 'images/avatars/female-01.jpg',
+                                avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
                             },
                             content: 'Hey, Alan! You must be fun at parties!',
                             createdAt: '2024-01-15T10:38:00Z',
@@ -117,7 +117,7 @@ export const postMock: Post = {
                             author: {
                                 _id: 'user-8',
                                 name: 'Alan Marti',
-                                avatar: 'images/avatars/male-11.jpg',
+                                avatar: 'http://localhost:4202/images/avatars/male-11.jpg',
                             },
                             content:
                                 "Caroline, I'm telling the truth, and if you cannot stand the truth, maybe we shouldn't be friends anymore...",
@@ -131,7 +131,7 @@ export const postMock: Post = {
                             author: {
                                 _id: 'user-1',
                                 name: 'Caroline Lundu',
-                                avatar: 'images/avatars/female-01.jpg',
+                                avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
                             },
                             content:
                                 "Dude! Relax! I'm just messing with you...",
@@ -145,7 +145,7 @@ export const postMock: Post = {
                             author: {
                                 _id: 'user-8',
                                 name: 'Alan Marti',
-                                avatar: 'images/avatars/male-11.jpg',
+                                avatar: 'http://localhost:4202/images/avatars/male-11.jpg',
                             },
                             content:
                                 "Sorry! I had a bad morning, let's talk about this in couple hours, I need to relax a bit :(",
@@ -160,7 +160,7 @@ export const postMock: Post = {
                     author: {
                         _id: 'user-9',
                         name: 'Marleah Eagleston',
-                        avatar: 'images/avatars/female-05.jpg',
+                        avatar: 'http://localhost:4202/images/avatars/female-05.jpg',
                     },
                     content: 'Count me in, too!',
                     createdAt: '2024-01-15T10:26:00Z',

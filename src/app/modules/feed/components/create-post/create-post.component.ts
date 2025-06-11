@@ -20,9 +20,6 @@ import { environment } from 'environments/environment';
         TextFieldModule,
     ],
     templateUrl: './create-post.component.html',
-    host: {
-        class: 'tw-w-full',
-    },
 })
 export class CreatePostComponent {
     baseUrl = environment.baseUrl;

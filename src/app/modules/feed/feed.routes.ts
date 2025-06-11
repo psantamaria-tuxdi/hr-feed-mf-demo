@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { FeedPage } from "./feed.page";
+import { FeedPage } from "./pages/feed/feed.page";
 
 export default [
     {
