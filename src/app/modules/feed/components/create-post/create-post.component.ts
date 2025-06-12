@@ -20,9 +20,6 @@ import { User } from '../../../../core/user/user.types';
         TextFieldModule,
     ],
     templateUrl: './create-post.component.html',
-    host: {
-        class: 'tw-w-full',
-    },
 })
 export class CreatePostComponent {
     // TODO : Replace with logged user signal
