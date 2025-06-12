@@ -1,0 +1,75 @@
+name: Protect Main and Develop Branches
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+
+jobs:
+  enforce-pr-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if push is via PR (Main Branch)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "Direct push to main branch detected!"
+          echo "Pusher: ${{ github.actor }}"
+          echo "Only @PabloSantaMaria can push to main, and only via approved PRs."
+
+          # Check if the push is from PabloSantaMaria
+          if [[ "${{ github.actor }}" != "PabloSantaMaria" ]]; then
+            echo "❌ ERROR: Only @PabloSantaMaria can push to main branch"
+            exit 1
+          fi
+
+          # Check if this is a merge commit (from PR)
+          parents=$(git show --format="%P" -s ${{ github.sha }} | wc -w)
+          if [[ $parents -lt 2 ]]; then
+            echo "❌ ERROR: Direct commits to main are not allowed. Use Pull Requests."
+            exit 1
+          fi
+
+          echo "✅ Push appears to be from an approved PR merge"
+
+      - name: Check if push is via PR (Develop Branch)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        run: |
+          echo "Direct push to develop branch detected!"
+          echo "Pusher: ${{ github.actor }}"
+          echo "Direct pushes to develop are discouraged. PRs with at least 1 approval are required."
+
+          # For develop, require PR merges (merge commits)
+          parents=$(git show --format="%P" -s ${{ github.sha }} | wc -w)
+          if [[ $parents -lt 2 ]]; then
+            echo "❌ ERROR: Direct commits to develop are not allowed. Use Pull Requests with at least 1 approval."
+            exit 1
+          else
+            echo "✅ Push appears to be from an approved PR merge"
+          fi
+
+      - name: Check PR requirements (Develop Branch)
+        if: github.event_name == 'pull_request' && github.base_ref == 'develop'
+        run: |
+          echo "✅ Pull Request to develop detected - this is the preferred approach"
+          echo "PR #${{ github.event.number }} by ${{ github.actor }}"
+          echo "Target branch: ${{ github.base_ref }}"
+          echo "At least 1 approval from any developer is required."
+
+      - name: Check PR requirements (Main Branch)
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        run: |
+          echo "✅ Pull Request to main detected - this is the preferred approach"
+          echo "PR #${{ github.event.number }} by ${{ github.actor }}"
+          echo "Target branch: ${{ github.base_ref }}"
+          echo "@PabloSantaMaria must approve this PR."
