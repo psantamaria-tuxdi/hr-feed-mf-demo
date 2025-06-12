@@ -11,7 +11,7 @@
 
 ## Required Workflow for Main Branch (Gitflow)
 
-1. Create a release branch (`release/x.y.z`) or hotfix branch (`hotfix/x.y.z`) from `develop` (for release) or `main` (for hotfix)
+1. Create a release branch (`release/x.y.z`) or hotfix branch (`hotfix/***`) from `develop` (for release) or `main` (for hotfix)
 2. Make your changes in the release or hotfix branch
 3. Open a Pull Request to `main` from the release or hotfix branch
 4. **@PabloSantaMaria must approve the PR** (enforced by CODEOWNERS)
