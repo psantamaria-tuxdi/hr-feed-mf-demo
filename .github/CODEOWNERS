@@ -1,0 +1,9 @@
+# Global rule: @PabloSantaMaria must approve all changes
+* @PabloSantaMaria
+
+# Specific rules for protected branches
+# Main branch - only @PabloSantaMaria can approve and merge
+/main @PabloSantaMaria
+
+# Develop branch - any developer can approve PRs
+/develop @PabloSantaMaria @*
