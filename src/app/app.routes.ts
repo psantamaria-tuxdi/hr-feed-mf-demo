@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
-import { initialDataResolver } from 'app/app.resolvers';
-// import { AuthGuard } from 'app/core/auth/guards/auth.guard';
+import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 // import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 
@@ -17,17 +16,21 @@ export const appRoutes: Route[] = [
     // },
 
     {
-        path: '',
+        path: 'employer/HR-social-media',
         component: LayoutComponent,
         data: {
             layout: 'empty',
         },
-        // resolve: {
-        //     initialData: initialDataResolver,
-        // },
+        // canActivateChild: [AuthGuard],
         children: [
             {
-                path: 'employer/HR-social-media',
+                canActivate: [AuthGuard],
+                path: '',
+                loadChildren: () => import('app/modules/feed/feed.routes'),
+                pathMatch: 'full',
+            },
+            {
+                path: 'profile',
                 loadChildren: () =>
                     import('app/modules/profile/profile.routes'),
             },
