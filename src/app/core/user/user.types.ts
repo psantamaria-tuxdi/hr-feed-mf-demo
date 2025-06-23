@@ -1,7 +1,10 @@
 export interface User {
-    id: string;
+    _id: string;
+    externalUserId: string;
     name: string;
-    email: string;
+    roles: any[];
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
     avatar?: string;
-    status?: string;
 }

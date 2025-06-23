@@ -6,7 +6,13 @@ import { map, Observable, ReplaySubject, tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UserService {
     private _httpClient = inject(HttpClient);
-    private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
+    private _user: ReplaySubject<User | null> = new ReplaySubject<User | null>(1);
+
+    private readonly userKey = 'hr-feed.user';
+
+    constructor() {
+        this.loadFromStorage();
+    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -20,10 +26,16 @@ export class UserService {
     set user(value: User) {
         // Store the value
         this._user.next(value);
+        localStorage.setItem(this.userKey, JSON.stringify(value));
     }
 
     get user$(): Observable<User> {
         return this._user.asObservable();
+    }
+
+    reset() {
+        this._user.next(null);
+        localStorage.removeItem(this.userKey);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -52,5 +64,17 @@ export class UserService {
                 this._user.next(response);
             })
         );
+    }
+
+    private loadFromStorage(): void {
+        const user = localStorage.getItem(this.userKey);
+        if (user) {
+            try {
+                this._user.next(JSON.parse(user));
+            } catch (e) {
+                console.error('Error parsing user from localStorage', e);
+                localStorage.removeItem(this.userKey);
+            }
+        }
     }
 }
