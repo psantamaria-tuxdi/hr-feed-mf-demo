@@ -4,7 +4,7 @@ import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 import { environment } from 'environments/environment';
 import { catchError, Observable, of, switchMap } from 'rxjs';
-import { LoginPayload, LoginResponse } from './auth.types';
+import { LoginPayloadDTO, LoginResponseDTO } from './auth.types';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -36,7 +36,7 @@ export class AuthService {
     signIn(): Observable<boolean> {
         const payload = this.getLoginPayload()
         return this._httpClient
-            .post<LoginResponse>(environment.apiUrl + 'auth/login', payload)
+            .post<LoginResponseDTO>(environment.apiUrl + 'auth/login', payload)
             .pipe(
                 switchMap((response) => {
                     if (!response || !response.hr_access_token) {
@@ -212,10 +212,12 @@ export class AuthService {
         // return this.signInUsingToken();
     }
 
-    private getLoginPayload(): LoginPayload {
-        const payload: LoginPayload = {
+    private getLoginPayload(): LoginPayloadDTO {
+        const payload: LoginPayloadDTO = {
             externalUserId: localStorage.getItem('userId'),
-            name: `${localStorage.getItem('userLastname')}, ${localStorage.getItem('userFirstname')}`,
+            displayName: `${localStorage.getItem('userFirstname')} ${localStorage.getItem('userLastname')}`,
+            firstName: localStorage.getItem('userLastname'),
+            lastName: localStorage.getItem('userFirstname'),
             roles: [], // Assuming roles are not provided, adjust as necessary
             expiresIn: Number(localStorage.getItem('expires_in')),
         };

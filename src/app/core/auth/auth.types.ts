@@ -1,13 +1,15 @@
 import { User } from '../user/user.types';
 
-export interface LoginResponse {
+export interface LoginResponseDTO {
     user: User;
     hr_access_token: string;
 }
 
-export interface LoginPayload {
+export interface LoginPayloadDTO {
     externalUserId: string;
-    name: string;
+    displayName: string;
+    firstName: string;
+    lastName: string;
     roles: string[];
     expiresIn: number;
 }
