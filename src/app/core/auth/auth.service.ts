@@ -216,8 +216,8 @@ export class AuthService {
         const payload: LoginPayloadDTO = {
             externalUserId: localStorage.getItem('userId'),
             displayName: `${localStorage.getItem('userFirstname')} ${localStorage.getItem('userLastname')}`,
-            firstName: localStorage.getItem('userLastname'),
-            lastName: localStorage.getItem('userFirstname'),
+            firstName: localStorage.getItem('userFirstname'),
+            lastName: localStorage.getItem('userLastname'),
             roles: [], // Assuming roles are not provided, adjust as necessary
             expiresIn: Number(localStorage.getItem('expires_in')),
         };
