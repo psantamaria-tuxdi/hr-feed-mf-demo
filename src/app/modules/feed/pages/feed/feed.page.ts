@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { PostComponent } from '../../components/post/post.component';
 import { CreatePostComponent } from '../../components/create-post/create-post.component';
 import { Post } from '../../../shared/types/post.types';
-import { postMock } from '../../components/post/post.mock';
+import { postsMock } from '../../components/post/post.mock';
 
 @Component({
     selector: 'hr-feed-page',
@@ -11,7 +11,7 @@ import { postMock } from '../../components/post/post.mock';
 })
 export class FeedPage {
     // TODO: Replace with real user data
-    posts = signal<Post[]>([postMock, postMock]);
+    posts = signal<Post[]>(postsMock);
 
     /**
      * Constructor

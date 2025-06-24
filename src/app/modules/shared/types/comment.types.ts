@@ -2,10 +2,10 @@ import { Author } from "./author.types";
 
 export interface Comments {
     count: number;
-    items: Item[];
+    items?: Comment[];
 }
 
-export interface Item {
+export interface Comment {
     _id: string;
     author: Author;
     content: string;
@@ -15,6 +15,6 @@ export interface Item {
     likes: number;
 }
 
-export interface Reply extends Omit<Item, 'replies'> {
+export interface Reply extends Omit<Comment, 'replies'> {
     parentCommentId: string;
 }
