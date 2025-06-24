@@ -4,14 +4,16 @@
 >
     <!-- Header -->
     <div class="tw-mx-6 tw-mb-1 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
-        <img
-            class="tw-mr-4 tw-h-10 tw-w-10 tw-rounded-full"
+        <ngx-avatars
+            class="tw-mr-4"
+            [name]="post().author.lastName + ', ' + post().author.firstName"
             [src]="post().author.avatar"
-            alt="Author avatar"
-        />
+            [size]="40"
+            [round]="true"
+        ></ngx-avatars>
         <div class="tw-flex tw-flex-col">
             <span class="tw-font-semibold tw-leading-none">{{
-                post().author.name
+                post().author.displayName
             }}</span>
             <!-- TODO timeago pipe -->
             <span
@@ -98,14 +100,16 @@
 
         <div class="tw-flex tw-items-center">
             @for (user of likes.topLikers; track user._id) {
-                <img
+                <ngx-avatars
                     [ngClass]="{
                         'tw--ml-3': !$first,
                     }"
-                    class="tw-text-card tw-m-0.5 tw-h-6 tw-w-6 tw-rounded-full tw-ring-2 tw-ring-white"
+                    class="tw-text-card tw-m-0.5 tw-ring-2 tw-ring-white"
+                    [name]="user.lastName + ', ' + user.firstName"
                     [src]="user.avatar"
-                    alt="User avatar"
-                />
+                    [size]="24"
+                    [round]="true"
+                ></ngx-avatars>
             }
             <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                 <!-- TODO likes count pipe, add missing logic -->

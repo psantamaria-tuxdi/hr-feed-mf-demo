@@ -1,14 +1,15 @@
 <fuse-card
     class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col tw-p-6 tw-pb-6 sm:tw-p-8"
 >
-    <div class="tw-text-xl tw-font-semibold">Crear publicación</div>
-    <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
+    <div class="tw-text-xl tw-font-semibold">Crear publicación</div>    <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
         <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
-            <img
-                class="tw-mr-4 tw-h-12 tw-w-12 tw-min-w-12 tw-rounded-full"
+            <ngx-avatars
+                class="tw-mr-4"
+                [name]="user()?.lastName + ', ' + user()?.firstName"
                 [src]="user()?.avatar"
-                alt="Card cover image"
-            />
+                [size]="48"
+                [round]="true"
+            ></ngx-avatars>
             <div class="sm:tw-hidden">{{ user()?.displayName }}</div>
         </div>
         <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
