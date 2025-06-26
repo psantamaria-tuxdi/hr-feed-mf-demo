@@ -57,11 +57,26 @@
     </div>
 
     <!-- Content -->
-    <!-- TODO create content component. Add images -->
     <div class="tw-m-6 sm:tw-mx-8">
         <p>
             {{ post().content.text }}
         </p>
+
+        <!-- Images -->
+        @if (post().content.images && post().content.images.length > 0) {
+            <div class="tw-mt-4">
+                @for (image of post().content.images; track $index) {
+                    <div class="tw-relative tw-mb-4">
+                        <img
+                            class="tw-w-full tw-rounded-lg tw-object-cover"
+                            [src]="image.startsWith('http') ? image : baseUrl + '/' + image"
+                            [alt]="'Imagen del post'"
+                            loading="lazy"
+                        />
+                    </div>
+                }
+            </div>
+        }
     </div>
 
     <!-- Actions -->
