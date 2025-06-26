@@ -1,7 +1,6 @@
 @if (isLoading()) {
-    <hr-loader-full></hr-loader-full>
-}
-
+<hr-loader-full></hr-loader-full>
+} @else {
 <div class="tw-flex tw-min-w-0 tw-flex-auto tw-flex-col">
     <!-- Main -->
     <div
@@ -14,7 +13,9 @@
 
             <!-- Posts -->
             @for(post of posts(); track post._id) {
-                <hr-post [post]="post" />
+            <hr-post [post]="post" />
             }
+        </div>
     </div>
 </div>
+}
