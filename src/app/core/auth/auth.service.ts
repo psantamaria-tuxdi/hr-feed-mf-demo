@@ -34,7 +34,7 @@ export class AuthService {
     // -----------------------------------------------------------------------------------------------------
 
     signIn(): Observable<boolean> {
-        const payload = this.getLoginPayload()
+        const payload = this.getLoginPayload();
         return this._httpClient
             .post<LoginResponseDTO>(environment.apiUrl + 'auth/login', payload)
             .pipe(
