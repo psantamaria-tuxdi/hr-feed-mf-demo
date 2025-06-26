@@ -34,7 +34,7 @@ export class AuthService {
     // -----------------------------------------------------------------------------------------------------
 
     signIn(): Observable<boolean> {
-        const payload = this.getLoginPayload()
+        const payload = this.getLoginPayload();
         return this._httpClient
             .post<LoginResponseDTO>(environment.apiUrl + 'auth/login', payload)
             .pipe(
@@ -213,20 +213,46 @@ export class AuthService {
     }
 
     private getLoginPayload(): LoginPayloadDTO {
-        const payload: LoginPayloadDTO = {
-            externalUserId: localStorage.getItem('userId'),
-            displayName: `${localStorage.getItem('userFirstname')} ${localStorage.getItem('userLastname')}`,
-            firstName: localStorage.getItem('userFirstname'),
-            lastName: localStorage.getItem('userLastname'),
-            roles: [], // Assuming roles are not provided, adjust as necessary
-            expiresIn: Number(localStorage.getItem('expires_in')),
-        };
+        if (environment.name === 'humanage') {
+            const payload: LoginPayloadDTO = {
+                externalUserId: localStorage.getItem('userId'),
+                displayName: `${localStorage.getItem('userFirstname')} ${localStorage.getItem('userLastname')}`,
+                firstName: localStorage.getItem('userFirstname'),
+                lastName: localStorage.getItem('userLastname'),
+                roles: [], // Assuming roles are not provided, adjust as necessary
+                expiresIn: Number(localStorage.getItem('expires_in')),
+            };
 
-        if (!payload.externalUserId) {
-            console.error('Invalid login payload:', payload);
-            throw new Error('Invalid login payload');
+            if (!payload.externalUserId) {
+                console.error('Invalid login payload:', payload);
+                throw new Error('Invalid login payload');
+            }
+
+            return payload;
         }
 
-        return payload;
+        if (environment.name === 'axton') {
+            // TODO: Implement Axton-specific login payload logic
+            // For now, returning a mock payload
+            return {
+                externalUserId: 'axton-user-id',
+                displayName: 'Axton User',
+                firstName: 'Axton',
+                lastName: 'User',
+                roles: [],
+                expiresIn: 3600,
+            };
+        }
+
+        if (!environment.production) {
+            return {
+                externalUserId: 'dev-user-id',
+                displayName: 'Dev User',
+                firstName: 'Dev',
+                lastName: 'User',
+                roles: [],
+                expiresIn: 3600,
+            };
+        }
     }
 }
