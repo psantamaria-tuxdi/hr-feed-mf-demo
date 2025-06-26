@@ -31,7 +31,6 @@ import { provideIcons } from './core/icons/icons.provider';
 import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
 import { AppComponent } from './app.component';
 import { MockApiService } from './mock-api';
-import { AvatarModule } from 'ngx-avatars';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +38,6 @@ import { AvatarModule } from 'ngx-avatars';
     CommonModule,
     BrowserModule,
     RouterOutlet,
-    AvatarModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
   ],
   providers: [
