@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FuseCardComponent } from '@fuse/components/card';
 import { UserService } from 'app/core/user/user.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { AvatarModule } from 'ngx-avatars';
 
 @Component({
     selector: 'hr-create-post',
@@ -19,6 +20,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
         MatFormFieldModule,
         MatInputModule,
         TextFieldModule,
+        AvatarModule,
     ],
     templateUrl: './create-post.component.html',
 })

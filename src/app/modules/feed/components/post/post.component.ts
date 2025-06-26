@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
+import { AvatarModule } from 'ngx-avatars';
 
 @Component({
     selector: 'hr-post',
@@ -19,6 +20,7 @@ import { CommentsComponent } from '../comments/comments.component';
         DatePipe,
         NgClass,
         CommentsComponent,
+        AvatarModule
     ],
     templateUrl: './post.component.html',
 })

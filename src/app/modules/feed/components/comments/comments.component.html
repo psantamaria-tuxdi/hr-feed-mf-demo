@@ -10,14 +10,16 @@
                 [ngClass]="{ 'tw-mt-8': !$first }"
                 class="tw-flex tw-items-start"
             >
-                <img
-                    class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                <ngx-avatars
+                    class="tw-mr-4"
+                    [name]="item.author.lastName + ', ' + item.author.firstName"
                     [src]="item.author.avatar"
-                    alt="Author avatar"
-                />
+                    [size]="32"
+                    [round]="true"
+                ></ngx-avatars>
                 <div class="tw-mt-0.5 tw-flex tw-flex-col">
                     <span>
-                        <b>{{ item.author.name }}</b> {{ item.content }}
+                        <b>{{ item.author.displayName }}</b> {{ item.content }}
                     </span>
                     <div
                         class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
@@ -44,14 +46,16 @@
             <!-- Replies -->
             @for (reply of item.replies; track reply._id) {
                 <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
-                    <img
-                        class="tw-mr-4 tw-h-8 tw-w-8 tw-rounded-full"
+                    <ngx-avatars
+                        class="tw-mr-4"
+                        [name]="reply.author.lastName + ', ' + reply.author.firstName"
                         [src]="reply.author.avatar"
-                        alt="Author avatar"
-                    />
+                        [size]="32"
+                        [round]="true"
+                    ></ngx-avatars>
                     <div class="tw-mt-0.5 tw-flex tw-flex-col">
                         <span>
-                            <b>{{ reply.author.name }}</b> {{ reply.content }}
+                            <b>{{ reply.author.displayName }}</b> {{ reply.content }}
                         </span>
                         <div
                             class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"

@@ -1,16 +1,52 @@
+import { Comment } from 'app/modules/shared/types/comment.types';
 import { Post } from '../../../shared/types/post.types';
 
-export const postMock: Post = {
+export const commentsMock: Comment[] = [
+    {
+        _id: '685ac1c1ce37637c4fd100fe',
+        content: "¡Planeemos algo increíble!",
+        createdAt: '2025-06-24T15:18:25.733Z',
+        replies: [
+            {
+                _id: '685ac1c1ce37637c4fd10100',
+                content: '¡Cuenta conmigo!',
+                parentCommentId: '685ac1c1ce37637c4fd100fe',
+                createdAt: '2025-06-24T15:18:25.740Z',
+                author: {
+                    _id: '685ac1c1ce37637c4fd100f3',
+                    displayName: 'Laverne Dodson',
+                    firstName: 'Laverne',
+                    lastName: 'Dodson',
+                    avatar: 'http://localhost:4202/images/avatars/male-09.jpg',
+                },
+                likes: 0,
+                isLikedByCurrentUser: true,
+            },
+        ],
+        author: {
+            _id: '685ac1c1ce37637c4xd100f2',
+            displayName: 'Caroline Smith',
+            firstName: 'Caroline',
+            lastName: 'Smith',
+        },
+        likes: 0,
+        isLikedByCurrentUser: true,
+    },
+];
+
+export const postsMock: Post[] = [{
     _id: 'post-1',
     allowComments: true,
     allowLikes: true,
     author: {
         _id: 'user-1',
-        name: 'Caroline Lundu',
+        displayName: 'Caroline Lundu',
+        firstName: 'Caroline',
+        lastName: 'Lundu',
         avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
     },
     content: {
-        text: 'Look at that sky! I so want to be there.. Can we arrange a trip? Is that a possibility? Please!!!',
+        text: '¡Mira ese cielo! Quiero estar ahí tanto... ¿Podemos organizar un viaje? ¿Es eso posible? ¡¡¡Por favor!!!',
         images: ['http://localhost:4202/images/cards/14-640x480.jpg'],
     },
     engagement: {
@@ -20,22 +56,29 @@ export const postMock: Post = {
             topLikers: [
                 {
                     _id: 'user-2',
-                    name: 'Laverne Dodson',
+                    displayName: 'Laverne Dodson',
+                    firstName: 'Laverne',
+                    lastName: 'Dodson',
                     avatar: 'http://localhost:4202/images/avatars/female-02.jpg',
                 },
                 {
                     _id: 'user-3',
-                    name: 'Elsie Melendez',
+                    displayName: 'Elsie Melendez',
+                    firstName: 'Elsie',
+                    lastName: 'Melendez',
                     avatar: 'http://localhost:4202/images/avatars/female-04.jpg',
                 },
                 {
                     _id: 'user-4',
-                    name: 'Barber Johnson',
-                    avatar: 'http://localhost:4202/images/avatars/male-09.jpg',
+                    displayName: 'Barber Johnson',
+                    firstName: 'Barber',
+                    lastName: 'Johnson',
                 },
                 {
                     _id: 'user-5',
-                    name: 'Meyer Roach',
+                    displayName: 'Meyer Roach',
+                    firstName: 'Meyer',
+                    lastName: 'Roach',
                     avatar: 'http://localhost:4202/images/avatars/male-07.jpg',
                 },
             ],
@@ -47,11 +90,13 @@ export const postMock: Post = {
                     _id: 'comment-1',
                     author: {
                         _id: 'user-6',
-                        name: 'Rutherford Brannan',
+                        displayName: 'Rutherford Brannan',
+                        firstName: 'Rutherford',
+                        lastName: 'Brannan',
                         avatar: 'http://localhost:4202/images/avatars/male-05.jpg',
                     },
                     content:
-                        "Oh, I'm in.. Let's arrange a trip for the next weekend if you want!",
+                        "Oh, estoy dentro... ¡Organicemos un viaje para el próximo fin de semana si quieres!",
                     createdAt: '2024-01-15T10:43:00Z',
                     likes: 2,
                     isLikedByCurrentUser: false,
@@ -62,10 +107,12 @@ export const postMock: Post = {
                             isLikedByCurrentUser: false,
                             author: {
                                 _id: 'user-1',
-                                name: 'Caroline Lundu',
+                                displayName: 'Caroline Lundu',
+                                firstName: 'Caroline',
+                                lastName: 'Lundu',
                                 avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
                             },
-                            content: "Yes!! Let's talk about it on lunch!",
+                            content: "¡¡Sí!! ¡Hablemos de eso en el almuerzo!",
                             createdAt: '2024-01-15T10:45:00Z',
                             likes: 1,
                         },
@@ -75,10 +122,12 @@ export const postMock: Post = {
                             isLikedByCurrentUser: false,
                             author: {
                                 _id: 'user-7',
-                                name: 'Barbara Cotilla',
+                                displayName: 'Barbara Cotilla',
+                                firstName: 'Barbara',
+                                lastName: 'Cotilla',
                                 avatar: 'http://localhost:4202/images/avatars/female-08.jpg',
                             },
-                            content: 'Count me in !!!',
+                            content: '¡Cuenta conmigo también!',
                             createdAt: '2024-01-15T10:48:00Z',
                             likes: 0,
                         },
@@ -89,11 +138,13 @@ export const postMock: Post = {
                     isLikedByCurrentUser: false,
                     author: {
                         _id: 'user-8',
-                        name: 'Alan Marti',
+                        displayName: 'Alan Marti',
+                        firstName: 'Alan',
+                        lastName: 'Marti',
                         avatar: 'http://localhost:4202/images/avatars/male-11.jpg',
                     },
                     content:
-                        "The color of the sky doesn't look natural at all, do you really think this is natural? I'd say Photoshop! Your trip isn't going to worth it since you won't be seeing this exact sky.",
+                        "El color del cielo no se ve natural para nada, ¿realmente crees que esto es natural? ¡Yo diría que es Photoshop! Tu viaje no va a valer la pena ya que no vas a ver exactamente este cielo.",
                     createdAt: '2024-01-15T10:36:00Z',
                     likes: 0,
                     replies: [
@@ -103,10 +154,12 @@ export const postMock: Post = {
                             isLikedByCurrentUser: false,
                             author: {
                                 _id: 'user-1',
-                                name: 'Caroline Lundu',
+                                displayName: 'Caroline Lundu',
+                                firstName: 'Caroline',
+                                lastName: 'Lundu',
                                 avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
                             },
-                            content: 'Hey, Alan! You must be fun at parties!',
+                            content: '¡Oye, Alan! ¡Debes ser divertido en las fiestas!',
                             createdAt: '2024-01-15T10:38:00Z',
                             likes: 3,
                         },
@@ -116,11 +169,13 @@ export const postMock: Post = {
                             isLikedByCurrentUser: false,
                             author: {
                                 _id: 'user-8',
-                                name: 'Alan Marti',
+                                displayName: 'Alan Marti',
+                                firstName: 'Alan',
+                                lastName: 'Marti',
                                 avatar: 'http://localhost:4202/images/avatars/male-11.jpg',
                             },
                             content:
-                                "Caroline, I'm telling the truth, and if you cannot stand the truth, maybe we shouldn't be friends anymore...",
+                                "Caroline, estoy diciendo la verdad, y si no puedes soportar la verdad, tal vez ya no deberíamos ser amigos...",
                             createdAt: '2024-01-15T10:40:00Z',
                             likes: 0,
                         },
@@ -130,11 +185,13 @@ export const postMock: Post = {
                             isLikedByCurrentUser: false,
                             author: {
                                 _id: 'user-1',
-                                name: 'Caroline Lundu',
+                                displayName: 'Caroline Lundu',
+                                firstName: 'Caroline',
+                                lastName: 'Lundu',
                                 avatar: 'http://localhost:4202/images/avatars/female-01.jpg',
                             },
                             content:
-                                "Dude! Relax! I'm just messing with you...",
+                                "¡Amigo! ¡Relájate! Solo estoy bromeando contigo...",
                             createdAt: '2024-01-15T10:42:00Z',
                             likes: 1,
                         },
@@ -144,11 +201,13 @@ export const postMock: Post = {
                             isLikedByCurrentUser: false,
                             author: {
                                 _id: 'user-8',
-                                name: 'Alan Marti',
+                                displayName: 'Alan Marti',
+                                firstName: 'Alan',
+                                lastName: 'Marti',
                                 avatar: 'http://localhost:4202/images/avatars/male-11.jpg',
                             },
                             content:
-                                "Sorry! I had a bad morning, let's talk about this in couple hours, I need to relax a bit :(",
+                                "¡Perdón! Tuve una mañana terrible, hablemos de esto en un par de horas, necesito relajarme un poco :(",
                             createdAt: '2024-01-15T10:44:00Z',
                             likes: 2,
                         },
@@ -159,10 +218,12 @@ export const postMock: Post = {
                     isLikedByCurrentUser: false,
                     author: {
                         _id: 'user-9',
-                        name: 'Marleah Eagleston',
+                        displayName: 'Marleah Eagleston',
+                        firstName: 'Marleah',
+                        lastName: 'Eagleston',
                         avatar: 'http://localhost:4202/images/avatars/female-05.jpg',
                     },
-                    content: 'Count me in, too!',
+                    content: '¡Cuenta conmigo también!',
                     createdAt: '2024-01-15T10:26:00Z',
                     likes: 0,
                     replies: [],
@@ -171,4 +232,87 @@ export const postMock: Post = {
         },
     },
     createdAt: '2024-01-15T10:31:00Z',
-};
+},
+{
+        _id: '685ac1c1ce37637c4fd100f8',
+        allowComments: true,
+        allowLikes: true,
+        createdAt: '2025-06-24T15:18:25.719Z',
+        author: {
+            _id: '685ac1c1ce37637c4xd100f2',
+            displayName: 'Caroline Smith',
+            firstName: 'Caroline',
+            lastName: 'Smith',
+        },
+        content: {
+            text: 'Este es un texto de publicación de prueba 1',
+            images: [],
+        },
+        engagement: {
+            likes: {
+                count: 2,
+                isLikedByCurrentUser: false,
+                topLikers: [
+                    {
+                        _id: '685ac1c1ce37637c4xd100f2',
+                        displayName: 'Caroline Smith',
+                        firstName: 'Caroline',
+                        lastName: 'Smith',
+                    },
+                    {
+                        _id: '685ac1c1ce37637c4fd100f3',
+                        displayName: 'Laverne Dodson',
+                        firstName: 'Laverne',
+                        lastName: 'Dodson',
+                        avatar: 'http://localhost:4202/images/avatars/male-09.jpg',
+                    },
+                ],
+            },
+            comments: {
+                count: 2,
+                items: commentsMock
+            },
+        },
+    },
+    {
+        _id: '685ac1c1ce37637c4fd100f9',
+        allowComments: true,
+        allowLikes: true,
+        createdAt: '2025-06-24T15:18:25.719Z',
+        author: {
+            _id: '685ac1c1ce37637c4fd100f3',
+            displayName: 'Laverne Dodson',
+            firstName: 'Laverne',
+            lastName: 'Dodson',
+            avatar: 'http://localhost:4202/images/avatars/male-09.jpg',
+        },
+        content: {
+            text: 'Este es un texto de publicación de prueba 2',
+            images: [],
+        },
+        engagement: {
+            likes: {
+                count: 2,
+                isLikedByCurrentUser: false,
+                topLikers: [
+                    {
+                        _id: '685ac1c1ce37637c4xd100f2',
+                        displayName: 'Caroline Smith',
+                        firstName: 'Caroline',
+                        lastName: 'Smith',
+                    },
+                    {
+                        _id: '685ac1c1ce37637c4fd100f3',
+                        displayName: 'Laverne Dodson',
+                        firstName: 'Laverne',
+                        lastName: 'Dodson',
+                        avatar: 'http://localhost:4202/images/avatars/male-09.jpg',
+                    },
+                ],
+            },
+            comments: {
+                count: 2,
+                items: commentsMock
+            },
+        },
+    },];
