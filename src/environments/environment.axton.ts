@@ -3,5 +3,5 @@ export const environment = {
     version: '0.0.1',
     baseUrl: '',
     apiUrl: '',
-    name: '',
+    name: 'axton',
 };
