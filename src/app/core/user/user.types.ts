@@ -1,7 +1,10 @@
-export interface User {
-    id: string;
-    name: string;
-    email: string;
+import { BaseDocument } from "../data/base.types";
+
+export interface User extends BaseDocument {
+    externalUserId: string;
+    displayName: string;
+    firstName: string;
+    lastName: string;
+    roles: string[];
     avatar?: string;
-    status?: string;
 }

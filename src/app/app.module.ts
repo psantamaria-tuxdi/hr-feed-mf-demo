@@ -43,7 +43,6 @@ import { MockApiService } from './mock-api';
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
-    provideHttpClient(),
     provideRouter(
       appRoutes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
