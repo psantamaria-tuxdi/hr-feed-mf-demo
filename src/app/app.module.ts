@@ -31,6 +31,7 @@ import { provideIcons } from './core/icons/icons.provider';
 import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
 import { AppComponent } from './app.component';
 import { MockApiService } from './mock-api';
+import { provideAuth } from './core/auth/auth.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -93,7 +94,7 @@ import { MockApiService } from './mock-api';
     // }),
 
     // Fuse
-    // provideAuth(),
+    provideAuth(),
     provideIcons(),
     provideFuse({
       mockApi: {

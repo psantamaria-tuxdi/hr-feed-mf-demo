@@ -7,6 +7,7 @@ import {
 import { inject } from '@angular/core';
 import { AuthService } from 'app/core/auth/auth.service';
 import { AuthUtils } from 'app/core/auth/auth.utils';
+import { environment } from 'environments/environment';
 import { Observable, catchError, throwError } from 'rxjs';
 
 /**
@@ -32,7 +33,9 @@ export const authInterceptor = (
     // for the protected API routes which our response interceptor will
     // catch and delete the access token from the local storage while logging
     // the user out from the app.
+    const isApiRequest = req.url.startsWith(environment.apiUrl);
     if (
+        isApiRequest &&
         authService.accessToken &&
         !AuthUtils.isTokenExpired(authService.accessToken)
     ) {
