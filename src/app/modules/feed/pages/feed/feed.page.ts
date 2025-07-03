@@ -1,9 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PostComponent } from '../../components/post/post.component';
 import { CreatePostComponent } from '../../components/create-post/create-post.component';
-import { Post } from '../../../shared/types/post.types';
-import { postsMock } from '../../components/post/post.mock';
 import { LoaderFullComponent } from 'app/modules/shared/components/loader-full/loader-full.component';
+import { FeedService } from '../../services/feed.service';
 
 @Component({
     selector: 'hr-feed-page',
@@ -11,14 +10,12 @@ import { LoaderFullComponent } from 'app/modules/shared/components/loader-full/l
     imports: [PostComponent, CreatePostComponent, LoaderFullComponent],
 })
 export class FeedPage {
-    // TODO: Replace with real user data
-    posts = signal<Post[]>(postsMock);
-    isLoading = signal<boolean>(true);
+    private readonly feedService = inject(FeedService);
+    posts = this.feedService.feed;
+    isLoading = this.feedService.isLoading;
 
     ngOnInit() {
-        setTimeout(() => {
-            this.isLoading.set(false);
-        }, 2000);
+        this.feedService.load();
     }
 
     /**
