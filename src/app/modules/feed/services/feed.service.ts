@@ -22,11 +22,7 @@ export class FeedService {
         });
     }
 
-    createPost(postData: CreatePostDto): Observable<any> {
-        return this.postService.create(postData).pipe(
-            tap(() => {
-                this.load();
-            })
-        );
+    createPost(postData: CreatePostDto): Observable<Post> {
+        return this.postService.create(postData).pipe(tap(() => this.load()));
     }
 }
