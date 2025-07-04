@@ -23,7 +23,7 @@ export class PostService {
             formData.append('allowComments', postData.allowComments.toString());
         }
 
-        if (postData.images && postData.images.length > 0) {
+        if (postData.images?.length > 0) {
             postData.images.forEach((file) => {
                 formData.append('images', file);
             });
