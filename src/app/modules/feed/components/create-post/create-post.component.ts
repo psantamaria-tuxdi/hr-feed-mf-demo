@@ -71,12 +71,13 @@ export class CreatePostComponent {
         if (input.files && input.files.length > 0) {
             const files = Array.from(input.files);
 
-            // Validate max 10 images
             if (
                 this.selectedImages.length + files.length >
                 this.maxAllowedImages
             ) {
-                this.showSnackBar('Máximo 10 imágenes permitidas');
+                this.showSnackBar(
+                    `Máximo ${this.maxAllowedImages} imágenes permitidas`
+                );
                 return;
             }
 
@@ -90,6 +91,8 @@ export class CreatePostComponent {
                 reader.readAsDataURL(file);
             });
         }
+        // Clear the input value to allow re-selection of the same file
+        // This is necessary because if the same file is selected again, the change event won't fire
         input.value = '';
     }
 
