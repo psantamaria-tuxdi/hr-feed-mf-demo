@@ -1,73 +1,118 @@
 <fuse-card
     class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col tw-p-6 tw-pb-6 sm:tw-p-8"
 >
-    <div class="tw-text-xl tw-font-semibold">Crear publicación</div>    <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
-        <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
-            <ngx-avatars
-                class="tw-mr-4"
-                [name]="user()?.lastName + ', ' + user()?.firstName"
-                [src]="user()?.avatar"
-                [size]="48"
-                [round]="true"
-            ></ngx-avatars>
-            <div class="sm:tw-hidden">{{ user()?.displayName }}</div>
+    <div class="tw-text-xl tw-font-semibold">Crear publicación</div>
+
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
+            <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
+                <ngx-avatars
+                    class="tw-mr-4"
+                    [name]="user()?.lastName + ', ' + user()?.firstName"
+                    [src]="user()?.avatar"
+                    [size]="48"
+                    [round]="true"
+                ></ngx-avatars>
+                <div class="sm:tw-hidden">{{ user()?.displayName }}</div>
+            </div>
+            <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
+                <textarea
+                    matInput
+                    formControlName="text"
+                    [placeholder]="'¿Qué tienes en mente?'"
+                    [rows]="3"
+                    cdkTextareaAutosize
+                    maxlength="2000"
+                ></textarea>
+                <mat-hint align="end"
+                    >{{
+                        postForm.get('text')?.value?.length || 0
+                    }}/2000</mat-hint
+                >
+                <mat-error *ngIf="postForm.get('text')?.hasError('required')">
+                    El texto es requerido
+                </mat-error>
+                <mat-error *ngIf="postForm.get('text')?.hasError('maxlength')">
+                    El texto no puede exceder 2000 caracteres
+                </mat-error>
+            </mat-form-field>
         </div>
-        <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
-            <textarea
-                matInput
-                [placeholder]="'¿Qué tienes en mente?'"
-                [rows]="3"
-                cdkTextareaAutosize
-            ></textarea>
-        </mat-form-field>
-    </div>
 
-    <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center sm:tw-mt-8">
-        <button class="tw-mr-1 tw-px-3" mat-button>
-            <mat-icon
-                class="tw-icon-size-5"
-                [svgIcon]="'heroicons_solid:photo'"
-            ></mat-icon>
-            <span class="tw-ml-2">Foto</span>
-        </button>
-        <!-- TODO add this menu when we have support for menu actions -->
-        <!-- <button
-            class="tw-mr-1 tw-px-3"
-            mat-button
-            [matMenuTriggerFor]="createPostMenu"
-        >
-            <mat-icon
-                class="tw-icon-size-5"
-                [svgIcon]="'heroicons_solid:ellipsis-horizontal'"
-            ></mat-icon>
-        </button> -->
-        <button
-            class="tw-ml-auto tw-mr-3 tw-px-6"
-            mat-flat-button
-            [color]="'primary'"
-        >
-            Publicar
-        </button>
+        <!-- Image previews -->
+        <div class="tw-mt-4" *ngIf="imagePreviewUrls.length > 0">
+            <div class="tw-grid tw-grid-cols-2 tw-gap-4 sm:tw-grid-cols-3">
+                <div
+                    *ngFor="let imageUrl of imagePreviewUrls; index as i"
+                    class="tw-group tw-relative"
+                >
+                    <img
+                        [src]="imageUrl"
+                        alt="Preview"
+                        class="tw-h-32 tw-w-full tw-rounded-lg tw-object-cover"
+                    />
+                    <button
+                        type="button"
+                        (click)="removeImage(i)"
+                        class="tw-absolute tw-right-1 tw-top-1 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-bg-neutral-400 tw-opacity-0 tw-transition-opacity group-hover:tw-opacity-100"
+                    >
+                        <mat-icon class="tw-text-lg tw-text-black"
+                            >close</mat-icon
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
 
-        <!-- <mat-menu #createPostMenu="matMenu" class="mf-tw-container">
-            <button mat-menu-item>
-                <span class="tw-flex tw-items-center">
-                    <mat-icon
-                        class="tw-mr-3 tw-icon-size-5"
-                        [svgIcon]="'heroicons_solid:paper-clip'"
-                    ></mat-icon>
-                    <span>Archivo</span>
-                </span>
+        <!-- Progress bar -->
+        <mat-progress-bar
+            *ngIf="isLoading()"
+            mode="indeterminate"
+            class="tw-mt-4"
+        ></mat-progress-bar>
+
+        <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center sm:tw-mt-8">
+            <input
+                type="file"
+                #fileInput
+                (change)="onFileSelected($event)"
+                multiple
+                accept="image/*"
+                class="tw-hidden"
+            />
+            <button
+                type="button"
+                class="tw-mr-1 tw-px-3"
+                mat-button
+                (click)="fileInput.click()"
+                [disabled]="isLoading()"
+            >
+                <mat-icon
+                    class="tw-icon-size-5"
+                    [svgIcon]="'heroicons_solid:photo'"
+                ></mat-icon>
+                <span class="tw-ml-2"
+                    >Foto ({{ selectedImages.length }}/10)</span
+                >
             </button>
-            <button mat-menu-item>
-                <span class="tw-flex tw-items-center">
-                    <mat-icon
-                        class="tw-mr-3 tw-icon-size-5"
-                        [svgIcon]="'heroicons_solid:user-circle'"
-                    ></mat-icon>
-                    <span>Etiquetar personas</span>
-                </span>
+
+            <div class="tw-flex tw-gap-2">
+                <mat-slide-toggle
+                    color="primary"
+                    formControlName="allowComments"
+                >
+                    Permitir comentarios
+                </mat-slide-toggle>
+            </div>
+
+            <button
+                type="submit"
+                class="tw-ml-auto tw-mr-3 tw-px-6"
+                mat-flat-button
+                [color]="'primary'"
+                [disabled]="!canSubmit"
+            >
+                {{ isLoading() ? 'Publicando...' : 'Publicar' }}
             </button>
-        </mat-menu> -->
-    </div>
+        </div>
+    </form>
 </fuse-card>
