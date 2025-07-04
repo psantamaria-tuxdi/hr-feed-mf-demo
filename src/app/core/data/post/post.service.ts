@@ -23,10 +23,6 @@ export class PostService {
             formData.append('allowComments', postData.allowComments.toString());
         }
 
-        if (postData.allowLikes !== undefined) {
-            formData.append('allowLikes', postData.allowLikes.toString());
-        }
-
         if (postData.images && postData.images.length > 0) {
             postData.images.forEach((file) => {
                 formData.append('images', file);
