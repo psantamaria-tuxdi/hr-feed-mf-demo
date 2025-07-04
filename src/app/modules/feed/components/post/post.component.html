@@ -69,7 +69,11 @@
                     <div class="tw-relative tw-mb-4">
                         <img
                             class="tw-w-full tw-rounded-lg tw-object-cover"
-                            [src]="image"
+                            [src]="
+                                image.startsWith('http')
+                                    ? image
+                                    : apiURL + image
+                            "
                             [alt]="'Imagen del post'"
                             loading="lazy"
                         />
