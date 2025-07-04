@@ -1,6 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { PostService } from 'app/core/data/post/post.service';
 import { Post } from '../../shared/types/post.types';
+import { CreatePostDto } from 'app/core/data/post/post.types';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -17,5 +20,13 @@ export class FeedService {
             this.feed.set(posts);
             this.isLoading.set(false);
         });
+    }
+
+    createPost(postData: CreatePostDto): Observable<any> {
+        return this.postService.create(postData).pipe(
+            tap(() => {
+                this.load();
+            })
+        );
     }
 }
