@@ -8,6 +8,7 @@ import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { AvatarModule } from 'ngx-avatars';
+import { environment } from 'environments/environment';
 
 @Component({
     selector: 'hr-post',
@@ -25,5 +26,7 @@ import { AvatarModule } from 'ngx-avatars';
     templateUrl: './post.component.html',
 })
 export class PostComponent {
+    readonly apiURL = environment.apiUrl;
+
     post = input.required<Post>();
 }
