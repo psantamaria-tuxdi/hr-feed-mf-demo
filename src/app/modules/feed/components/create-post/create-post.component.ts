@@ -20,6 +20,7 @@ import { FuseCardComponent } from '@fuse/components/card';
 import { CreatePostDto } from 'app/core/data/post/post.types';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
+import { finalize } from 'rxjs';
 import { FeedService } from '../../services/feed.service';
 
 @Component({
@@ -106,25 +107,30 @@ export class CreatePostComponent {
             this.isLoading.set(true);
 
             const postData: CreatePostDto = {
-                text: this.postForm.get('text')?.value,
+                text: this.text?.value,
                 allowComments: this.postForm.get('allowComments')?.value,
                 images: this.selectedImages,
             };
             this.postForm.disable();
 
-            this.feedService.createPost(postData).subscribe({
-                next: (response) => {
-                    this.isLoading.set(false);
-                    this.showSnackBar('Se compartió tu publicación!');
-                    this.postForm.enable();
-                    this.resetForm();
-                },
-                error: (error) => {
-                    this.isLoading.set(false);
-                    this.showSnackBar('Error al crear la publicación');
-                    console.error('Error creating post:', error);
-                },
-            });
+            this.feedService
+                .createPost(postData)
+                .pipe(
+                    finalize(() => {
+                        this.isLoading.set(false);
+                        this.postForm.enable();
+                        this.resetForm();
+                    })
+                )
+                .subscribe({
+                    next: (response) => {
+                        this.showSnackBar('Se compartió tu publicación!');
+                    },
+                    error: (error) => {
+                        this.showSnackBar('Error al crear la publicación');
+                        console.error('Error creating post:', error);
+                    },
+                });
         }
     }
 
@@ -141,7 +147,7 @@ export class CreatePostComponent {
             text: '',
             allowComments: true,
         });
-        this.postForm.get('text')?.setErrors(null);
+        this.text?.setErrors(null);
 
         this.selectedImages = [];
         this.imagePreviewUrls = [];
