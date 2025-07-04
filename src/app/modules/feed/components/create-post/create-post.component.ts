@@ -52,11 +52,16 @@ export class CreatePostComponent {
     isLoading = signal(false);
     imagePreviewUrls: string[] = [];
 
+    // TODO: move to constants file
     readonly maxAllowedImages = 10;
+    readonly maxCharacters = 2000;
 
     constructor() {
         this.postForm = this.formBuilder.group({
-            text: ['', [Validators.required, Validators.maxLength(2000)]],
+            text: [
+                '',
+                [Validators.required, Validators.maxLength(this.maxCharacters)],
+            ],
             allowComments: [true],
         });
     }
@@ -118,6 +123,10 @@ export class CreatePostComponent {
                 },
             });
         }
+    }
+
+    get text() {
+        return this.postForm.get('text');
     }
 
     get canSubmit(): boolean {
