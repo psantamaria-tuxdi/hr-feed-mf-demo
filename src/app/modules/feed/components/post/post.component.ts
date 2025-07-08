@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,7 @@ import { environment } from 'environments/environment';
 import { AvatarModule } from 'ngx-avatars';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
+import { Author } from '../../../shared/types/author.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
@@ -35,23 +36,23 @@ export class PostComponent implements OnInit {
     readonly apiURL = environment.apiUrl;
 
     post = input.required<Post>();
-    isLikedByCurrentUser = false;
-    likesCount = 0;
-    topLikers = [];
-    isRequesting = false;
+    isLikedByCurrentUser = signal<boolean>(false);
+    likesCount = signal<number>(0);
+    topLikers = signal<Author[]>([]);
+    isRequesting = signal<boolean>(false);
 
     ngOnInit(): void {
-        this.isLikedByCurrentUser = this.post().engagement.likes.isLikedByCurrentUser;
-        this.likesCount = this.post().engagement.likes.count;
-        this.topLikers = this.post().engagement.likes.topLikers;
+        this.isLikedByCurrentUser.set(this.post().engagement.likes.isLikedByCurrentUser);
+        this.likesCount.set(this.post().engagement.likes.count);
+        this.topLikers.set(this.post().engagement.likes.topLikers);
     }
 
     toggleLike(): void {
-        this.isRequesting = true;
+        this.isRequesting.set(true);
         this.updateLikesState();
 
         this.likeService.toggleLike(this.post()._id)
-            .pipe(finalize(() => this.isRequesting = false))
+            .pipe(finalize(() => this.isRequesting.set(false)))
             .subscribe({
                 next: (response) => {
                     if (!response.success) {
@@ -66,11 +67,14 @@ export class PostComponent implements OnInit {
     }
 
     private updateLikesState() {
-        this.isLikedByCurrentUser = !this.isLikedByCurrentUser;
-        this.likesCount += this.isLikedByCurrentUser ? 1 : -1;
-        this.topLikers = this.isLikedByCurrentUser
-            ? [...this.topLikers, this.post().author]
-            : this.topLikers.filter(liker => liker._id !== this.post().author._id);
+        const currentLikeState = this.isLikedByCurrentUser();
+        this.isLikedByCurrentUser.set(!currentLikeState);
+        this.likesCount.update(count => count + (!currentLikeState ? 1 : -1));
+        
+        const currentTopLikers = this.topLikers();
+        this.topLikers.set(!currentLikeState
+            ? [...currentTopLikers, this.post().author]
+            : currentTopLikers.filter(liker => liker._id !== this.post().author._id));
     }
 
     private manageError() {

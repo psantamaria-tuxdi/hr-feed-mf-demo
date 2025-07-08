@@ -88,10 +88,10 @@
         <button 
             class="tw-mr-1 tw-px-3" 
             mat-button 
-            [disabled]="isRequesting" 
+            [disabled]="isRequesting()" 
             (click)="toggleLike()"
         >
-            @if (isLikedByCurrentUser) {
+            @if (isLikedByCurrentUser()) {
                 <mat-icon
                     class="tw-text-red-500 tw-icon-size-5"
                     [svgIcon]="'heroicons_solid:heart'"
@@ -122,7 +122,7 @@
         <!-- Likes -->
 
         <div class="tw-flex tw-items-center">
-            @for (user of topLikers; track user._id) {
+            @for (user of topLikers(); track user._id) {
                 <ngx-avatars
                     [ngClass]="{
                         'tw--ml-3': !$first,
@@ -136,11 +136,11 @@
             }
             <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                 <!-- TODO likes count pipe, add missing logic -->
-                @if (likesCount > 0) {
-                    @if (isLikedByCurrentUser) {
-                        A ti y a {{ likesCount }} personas más les gusta esto
+                @if (likesCount() > 0) {
+                    @if (isLikedByCurrentUser()) {
+                        A ti y a {{ likesCount() }} personas más les gusta esto
                     } @else {
-                        A {{ likesCount }} personas les gusta esto
+                        A {{ likesCount() }} personas les gusta esto
                     }
                 }
             </div>
