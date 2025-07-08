@@ -59,6 +59,13 @@ export class PostComponent implements OnInit {
                         this.manageError();
                         return;
                     }
+
+                    const currentLikeState = this.isLikedByCurrentUser();
+                    const shouldBeLiked = response.action === 'liked';
+
+                    if (currentLikeState !== shouldBeLiked) {
+                        this.updateLikesState();
+                    }
                 },
                 error: () => {
                     this.manageError();
