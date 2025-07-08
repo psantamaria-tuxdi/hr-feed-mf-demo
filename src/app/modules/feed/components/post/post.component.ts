@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,6 +10,7 @@ import { AvatarModule } from 'ngx-avatars';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'hr-post',
@@ -26,31 +27,46 @@ import { CommentsComponent } from '../comments/comments.component';
     ],
     templateUrl: './post.component.html',
 })
-export class PostComponent {
+export class PostComponent implements OnInit {
     private readonly likeService = inject(LikeService);
+    private readonly snackBar = inject(MatSnackBar);
 
     readonly apiURL = environment.apiUrl;
 
     post = input.required<Post>();
+    isLikedByCurrentUser = false;
+    likesCount = 0;
+    topLikers = [];
 
-    toggleLike(): void {
-        const post = this.post();
-        const {
-            _id: postId,
-            engagement: { likes },
-        } = post;
-        const willLike = !likes.isLikedByCurrentUser;
-
-        this.likeService.toggleLike(willLike, postId).subscribe(() => {
-            this.updateLikeState(willLike, likes);
-        });
+    ngOnInit(): void {
+        this.isLikedByCurrentUser = this.post().engagement.likes.isLikedByCurrentUser;
+        this.likesCount = this.post().engagement.likes.count;
+        this.topLikers = this.post().engagement.likes.topLikers;
     }
 
-    private updateLikeState(
-        isLike: boolean,
-        likes: { isLikedByCurrentUser: boolean; count: number }
-    ): void {
-        likes.isLikedByCurrentUser = isLike;
-        likes.count += isLike ? 1 : -1;
+    toggleLike(): void {
+        this.updateLikesState();
+
+        this.likeService.toggleLike(this.post()._id).subscribe({
+            error: () => {
+                this.snackBar.open(
+                    'Error al dar like a la publicación',
+                    'Cerrar',
+                    {
+                        duration: 3000,
+                        panelClass: ['mat-toolbar', 'mat-warn'],
+                    }
+                );
+                this.updateLikesState();
+            },
+        })
+    }
+
+    private updateLikesState() {
+        this.isLikedByCurrentUser = !this.isLikedByCurrentUser;
+        this.likesCount += this.isLikedByCurrentUser ? 1 : -1;
+        this.topLikers = this.isLikedByCurrentUser
+            ? [...this.topLikers, this.post().author]
+            : this.topLikers.filter(liker => liker._id !== this.post().author._id);
     }
 }

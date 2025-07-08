@@ -10,7 +10,7 @@ export class LikeService {
     private http = inject(HttpClient);
     private url = (postId: string) => environment.apiUrl + `posts/${postId}/`;
 
-    toggleLike(like: boolean, postId: string) {
-        return this.http.post<Post[]>(this.url(postId) + 'toggle-like', { like });
+    toggleLike(postId: string) {
+        return this.http.post<Post[]>(this.url(postId) + 'toggle-like', {});
     }
 }
