@@ -123,8 +123,9 @@ export class CreatePostComponent {
                     })
                 )
                 .subscribe({
-                    next: (response) => {
+                    next: () => {
                         this.showSnackBar('Se compartió tu publicación!');
+                        this.feedService.load();
                     },
                     error: (error) => {
                         this.showSnackBar('Error al crear la publicación');
@@ -158,8 +159,6 @@ export class CreatePostComponent {
     private showSnackBar(message: string): void {
         this.snackBar.open(message, 'Cerrar', {
             duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
         });
     }
 }

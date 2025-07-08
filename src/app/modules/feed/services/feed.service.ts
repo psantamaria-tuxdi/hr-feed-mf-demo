@@ -23,6 +23,6 @@ export class FeedService {
     }
 
     createPost(postData: CreatePostDto): Observable<Post> {
-        return this.postService.create(postData).pipe(tap(() => this.load()));
+        return this.postService.create(postData);
     }
 }
