@@ -54,7 +54,6 @@ export class PostComponent implements OnInit {
                     'Cerrar',
                     {
                         duration: 3000,
-                        panelClass: ['mat-toolbar', 'mat-warn'],
                     }
                 );
                 this.updateLikesState();
