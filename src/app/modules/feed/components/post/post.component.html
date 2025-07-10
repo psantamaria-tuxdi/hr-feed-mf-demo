@@ -143,23 +143,23 @@
         </div>
         <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
 
+        <!-- Comments -->
+        @let comments = post().engagement.comments;
+
         <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
-            @if (comments().count === 0) {
+            @if (comments.count === 0) {
                 <button class="tw-px-3 sm:tw--mr-3" mat-button>
                     Sin comentarios
                 </button>
             }
-            @if (comments().count > 0) {
+            @if (comments.count > 0) {
                 <button
                     class="tw-px-3 sm:tw--mr-4"
                     mat-button
-                    (click)="
-                        expandableCard.expanded = !expandableCard.expanded;
-                        loadComments()
-                    "
+                    (click)="expandableCard.expanded = !expandableCard.expanded"
                 >
                     <span class="tw-mr-1"
-                        >{{ comments().count }} comentarios</span
+                        >{{ comments.count }} comentarios</span
                     >
                     <mat-icon
                         class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
@@ -175,10 +175,6 @@
 
     <!-- Expandable content -->
     <ng-container fuseCardExpansion>
-        @if (isLoading()) {
-            <!-- TODO: skeleton loader -->
-        } @else {
-            <hr-comments [comments]="comments()" />
-        }
+        <hr-comments [comments]="comments" />
     </ng-container>
 </fuse-card>
