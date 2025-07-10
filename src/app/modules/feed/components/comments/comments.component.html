@@ -4,58 +4,26 @@
 
 <div class="tw-max-h-120 tw-overflow-y-auto">
     <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
-        @for (item of comments().items; track item._id) {
-            <!-- Comment -->
-            <div
-                [ngClass]="{ 'tw-mt-8': !$first }"
-                class="tw-flex tw-items-start"
-            >
-                <ngx-avatars
-                    class="tw-mr-4"
-                    [name]="item.author.lastName + ', ' + item.author.firstName"
-                    [src]="item.author.avatar"
-                    [size]="32"
-                    [round]="true"
-                ></ngx-avatars>
-                <div class="tw-mt-0.5 tw-flex tw-flex-col">
-                    <span>
-                        <b>{{ item.author.displayName }}</b> {{ item.content }}
-                    </span>
-                    <div
-                        class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
-                    >
-                        <span
-                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                            >Me gusta</span
-                        >
-                        <span
-                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                            >Responder</span
-                        >
-                        <span
-                            class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                            >Eliminar</span
-                        >
-                        <span class="tw-mr-2">&bull;</span>
-                        <!-- TODO timeago pipe -->
-                        <span>{{ item.createdAt | date }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Replies -->
-            @for (reply of item.replies; track reply._id) {
-                <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
+        @if (items()) {
+            @for (item of items(); track item._id) {
+                <!-- Comment -->
+                <div
+                    [ngClass]="{ 'tw-mt-8': !$first }"
+                    class="tw-flex tw-items-start"
+                >
                     <ngx-avatars
                         class="tw-mr-4"
-                        [name]="reply.author.lastName + ', ' + reply.author.firstName"
-                        [src]="reply.author.avatar"
+                        [name]="
+                            item.author.lastName + ', ' + item.author.firstName
+                        "
+                        [src]="item.author.avatar"
                         [size]="32"
                         [round]="true"
                     ></ngx-avatars>
                     <div class="tw-mt-0.5 tw-flex tw-flex-col">
                         <span>
-                            <b>{{ reply.author.displayName }}</b> {{ reply.content }}
+                            <b>{{ item.author.displayName }}</b>
+                            {{ item.content }}
                         </span>
                         <div
                             class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
@@ -66,15 +34,74 @@
                             >
                             <span
                                 class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                >Responder</span
+                            >
+                            <span
+                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                 >Eliminar</span
                             >
                             <span class="tw-mr-2">&bull;</span>
                             <!-- TODO timeago pipe -->
-                            <span>{{ reply.createdAt | date }}</span>
+                            <span>{{ item.createdAt | date }}</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Replies -->
+                @for (reply of item.replies; track reply._id) {
+                    <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
+                        <ngx-avatars
+                            class="tw-mr-4"
+                            [name]="
+                                reply.author.lastName +
+                                ', ' +
+                                reply.author.firstName
+                            "
+                            [src]="reply.author.avatar"
+                            [size]="32"
+                            [round]="true"
+                        ></ngx-avatars>
+                        <div class="tw-mt-0.5 tw-flex tw-flex-col">
+                            <span>
+                                <b>{{ reply.author.displayName }}</b>
+                                {{ reply.content }}
+                            </span>
+                            <div
+                                class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
+                            >
+                                <span
+                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                    >Me gusta</span
+                                >
+                                <span
+                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                    >Eliminar</span
+                                >
+                                <span class="tw-mr-2">&bull;</span>
+                                <!-- TODO timeago pipe -->
+                                <span>{{ reply.createdAt | date }}</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            } @empty {
+                <!-- No comments -->
+                <div class="tw-text-secondary tw-text-center">
+                    <p>No hay comentarios para esta publicación.</p>
+                    <p>¡Sé el primero en comentar!</p>
+                </div>
             }
+        } @else if (resource.isLoading()) {
+            <!-- TODO: add skeletons based on the number of comments -->
+            <div class="tw-text-secondary tw-text-center">
+                <p>Cargando comentarios...</p>
+                <p>Por favor, espera un momento.</p>
+            </div>
+        } @else {
+            <div class="tw-text-secondary tw-text-center">
+                <p>Ocurrió un error al cargar los comentarios.</p>
+                <p>Por favor, intenta recargar la página.</p>
+            </div>
         }
     </div>
 </div>
