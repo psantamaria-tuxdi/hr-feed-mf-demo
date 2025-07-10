@@ -8,3 +8,8 @@ export interface CreatePostDto {
     allowComments?: boolean;
     images?: File[];
 }
+
+export interface ToggleLikeResponse {
+    success: boolean;
+    action: 'liked' | 'unliked';
+}
