@@ -64,31 +64,101 @@
 
         <!-- Images -->
         @if (post().content.images && post().content.images.length > 0) {
-            <div class="tw-mt-4">
-                @for (image of post().content.images; track $index) {
-                    <div class="tw-relative tw-mb-4">
+            @if (post().content.images.length == 1) {
+                <div class="tw-mt-4">
+                    @for (image of post().content.images; track $index) {
+                        <div class="tw-relative tw-mb-4">
+                            <img
+                                class="tw-w-full tw-rounded-lg tw-object-cover"
+                                [src]="
+                                    image.startsWith('http')
+                                        ? image
+                                        : apiURL + image
+                                "
+                                [alt]="'Imagen del post'"
+                                loading="lazy"
+                            />
+                        </div>
+                    }
+                </div>
+            } @else if (post().content.images.length == 2) {
+                <div class="flex tw-mt-4">
+                    <div class="tw-flex tw-h-80 tw-pr-1">
                         <img
-                            class="tw-w-full tw-rounded-lg tw-object-cover"
+                            class="tw-rounded tw-object-cover"
                             [src]="
-                                image.startsWith('http')
-                                    ? image
-                                    : apiURL + image
+                                post().content.images[0].startsWith('http')
+                                    ? post().content.images[0]
+                                    : apiURL + post().content.images[0]
                             "
                             [alt]="'Imagen del post'"
                             loading="lazy"
                         />
                     </div>
-                }
-            </div>
+                    <div class="tw-flex tw-h-80 tw-pl-1">
+                        <img
+                            class="tw-rounded tw-object-cover"
+                            [src]="
+                                post().content.images[1].startsWith('http')
+                                    ? post().content.images[1]
+                                    : apiURL + post().content.images[1]
+                            "
+                            [alt]="'Imagen del post'"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+            } @else {
+                <div class="tw-mt-4 tw-flex">
+                    <div class="tw-flex tw-h-80 tw-pr-1">
+                        <img
+                            class="tw-rounded tw-object-cover"
+                            [src]="
+                                post().content.images[0].startsWith('http')
+                                    ? post().content.images[0]
+                                    : apiURL + post().content.images[0]
+                            "
+                            [alt]="'Imagen del post'"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="tw-flex tw-flex-col tw-pl-1">
+                        <div class="tw-flex tw-h-40 tw-pb-1">
+                            <img
+                                class="tw-rounded tw-object-cover"
+                                [src]="
+                                    post().content.images[1].startsWith('http')
+                                        ? post().content.images[1]
+                                        : apiURL + post().content.images[1]
+                                "
+                                [alt]="'Imagen del post'"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="tw-flex tw-h-40 tw-pt-1">
+                            <img
+                                class="tw-rounded tw-object-cover"
+                                [src]="
+                                    post().content.images[2].startsWith('http')
+                                        ? post().content.images[2]
+                                        : apiURL + post().content.images[2]
+                                "
+                                [alt]="'Imagen del post'"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                </div>
+            }
         }
     </div>
 
     <!-- Actions -->
     <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
-        <button 
-            class="tw-mr-1 tw-px-3" 
-            mat-button 
-            [disabled]="isRequesting()" 
+        <button
+            class="tw-mr-1 tw-px-3"
+            mat-button
+            [disabled]="isRequesting()"
             (click)="toggleLike()"
         >
             @if (isLikedByCurrentUser()) {
