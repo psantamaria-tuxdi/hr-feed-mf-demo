@@ -85,8 +85,13 @@
 
     <!-- Actions -->
     <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
-        <button class="tw-mr-1 tw-px-3" mat-button>
-            @if (post().engagement.likes.isLikedByCurrentUser) {
+        <button 
+            class="tw-mr-1 tw-px-3" 
+            mat-button 
+            [disabled]="isRequesting()" 
+            (click)="toggleLike()"
+        >
+            @if (isLikedByCurrentUser()) {
                 <mat-icon
                     class="tw-text-red-500 tw-icon-size-5"
                     [svgIcon]="'heroicons_solid:heart'"
@@ -115,10 +120,9 @@
         class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
     >
         <!-- Likes -->
-        @let likes = post().engagement.likes;
 
         <div class="tw-flex tw-items-center">
-            @for (user of likes.topLikers; track user._id) {
+            @for (user of topLikers(); track user._id) {
                 <ngx-avatars
                     [ngClass]="{
                         'tw--ml-3': !$first,
@@ -132,11 +136,11 @@
             }
             <div class="tw-ml-3 tw-text-md tw-tracking-tight">
                 <!-- TODO likes count pipe, add missing logic -->
-                @if (likes.count > 0) {
-                    @if (likes.isLikedByCurrentUser) {
-                        A ti y a {{ likes.count }} personas más les gusta esto
+                @if (likesCount() > 0) {
+                    @if (isLikedByCurrentUser()) {
+                        A ti y a {{ likesCount() }} personas más les gusta esto
                     } @else {
-                        A {{ likes.count }} personas les gusta esto
+                        A {{ likesCount() }} personas les gusta esto
                     }
                 }
             </div>
