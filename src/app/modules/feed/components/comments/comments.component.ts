@@ -10,13 +10,13 @@ import { AvatarModule } from 'ngx-avatars';
     templateUrl: './comments.component.html',
 })
 export class CommentsComponent {
-    private readonly getAllComments = inject(CommentService).getAll;
+    private readonly commentService = inject(CommentService);
 
     postId = input.required<string>();
 
     resource = rxResource({
         request: this.postId,
-        loader: ({ request: postId }) => this.getAllComments(postId),
+        loader: ({ request: postId }) => this.commentService.getAll(postId),
     });
 
     items = this.resource.value;
