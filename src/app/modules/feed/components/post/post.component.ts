@@ -1,10 +1,19 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import {
+    Component,
+    computed,
+    inject,
+    input,
+    linkedSignal,
+    signal,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { LikeService } from 'app/core/data/post/like.service';
+import { UserService } from 'app/core/user/user.service';
 import { environment } from 'environments/environment';
 import { AvatarModule } from 'ngx-avatars';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
@@ -29,34 +38,44 @@ import { finalize } from 'rxjs';
     ],
     templateUrl: './post.component.html',
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
+    user = toSignal(inject(UserService).user$);
 
     readonly apiURL = environment.apiUrl;
 
     post = input.required<Post>();
-    isLikedByCurrentUser = signal<boolean>(false);
-    likesCount = signal<number>(0);
-    topLikers = signal<Author[]>([]);
-    isRequesting = signal<boolean>(false);
 
-    ngOnInit(): void {
-        this.isLikedByCurrentUser.set(this.post().engagement.likes.isLikedByCurrentUser);
-        this.likesCount.set(this.post().engagement.likes.count);
-        this.topLikers.set(this.post().engagement.likes.topLikers);
-    }
+    isLikedByCurrentUser = linkedSignal(() => this.post().engagement.likes.isLikedByCurrentUser);
+    likesCount = computed<number>(() => {
+        const count = this.post().engagement.likes.count;
+
+        // If local liked state differs from the received state, adjust the count
+        if (this.isLikedByCurrentUser() !== this.post().engagement.likes.isLikedByCurrentUser) {
+            return count + (this.isLikedByCurrentUser() ? 1 : -1);
+        }
+        return count;
+    })
+    topLikers = computed<Author[]>(() => {
+        const otherLikers = this.post().engagement.likes.topLikers.filter(
+            (liker) => liker._id !== this.user()._id
+        );
+
+        return this.isLikedByCurrentUser() ? [this.user(), ...otherLikers] : otherLikers;
+    });
+    isRequesting = signal<boolean>(false);
 
     toggleLike(): void {
         this.isRequesting.set(true);
-        this.updateLikesState();
+        this.toggleLikedState();
 
         this.likeService.toggleLike(this.post()._id)
             .pipe(finalize(() => this.isRequesting.set(false)))
             .subscribe({
                 next: (response) => {
                     if (!response.success) {
-                        this.manageError();
+                        this.handleLikeError();
                         return;
                     }
 
@@ -64,27 +83,20 @@ export class PostComponent implements OnInit {
                     const shouldBeLiked = response.action === 'liked';
 
                     if (currentLikeState !== shouldBeLiked) {
-                        this.updateLikesState();
+                        this.toggleLikedState();
                     }
                 },
                 error: () => {
-                    this.manageError();
+                    this.handleLikeError();
                 },
             })
     }
 
-    private updateLikesState() {
-        const currentLikeState = this.isLikedByCurrentUser();
-        this.isLikedByCurrentUser.set(!currentLikeState);
-        this.likesCount.update(count => count + (!currentLikeState ? 1 : -1));
-        
-        const currentTopLikers = this.topLikers();
-        this.topLikers.set(!currentLikeState
-            ? [...currentTopLikers, this.post().author]
-            : currentTopLikers.filter(liker => liker._id !== this.post().author._id));
+    private toggleLikedState() {
+        this.isLikedByCurrentUser.update(liked => !liked);
     }
 
-    private manageError() {
+    private handleLikeError() {
         this.snackBar.open(
             'Error al dar like a la publicación',
             'Cerrar',
@@ -92,6 +104,6 @@ export class PostComponent implements OnInit {
                 duration: 3000,
             }
         );
-        this.updateLikesState();
+        this.toggleLikedState();
     }
 }
