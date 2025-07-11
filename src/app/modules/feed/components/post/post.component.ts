@@ -1,11 +1,10 @@
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass, NgComponentOutlet } from '@angular/common';
 import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { LikeService } from 'app/core/data/post/like.service';
-import { environment } from 'environments/environment';
 import { AvatarModule } from 'ngx-avatars';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
@@ -13,33 +12,34 @@ import { Author } from '../../../shared/types/author.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
+import { getImageComponent } from '../post-images/post-images.utils';
 
 @Component({
     selector: 'hr-post',
     imports: [
-        FuseCardComponent,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatDividerModule,
-        DatePipe,
-        NgClass,
-        CommentsComponent,
-        AvatarModule,
-    ],
+    FuseCardComponent,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
+    DatePipe,
+    NgClass,
+    CommentsComponent,
+    AvatarModule,
+    NgComponentOutlet,
+],
     templateUrl: './post.component.html',
 })
 export class PostComponent implements OnInit {
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
 
-    readonly apiURL = environment.apiUrl;
-
     post = input.required<Post>();
     isLikedByCurrentUser = signal<boolean>(false);
     likesCount = signal<number>(0);
     topLikers = signal<Author[]>([]);
     isRequesting = signal<boolean>(false);
+    getImageComponent = getImageComponent;
 
     ngOnInit(): void {
         this.isLikedByCurrentUser.set(this.post().engagement.likes.isLikedByCurrentUser);
@@ -70,17 +70,17 @@ export class PostComponent implements OnInit {
                 error: () => {
                     this.manageError();
                 },
-            })
+            });
     }
 
     private updateLikesState() {
         const currentLikeState = this.isLikedByCurrentUser();
         this.isLikedByCurrentUser.set(!currentLikeState);
         this.likesCount.update(count => count + (!currentLikeState ? 1 : -1));
-        
+
         const currentTopLikers = this.topLikers();
         this.topLikers.set(!currentLikeState
-            ? [...currentTopLikers, this.post().author]
+                ? [...currentTopLikers, this.post().author]
             : currentTopLikers.filter(liker => liker._id !== this.post().author._id));
     }
 
