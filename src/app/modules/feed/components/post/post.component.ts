@@ -1,4 +1,4 @@
-import { DatePipe, NgClass } from '@angular/common';
+import { CommonModule, DatePipe, NgClass } from '@angular/common';
 import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -13,25 +13,32 @@ import { Author } from '../../../shared/types/author.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
+import { MatFormField } from "@angular/material/form-field";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'hr-post',
     imports: [
-        FuseCardComponent,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatDividerModule,
-        DatePipe,
-        NgClass,
-        CommentsComponent,
-        AvatarModule,
-    ],
+    FuseCardComponent,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
+    DatePipe,
+    NgClass,
+    CommentsComponent,
+    AvatarModule,
+    MatFormField,
+    MatInputModule,
+    ReactiveFormsModule,
+],
     templateUrl: './post.component.html',
 })
 export class PostComponent implements OnInit {
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
+    private formBuilder = inject(FormBuilder);
 
     readonly apiURL = environment.apiUrl;
 
@@ -40,6 +47,16 @@ export class PostComponent implements OnInit {
     likesCount = signal<number>(0);
     topLikers = signal<Author[]>([]);
     isRequesting = signal<boolean>(false);
+    maxCommentCharacters: number = 500;
+    commentForm: FormGroup;
+    text: any;
+
+
+    constructor() {
+        this.commentForm = this.formBuilder.group({
+            text: ['', [Validators.maxLength(this.maxCommentCharacters)]],
+        });
+    }
 
     ngOnInit(): void {
         this.isLikedByCurrentUser.set(this.post().engagement.likes.isLikedByCurrentUser);
@@ -71,6 +88,10 @@ export class PostComponent implements OnInit {
                     this.manageError();
                 },
             })
+    }
+    //TODO implement submit comment
+    onSubmit() {
+        throw new Error('Method not implemented.');
     }
 
     private updateLikesState() {
