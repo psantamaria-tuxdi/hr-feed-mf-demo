@@ -79,12 +79,8 @@ export class PostComponent {
                         return;
                     }
 
-                    const currentLikeState = this.isLikedByCurrentUser();
                     const shouldBeLiked = response.action === 'liked';
-
-                    if (currentLikeState !== shouldBeLiked) {
-                        this.toggleLikedState();
-                    }
+                    this.isLikedByCurrentUser.set(shouldBeLiked);
                 },
                 error: () => {
                     this.handleLikeError();
