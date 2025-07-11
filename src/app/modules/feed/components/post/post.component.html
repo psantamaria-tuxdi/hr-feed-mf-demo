@@ -247,6 +247,8 @@
 
     <!-- Expandable content -->
     <ng-container fuseCardExpansion>
-        <hr-comments [comments]="comments" />
+        @if(expandableCard.expanded) {
+            <hr-comments [postId]="post()._id" />
+        }
     </ng-container>
 </fuse-card>
