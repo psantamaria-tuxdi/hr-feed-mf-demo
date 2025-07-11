@@ -185,7 +185,11 @@
     <ng-container fuseCardExpansion>
         @if (expandableCard.expanded) {
             <hr class="tw-m-0 tw-border-b" />
-            <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="tw-mx-4 tw-mb-13 tw-mt-6 tw-flex tw-flex-col sm:tw-mx-8">
+            <form
+                [formGroup]="commentForm"
+                (ngSubmit)="onSubmit()"
+                class="tw-mx-4 tw-mb-3 tw-mt-6 tw-flex tw-flex-col sm:tw-mx-8"
+            >
                 <div class="flex items-start">
                     <ngx-avatars
                         class="tw-mr-4"
@@ -210,6 +214,15 @@
                             cdkTextareaAutosize
                         ></textarea>
                     </mat-form-field>
+                </div>
+                <div class="-tw-mr-3 tw-ml-auto tw-mt-3 tw-flex tw-items-center">
+                    <button mat-icon-button>
+                        <mat-icon
+                            class="tw-icon-size-5"
+                            [svgIcon]="'send'"
+                            (click)="onSubmit()"
+                        ></mat-icon>
+                    </button>
                 </div>
             </form>
             <hr-comments [postId]="post()._id" />
