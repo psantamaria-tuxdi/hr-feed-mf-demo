@@ -16,7 +16,6 @@ import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Author } from '../../../shared/types/author.types';
 import { Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
-import { CreateCommentComponent } from '../create-comment/create-comment.component';
 
 @Component({
     selector: 'hr-post',
@@ -32,7 +31,6 @@ import { CreateCommentComponent } from '../create-comment/create-comment.compone
         AvatarModule,
         MatInputModule,
         ReactiveFormsModule,
-        CreateCommentComponent,
     ],
     templateUrl: './post.component.html',
 })

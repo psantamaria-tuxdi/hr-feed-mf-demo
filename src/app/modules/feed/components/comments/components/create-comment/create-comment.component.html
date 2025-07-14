@@ -6,8 +6,8 @@
     <div class="flex items-start">
         <ngx-avatars
             class="tw-mr-4"
-            [name]="post().author.lastName + ', ' + post().author.firstName"
-            [src]="post().author.avatar"
+            [name]="user()?.lastName + ', ' + user()?.firstName"
+            [src]="user()?.avatar"
             [size]="40"
             [round]="true"
         ></ngx-avatars>

@@ -1,4 +1,5 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import {
     FormBuilder,
     FormGroup,
@@ -13,7 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommentService } from 'app/core/data/post/comment.service';
 import { CreateCommentDto } from 'app/core/data/post/post.types';
-import { Post } from 'app/modules/shared/types/post.types';
+import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
 
@@ -36,7 +37,9 @@ export class CreateCommentComponent {
     private formBuilder = inject(FormBuilder);
     private snackBar = inject(MatSnackBar);
 
-    post = input.required<Post>();
+    user = toSignal(inject(UserService).user$);
+    postId = input.required<string>();
+    onCommentCreated = output<boolean>()
     maxCommentCharacters: number = 1000;
     commentForm: FormGroup;
     text: string;
@@ -54,7 +57,7 @@ export class CreateCommentComponent {
                 content: this.commentForm.get('text').value,
             };
             this.commentService
-                .post(this.post()._id, commentDto)
+                .post(this.postId(), commentDto)
                 .pipe(
                     finalize(() => {
                         this.commentForm.enable();
@@ -63,9 +66,11 @@ export class CreateCommentComponent {
                 )
                 .subscribe({
                     next: () => {
+                        this.onCommentCreated.emit(true);
                         this.showSnackBar('Se compartió tu comentario!');
                     },
                     error: (error) => {
+                        this.onCommentCreated.emit(false);
                         this.showSnackBar('Error al crear el comentario');
                         console.error('Error creating post:', error);
                     },

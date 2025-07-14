@@ -1,6 +1,9 @@
-<hr class="tw-mx-4 tw-my-0 tw-border-b sm:tw-mx-8" />
+<hr-create-comments
+    [postId]="postId()"
+    (onCommentCreated)="onCreated($event)"
+/>
 
-<!-- TODO AddComment component -->
+<hr class="tw-mx-4 tw-my-0 tw-border-b sm:tw-mx-8" />
 
 <div class="tw-max-h-120 tw-overflow-y-auto">
     <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
