@@ -63,32 +63,22 @@
         </p>
 
         <!-- Images -->
-        @if (post().content.images && post().content.images.length > 0) {
-            <div class="tw-mt-4">
-                @for (image of post().content.images; track $index) {
-                    <div class="tw-relative tw-mb-4">
-                        <img
-                            class="tw-w-full tw-rounded-lg tw-object-cover"
-                            [src]="
-                                image.startsWith('http')
-                                    ? image
-                                    : apiURL + image
-                            "
-                            [alt]="'Imagen del post'"
-                            loading="lazy"
-                        />
-                    </div>
-                }
-            </div>
+        @let images = post().content.images;
+
+        @if (images && images.length > 0) {
+            <ng-container
+                [ngComponentOutlet]="getImageComponent(images.length)"
+                [ngComponentOutletInputs]="{ images }"
+            ></ng-container>
         }
     </div>
 
     <!-- Actions -->
     <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
-        <button 
-            class="tw-mr-1 tw-px-3" 
-            mat-button 
-            [disabled]="isRequesting()" 
+        <button
+            class="tw-mr-1 tw-px-3"
+            mat-button
+            [disabled]="isRequesting()"
             (click)="toggleLike()"
         >
             @if (isLikedByCurrentUser()) {
@@ -179,7 +169,7 @@
 
     <!-- Expandable content -->
     <ng-container fuseCardExpansion>
-        @if(expandableCard.expanded) {
+        @if (expandableCard.expanded) {
             <hr-comments [postId]="post()._id" />
         }
     </ng-container>
