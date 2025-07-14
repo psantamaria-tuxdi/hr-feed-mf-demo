@@ -13,6 +13,7 @@ import { Author } from '../../../shared/types/author.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
+import { LikesCountPipe } from './likes-count.pipe';
 
 @Component({
     selector: 'hr-post',
@@ -26,6 +27,7 @@ import { finalize } from 'rxjs';
         NgClass,
         CommentsComponent,
         AvatarModule,
+        LikesCountPipe,
     ],
     templateUrl: './post.component.html',
 })
@@ -77,7 +79,7 @@ export class PostComponent implements OnInit {
         const currentLikeState = this.isLikedByCurrentUser();
         this.isLikedByCurrentUser.set(!currentLikeState);
         this.likesCount.update(count => count + (!currentLikeState ? 1 : -1));
-        
+
         const currentTopLikers = this.topLikers();
         this.topLikers.set(!currentLikeState
             ? [...currentTopLikers, this.post().author]
