@@ -1,7 +1,6 @@
 import { DatePipe, NgClass, NgComponentOutlet } from '@angular/common';
 import {
     Component,
-    computed,
     inject,
     input,
     linkedSignal,
@@ -16,8 +15,7 @@ import { LikeService } from 'app/core/data/post/like.service';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
-import { Post } from '../../../shared/types/post.types';
-import { Author } from '../../../shared/types/author.types';
+import { Likes, Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
@@ -48,28 +46,13 @@ export class PostComponent {
 
     post = input.required<Post>();
 
-    isLikedByCurrentUser = linkedSignal(() => this.post().engagement.likes.isLikedByCurrentUser);
-    likesCount = computed<number>(() => {
-        const count = this.post().engagement.likes.count;
+    likes = linkedSignal<Likes>(() => this.post().engagement.likes);
 
-        // If local liked state differs from the received state, adjust the count
-        if (this.isLikedByCurrentUser() !== this.post().engagement.likes.isLikedByCurrentUser) {
-            return count + (this.isLikedByCurrentUser() ? 1 : -1);
-        }
-        return count;
-    })
-    topLikers = computed<Author[]>(() => {
-        const otherLikers = this.post().engagement.likes.topLikers.filter(
-            (liker) => liker._id !== this.user()._id
-        );
-
-        return this.isLikedByCurrentUser() ? [this.user(), ...otherLikers] : otherLikers;
-    });
     isRequesting = signal<boolean>(false);
 
     toggleLike(): void {
         this.isRequesting.set(true);
-        this.toggleLikedState();
+        this.toggleLikeState();
 
         this.likeService.toggleLike(this.post()._id)
             .pipe(finalize(() => this.isRequesting.set(false)))
@@ -81,7 +64,9 @@ export class PostComponent {
                     }
 
                     const shouldBeLiked = response.action === 'liked';
-                    this.isLikedByCurrentUser.set(shouldBeLiked);
+                    if (this.likes().isLikedByCurrentUser !== shouldBeLiked) {
+                        this.toggleLikeState();
+                    }
                 },
                 error: () => {
                     this.handleLikeError();
@@ -93,8 +78,15 @@ export class PostComponent {
         return getImageComponent(imageCount);
     }
 
-    private toggleLikedState() {
-        this.isLikedByCurrentUser.update(liked => !liked);
+    private toggleLikeState() {
+        const isLiked = !this.likes().isLikedByCurrentUser;
+        this.likes.update(previous => ({
+            isLikedByCurrentUser: isLiked,
+            count: previous.count + (isLiked ? 1 : -1),
+            topLikers: isLiked
+                ? [this.user(), ...previous.topLikers]
+                : previous.topLikers.filter(liker => liker._id !== this.user()._id),
+        }));
     }
 
     private handleLikeError() {
@@ -105,6 +97,6 @@ export class PostComponent {
                 duration: 3000,
             }
         );
-        this.toggleLikedState();
+        this.toggleLikeState();
     }
 }
