@@ -1,4 +1,4 @@
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass, NgComponentOutlet } from '@angular/common';
 import {
     Component,
     computed,
@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { LikeService } from 'app/core/data/post/like.service';
 import { UserService } from 'app/core/user/user.service';
-import { environment } from 'environments/environment';
 import { AvatarModule } from 'ngx-avatars';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Post } from '../../../shared/types/post.types';
@@ -22,6 +21,8 @@ import { Author } from '../../../shared/types/author.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
+import { LikesCountPipe } from './likes-count.pipe';
+import { getImageComponent } from '../post-images/post-images.utils';
 
 @Component({
     selector: 'hr-post',
@@ -35,6 +36,8 @@ import { finalize } from 'rxjs';
         NgClass,
         CommentsComponent,
         AvatarModule,
+        LikesCountPipe,
+        NgComponentOutlet,
     ],
     templateUrl: './post.component.html',
 })
@@ -42,8 +45,6 @@ export class PostComponent {
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
     user = toSignal(inject(UserService).user$);
-
-    readonly apiURL = environment.apiUrl;
 
     post = input.required<Post>();
 
@@ -85,7 +86,11 @@ export class PostComponent {
                 error: () => {
                     this.handleLikeError();
                 },
-            })
+            });
+    }
+
+    getImageComponent(imageCount: number) {
+        return getImageComponent(imageCount);
     }
 
     private toggleLikedState() {
