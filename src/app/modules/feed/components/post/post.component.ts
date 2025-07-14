@@ -17,17 +17,17 @@ import { getImageComponent } from '../post-images/post-images.utils';
 @Component({
     selector: 'hr-post',
     imports: [
-    FuseCardComponent,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatDividerModule,
-    DatePipe,
-    NgClass,
-    CommentsComponent,
-    AvatarModule,
-    NgComponentOutlet,
-],
+        FuseCardComponent,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatDividerModule,
+        DatePipe,
+        NgClass,
+        CommentsComponent,
+        AvatarModule,
+        NgComponentOutlet,
+    ],
     templateUrl: './post.component.html',
 })
 export class PostComponent implements OnInit {
@@ -39,7 +39,6 @@ export class PostComponent implements OnInit {
     likesCount = signal<number>(0);
     topLikers = signal<Author[]>([]);
     isRequesting = signal<boolean>(false);
-    getImageComponent = getImageComponent;
 
     ngOnInit(): void {
         this.isLikedByCurrentUser.set(this.post().engagement.likes.isLikedByCurrentUser);
@@ -71,6 +70,10 @@ export class PostComponent implements OnInit {
                     this.manageError();
                 },
             });
+    }
+
+    getImageComponent(imageCount: number) {
+        return getImageComponent(imageCount);
     }
 
     private updateLikesState() {

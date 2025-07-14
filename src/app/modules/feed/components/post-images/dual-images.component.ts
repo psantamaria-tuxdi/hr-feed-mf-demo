@@ -26,5 +26,8 @@ import { getImageSrc } from './post-images.utils';
 })
 export class DualImagesComponent {
     images = input.required<string[]>();
-    getImageSrc = getImageSrc;
+
+    getImageSrc(image: string): string {
+        return getImageSrc(image);
+    }
 }
