@@ -12,6 +12,7 @@ import { Author } from '../../../shared/types/author.types';
 import { CommentsComponent } from '../comments/comments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
+import { LikesCountPipe } from './likes-count.pipe';
 import { getImageComponent } from '../post-images/post-images.utils';
 
 @Component({
@@ -26,6 +27,7 @@ import { getImageComponent } from '../post-images/post-images.utils';
         NgClass,
         CommentsComponent,
         AvatarModule,
+        LikesCountPipe,
         NgComponentOutlet,
     ],
     templateUrl: './post.component.html',

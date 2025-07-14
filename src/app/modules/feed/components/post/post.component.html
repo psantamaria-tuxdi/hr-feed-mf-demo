@@ -124,16 +124,11 @@
                     [round]="true"
                 ></ngx-avatars>
             }
-            <div class="tw-ml-3 tw-text-md tw-tracking-tight">
-                <!-- TODO likes count pipe, add missing logic -->
-                @if (likesCount() > 0) {
-                    @if (isLikedByCurrentUser()) {
-                        A ti y a {{ likesCount() }} personas más les gusta esto
-                    } @else {
-                        A {{ likesCount() }} personas les gusta esto
-                    }
-                }
-            </div>
+            @if (likesCount() > 0) {
+                <div class="tw-ml-3 tw-text-md tw-tracking-tight">
+                    {{ likesCount() | likesCount: isLikedByCurrentUser() }}
+                </div>
+            }
         </div>
         <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
 
