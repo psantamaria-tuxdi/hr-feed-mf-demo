@@ -2,6 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
     FormBuilder,
+    FormControl,
     FormGroup,
     ReactiveFormsModule,
     Validators,
@@ -13,10 +14,10 @@ import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommentService } from 'app/core/data/post/comment.service';
-import { CreateCommentDto } from 'app/core/data/post/post.types';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
+import { CreateCommentDto } from '../../../../../../core/data/post/post.types';
 
 @Component({
     selector: 'hr-create-comment',
@@ -34,16 +35,16 @@ import { finalize } from 'rxjs';
 })
 export class CreateCommentComponent {
     postId = input.required<string>();
-    onCommentCreated = output<boolean>()
+    onCommentCreated = output<boolean>();
 
     user = toSignal(inject(UserService).user$);
     maxCommentCharacters: number = 1000;
-    commentForm: FormGroup;
-    
+    commentForm: FormGroup<{ content: FormControl<string> }>;
+
     private readonly commentService = inject(CommentService);
     private formBuilder = inject(FormBuilder);
     private snackBar = inject(MatSnackBar);
-    
+
     constructor() {
         this.commentForm = this.formBuilder.group({
             content: ['', [Validators.maxLength(this.maxCommentCharacters)]],
@@ -53,9 +54,12 @@ export class CreateCommentComponent {
     onSubmit() {
         if (this.commentForm.valid) {
             this.commentForm.disable();
-            const commentDto: CreateCommentDto = this.commentForm.value;
+
             this.commentService
-                .create(this.postId(), commentDto)
+                .create(
+                    this.postId(),
+                    this.commentForm.value as CreateCommentDto
+                )
                 .pipe(
                     finalize(() => {
                         this.commentForm.enable();
@@ -78,8 +82,7 @@ export class CreateCommentComponent {
 
     resetForm() {
         this.commentForm.reset({
-            text: '',
-            allowComments: true,
+            content: '',
         });
     }
 

@@ -3,7 +3,7 @@
     (ngSubmit)="onSubmit()"
     class="tw-mx-4 tw-mb-3 tw-mt-6 tw-flex tw-flex-col sm:tw-mx-8"
 >
-    <div class="flex items-start">
+    <div class="tw-flex tw-items-start">
         <ngx-avatars
             class="tw-mr-4"
             [name]="user()?.lastName + ', ' + user()?.firstName"
@@ -22,8 +22,17 @@
         </mat-form-field>
     </div>
     <div class="-tw-mr-3 tw-ml-auto tw-mt-3 tw-flex tw-items-center">
-        <button mat-icon-button type="submit">
-            <mat-icon class="tw-icon-size-5" [svgIcon]="'send'"></mat-icon>
+        <button
+            mat-icon-button
+            type="submit"
+            [disabled]="
+                !commentForm.get('content')?.value || commentForm.pristine
+            "
+        >
+            <mat-icon
+                class="tw-icon-size-5"
+                [svgIcon]="'mat_solid:send'"
+            ></mat-icon>
         </button>
     </div>
 </form>
