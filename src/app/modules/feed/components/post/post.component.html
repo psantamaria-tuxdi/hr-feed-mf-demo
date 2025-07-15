@@ -63,23 +63,13 @@
         </p>
 
         <!-- Images -->
-        @if (post().content.images && post().content.images.length > 0) {
-            <div class="tw-mt-4">
-                @for (image of post().content.images; track $index) {
-                    <div class="tw-relative tw-mb-4">
-                        <img
-                            class="tw-w-full tw-rounded-lg tw-object-cover"
-                            [src]="
-                                image.startsWith('http')
-                                    ? image
-                                    : apiURL + image
-                            "
-                            [alt]="'Imagen del post'"
-                            loading="lazy"
-                        />
-                    </div>
-                }
-            </div>
+        @let images = post().content.images;
+
+        @if (images && images.length > 0) {
+            <ng-container
+                [ngComponentOutlet]="getImageComponent(images.length)"
+                [ngComponentOutletInputs]="{ images }"
+            ></ng-container>
         }
     </div>
 
@@ -90,8 +80,9 @@
             mat-button
             [disabled]="isRequesting()"
             (click)="toggleLike()"
+            aria-label="Toggle like"
         >
-            @if (isLikedByCurrentUser()) {
+            @if (likes().isLikedByCurrentUser) {
                 <mat-icon
                     class="tw-text-red-500 tw-icon-size-5"
                     [svgIcon]="'heroicons_solid:heart'"
@@ -126,7 +117,7 @@
         <!-- Likes -->
 
         <div class="tw-flex tw-items-center">
-            @for (user of topLikers(); track user._id) {
+            @for (user of likes().topLikers; track user._id) {
                 <ngx-avatars
                     [ngClass]="{
                         'tw--ml-3': !$first,
@@ -138,16 +129,11 @@
                     [round]="true"
                 ></ngx-avatars>
             }
-            <div class="tw-ml-3 tw-text-md tw-tracking-tight">
-                <!-- TODO likes count pipe, add missing logic -->
-                @if (likesCount() > 0) {
-                    @if (isLikedByCurrentUser()) {
-                        A ti y a {{ likesCount() }} personas más les gusta esto
-                    } @else {
-                        A {{ likesCount() }} personas les gusta esto
-                    }
-                }
-            </div>
+            @if (likes().count > 0) {
+                <div class="tw-ml-3 tw-text-md tw-tracking-tight">
+                    {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
+                </div>
+            }
         </div>
         <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
 

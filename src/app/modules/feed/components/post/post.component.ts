@@ -1,21 +1,29 @@
-import { DatePipe, NgClass } from '@angular/common';
-import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe, NgClass, NgComponentOutlet } from '@angular/common';
+import {
+    Component,
+    inject,
+    input,
+    linkedSignal,
+    signal,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommentService } from 'app/core/data/post/comment.service';
 import { LikeService } from 'app/core/data/post/like.service';
-import { environment } from 'environments/environment';
+import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
-import { finalize } from 'rxjs';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
-import { Author } from '../../../shared/types/author.types';
-import { Post } from '../../../shared/types/post.types';
+import { Likes, Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs';
+import { LikesCountPipe } from './likes-count.pipe';
+import { getImageComponent } from '../post-images/post-images.utils';
 
 @Component({
     selector: 'hr-post',
@@ -29,35 +37,29 @@ import { CommentsComponent } from '../comments/comments.component';
         NgClass,
         CommentsComponent,
         AvatarModule,
+
         MatInputModule,
         ReactiveFormsModule,
+        LikesCountPipe,
+        NgComponentOutlet,
     ],
     templateUrl: './post.component.html',
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
     private readonly commentService = inject(CommentService);
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
-
-    readonly apiURL = environment.apiUrl;
+    user = toSignal(inject(UserService).user$);
 
     post = input.required<Post>();
-    isLikedByCurrentUser = signal<boolean>(false);
-    likesCount = signal<number>(0);
-    topLikers = signal<Author[]>([]);
-    isRequesting = signal<boolean>(false);
 
-    ngOnInit(): void {
-        this.isLikedByCurrentUser.set(
-            this.post().engagement.likes.isLikedByCurrentUser
-        );
-        this.likesCount.set(this.post().engagement.likes.count);
-        this.topLikers.set(this.post().engagement.likes.topLikers);
-    }
+    likes = linkedSignal<Likes>(() => this.post().engagement.likes);
+
+    isRequesting = signal<boolean>(false);
 
     toggleLike(): void {
         this.isRequesting.set(true);
-        this.updateLikesState();
+        this.toggleLikeState();
 
         this.likeService
             .toggleLike(this.post()._id)
@@ -65,42 +67,44 @@ export class PostComponent implements OnInit {
             .subscribe({
                 next: (response) => {
                     if (!response.success) {
-                        this.manageError();
+                        this.handleLikeError();
                         return;
                     }
 
-                    const currentLikeState = this.isLikedByCurrentUser();
                     const shouldBeLiked = response.action === 'liked';
-
-                    if (currentLikeState !== shouldBeLiked) {
-                        this.updateLikesState();
+                    if (this.likes().isLikedByCurrentUser !== shouldBeLiked) {
+                        this.toggleLikeState();
                     }
                 },
                 error: () => {
-                    this.manageError();
+                    this.handleLikeError();
                 },
             });
     }
 
-    private updateLikesState() {
-        const currentLikeState = this.isLikedByCurrentUser();
-        this.isLikedByCurrentUser.set(!currentLikeState);
-        this.likesCount.update((count) => count + (!currentLikeState ? 1 : -1));
-
-        const currentTopLikers = this.topLikers();
-        this.topLikers.set(
-            !currentLikeState
-                ? [...currentTopLikers, this.post().author]
-                : currentTopLikers.filter(
-                      (liker) => liker._id !== this.post().author._id
-                  )
-        );
+    getImageComponent(imageCount: number) {
+        return getImageComponent(imageCount);
     }
 
-    private manageError() {
-        this.snackBar.open('Error al dar like a la publicación', 'Cerrar', {
-            duration: 3000,
-        });
-        this.updateLikesState();
+    private toggleLikeState() {
+        const isLiked = !this.likes().isLikedByCurrentUser;
+        this.likes.update(previous => ({
+            isLikedByCurrentUser: isLiked,
+            count: previous.count + (isLiked ? 1 : -1),
+            topLikers: isLiked
+                ? [this.user(), ...previous.topLikers]
+                : previous.topLikers.filter(liker => liker._id !== this.user()._id),
+        }));
+    }
+
+    private handleLikeError() {
+        this.snackBar.open(
+            'Error al dar like a la publicación',
+            'Cerrar',
+            {
+                duration: 3000,
+            }
+        );
+        this.toggleLikeState();
     }
 }
