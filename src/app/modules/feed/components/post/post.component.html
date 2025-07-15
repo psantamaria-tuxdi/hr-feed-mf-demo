@@ -80,8 +80,9 @@
             mat-button
             [disabled]="isRequesting()"
             (click)="toggleLike()"
+            aria-label="Toggle like"
         >
-            @if (isLikedByCurrentUser()) {
+            @if (likes().isLikedByCurrentUser) {
                 <mat-icon
                     class="tw-text-red-500 tw-icon-size-5"
                     [svgIcon]="'heroicons_solid:heart'"
@@ -112,7 +113,7 @@
         <!-- Likes -->
 
         <div class="tw-flex tw-items-center">
-            @for (user of topLikers(); track user._id) {
+            @for (user of likes().topLikers; track user._id) {
                 <ngx-avatars
                     [ngClass]="{
                         'tw--ml-3': !$first,
@@ -124,9 +125,9 @@
                     [round]="true"
                 ></ngx-avatars>
             }
-            @if (likesCount() > 0) {
+            @if (likes().count > 0) {
                 <div class="tw-ml-3 tw-text-md tw-tracking-tight">
-                    {{ likesCount() | likesCount: isLikedByCurrentUser() }}
+                    {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
                 </div>
             }
         </div>
