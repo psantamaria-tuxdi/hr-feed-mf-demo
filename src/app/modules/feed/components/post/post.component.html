@@ -80,6 +80,7 @@
             mat-button
             [disabled]="isRequesting()"
             (click)="toggleLike()"
+            aria-label="Toggle like"
         >
             @if (likes().isLikedByCurrentUser) {
                 <mat-icon
