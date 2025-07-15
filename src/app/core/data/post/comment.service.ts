@@ -16,7 +16,7 @@ export class CommentService {
         return this.http.get<Comment[]>(this.url(postId));
     }
 
-    post(postId: string, commentDto: CreateCommentDto): Observable<Comment> {
+    create(postId: string, commentDto: CreateCommentDto): Observable<Comment> {
         return this.http.post<Comment>(this.url(postId), commentDto);
     }
 }
