@@ -19,7 +19,7 @@ import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
 
 @Component({
-    selector: 'hr-create-comments',
+    selector: 'hr-create-comment',
     imports: [
         MatIconModule,
         MatButtonModule,
@@ -33,31 +33,29 @@ import { finalize } from 'rxjs';
     templateUrl: './create-comment.component.html',
 })
 export class CreateCommentComponent {
+    postId = input.required<string>();
+    onCommentCreated = output<boolean>()
+
+    user = toSignal(inject(UserService).user$);
+    maxCommentCharacters: number = 1000;
+    commentForm: FormGroup;
+    
     private readonly commentService = inject(CommentService);
     private formBuilder = inject(FormBuilder);
     private snackBar = inject(MatSnackBar);
-
-    user = toSignal(inject(UserService).user$);
-    postId = input.required<string>();
-    onCommentCreated = output<boolean>()
-    maxCommentCharacters: number = 1000;
-    commentForm: FormGroup;
-    text: string;
-
+    
     constructor() {
         this.commentForm = this.formBuilder.group({
-            text: ['', [Validators.maxLength(this.maxCommentCharacters)]],
+            content: ['', [Validators.maxLength(this.maxCommentCharacters)]],
         });
     }
 
     onSubmit() {
         if (this.commentForm.valid) {
             this.commentForm.disable();
-            const commentDto: CreateCommentDto = {
-                content: this.commentForm.get('text').value,
-            };
+            const commentDto: CreateCommentDto = this.commentForm.value;
             this.commentService
-                .post(this.postId(), commentDto)
+                .create(this.postId(), commentDto)
                 .pipe(
                     finalize(() => {
                         this.commentForm.enable();
@@ -72,7 +70,7 @@ export class CreateCommentComponent {
                     error: (error) => {
                         this.onCommentCreated.emit(false);
                         this.showSnackBar('Error al crear el comentario');
-                        console.error('Error creating post:', error);
+                        console.error('Error creating comment:', error);
                     },
                 });
         }
