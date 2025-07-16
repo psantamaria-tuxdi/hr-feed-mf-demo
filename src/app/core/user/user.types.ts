@@ -1,4 +1,4 @@
-import { BaseDocument } from "../data/base.types";
+import { BaseDocument } from "../../modules/shared/types/base.types";
 
 export interface User extends BaseDocument {
     externalUserId: string;

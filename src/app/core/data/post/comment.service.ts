@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Comment } from 'app/modules/shared/types/comment.types';
+import { Comment, CreateCommentDto } from 'app/modules/shared/types/comment.types';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
-import { CreateCommentDto } from './post.types';
 
 @Injectable({
     providedIn: 'root',

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
-import { ToggleLikeResponse } from './post.types';
+import { ToggleLikeResponse } from '../../../modules/shared/types/like.types';
 
 @Injectable({
     providedIn: 'root',

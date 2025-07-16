@@ -1,5 +1,6 @@
 import { Author } from './author.types';
 import { Comments } from './comment.types';
+import { Likes } from './like.types';
 
 export interface Post {
     _id: string;
@@ -21,8 +22,8 @@ export interface Engagement {
     comments: Comments;
 }
 
-export interface Likes {
-    count: number;
-    isLikedByCurrentUser: boolean;
-    topLikers: Author[];
+export interface CreatePostDto {
+    text: string;
+    allowComments?: boolean;
+    images?: File[];
 }

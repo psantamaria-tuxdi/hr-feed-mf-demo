@@ -1,4 +1,4 @@
-import { Author } from "./author.types";
+import { Author } from './author.types';
 
 export interface Comments {
     count: number;
@@ -17,4 +17,9 @@ export interface Comment {
 
 export interface Reply extends Omit<Comment, 'replies'> {
     parentCommentId: string;
+}
+
+export interface CreateCommentDto {
+    content: string;
+    parentCommentId?: string;
 }
