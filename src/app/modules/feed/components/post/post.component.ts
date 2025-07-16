@@ -1,29 +1,19 @@
-import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe, NgClass, NgComponentOutlet } from '@angular/common';
-import {
-    Component,
-    inject,
-    input,
-    linkedSignal,
-    signal,
-} from '@angular/core';
+import { Component, inject, input, linkedSignal, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { CommentService } from 'app/core/data/post/comment.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikeService } from 'app/core/data/post/like.service';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
+import { finalize } from 'rxjs';
 import { FuseCardComponent } from '../../../../../@fuse/components/card';
 import { Likes, Post } from '../../../shared/types/post.types';
 import { CommentsComponent } from '../comments/comments.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { finalize } from 'rxjs';
-import { LikesCountPipe } from './likes-count.pipe';
 import { getImageComponent } from '../post-images/post-images.utils';
+import { LikesCountPipe } from './likes-count.pipe';
 
 @Component({
     selector: 'hr-post',
@@ -32,21 +22,16 @@ import { getImageComponent } from '../post-images/post-images.utils';
         MatIconModule,
         MatButtonModule,
         MatMenuModule,
-        MatDividerModule,
         DatePipe,
         NgClass,
         CommentsComponent,
         AvatarModule,
-
-        MatInputModule,
-        ReactiveFormsModule,
         LikesCountPipe,
         NgComponentOutlet,
     ],
     templateUrl: './post.component.html',
 })
 export class PostComponent {
-    private readonly commentService = inject(CommentService);
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
     user = toSignal(inject(UserService).user$);
