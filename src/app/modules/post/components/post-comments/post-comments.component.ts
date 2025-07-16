@@ -16,8 +16,7 @@ export class PostCommentsComponent {
     postId = input.required<string>();
 
     resource = rxResource({
-        request: this.postId,
-        loader: ({ request: postId }) => this.commentService.getAll(postId),
+        loader: () => this.commentService.getAll(this.postId()),
     });
 
     items = this.resource.value;

@@ -2,7 +2,6 @@ import { Author } from './author.types';
 
 export interface Comments {
     count: number;
-    items?: Comment[];
 }
 
 export interface Comment {

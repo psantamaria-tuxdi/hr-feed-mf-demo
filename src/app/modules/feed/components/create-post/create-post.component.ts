@@ -67,6 +67,14 @@ export class CreatePostComponent {
         });
     }
 
+    get text() {
+        return this.postForm.get('text');
+    }
+
+    get canSubmit(): boolean {
+        return this.postForm.valid && !this.isLoading();
+    }
+
     onFileSelected(event: Event): void {
         const input = event.target as HTMLInputElement;
         if (input.files && input.files.length > 0) {
@@ -133,14 +141,6 @@ export class CreatePostComponent {
                     },
                 });
         }
-    }
-
-    get text() {
-        return this.postForm.get('text');
-    }
-
-    get canSubmit(): boolean {
-        return this.postForm.valid && !this.isLoading();
     }
 
     private resetForm(): void {
