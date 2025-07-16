@@ -1,23 +1,22 @@
 import { DatePipe, NgClass } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { CommentService } from 'app/core/data/post/comment.service';
+import { CommentService } from 'app/modules/post/services/comment.service';
 import { AvatarModule } from 'ngx-avatars';
-import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { CreateCommentComponent } from '../create-comment/create-comment.component';
 
 @Component({
     selector: 'hr-comments',
     imports: [DatePipe, NgClass, AvatarModule, CreateCommentComponent],
-    templateUrl: './comments.component.html',
+    templateUrl: './post-comments.component.html',
 })
-export class CommentsComponent {
+export class PostCommentsComponent {
     private readonly commentService = inject(CommentService);
 
     postId = input.required<string>();
 
     resource = rxResource({
-        request: this.postId,
-        loader: ({ request: postId }) => this.commentService.getAll(postId),
+        loader: () => this.commentService.getAll(this.postId()),
     });
 
     items = this.resource.value;

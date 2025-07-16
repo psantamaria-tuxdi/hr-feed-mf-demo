@@ -17,7 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuseCardComponent } from '@fuse/components/card';
-import { CreatePostDto } from 'app/core/data/post/post.types';
+import { CreatePostDto } from '../../../shared/types/post.types';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
@@ -65,6 +65,14 @@ export class CreatePostComponent {
             ],
             allowComments: [true],
         });
+    }
+
+    get text() {
+        return this.postForm.get('text');
+    }
+
+    get canSubmit(): boolean {
+        return this.postForm.valid && !this.isLoading();
     }
 
     onFileSelected(event: Event): void {
@@ -133,14 +141,6 @@ export class CreatePostComponent {
                     },
                 });
         }
-    }
-
-    get text() {
-        return this.postForm.get('text');
-    }
-
-    get canSubmit(): boolean {
-        return this.postForm.valid && !this.isLoading();
     }
 
     private resetForm(): void {

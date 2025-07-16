@@ -1,7 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { PostService } from 'app/core/data/post/post.service';
-import { Post } from '../../shared/types/post.types';
-import { CreatePostDto } from 'app/core/data/post/post.types';
+import { PostService } from 'app/modules/post/services/post.service';
+import { CreatePostDto, Post } from '../../shared/types/post.types';
 import { Observable } from 'rxjs';
 
 @Injectable({

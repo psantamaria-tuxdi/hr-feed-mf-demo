@@ -5,15 +5,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LikeService } from 'app/core/data/post/like.service';
+import { LikeService } from 'app/modules/post/services/like.service';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
-import { FuseCardComponent } from '../../../../../@fuse/components/card';
-import { Likes, Post } from '../../../shared/types/post.types';
-import { CommentsComponent } from '../comments/comments.component';
-import { getImageComponent } from '../post-images/post-images.utils';
-import { LikesCountPipe } from './likes-count.pipe';
+import { FuseCardComponent } from '../../../@fuse/components/card';
+import { Post } from '../shared/types/post.types';
+import { Likes } from '../shared/types/like.types';
+import { getImageComponent } from './components/post-images/post-images.utils';
+import { LikesCountPipe } from './pipes/likes-count.pipe';
+import { PostCommentsComponent } from './components/post-comments/post-comments.component';
 
 @Component({
     selector: 'hr-post',
@@ -24,7 +25,7 @@ import { LikesCountPipe } from './likes-count.pipe';
         MatMenuModule,
         DatePipe,
         NgClass,
-        CommentsComponent,
+        PostCommentsComponent,
         AvatarModule,
         LikesCountPipe,
         NgComponentOutlet,

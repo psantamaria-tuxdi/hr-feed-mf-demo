@@ -13,11 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CommentService } from 'app/core/data/post/comment.service';
+import { CommentService } from '../../services/comment.service';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
-import { CreateCommentDto } from '../../../../../../core/data/post/post.types';
+import { CreateCommentDto } from '../../../shared/types/comment.types';
 
 @Component({
     selector: 'hr-create-comment',
