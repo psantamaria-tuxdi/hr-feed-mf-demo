@@ -35,7 +35,7 @@ import { CreateCommentDto } from '../../../../../../core/data/post/post.types';
 })
 export class CreateCommentComponent {
     postId = input.required<string>();
-    onCommentCreated = output<boolean>();
+    commentCreated = output<boolean>();
 
     user = toSignal(inject(UserService).user$);
     maxCommentCharacters: number = 1000;
@@ -68,11 +68,11 @@ export class CreateCommentComponent {
                 )
                 .subscribe({
                     next: () => {
-                        this.onCommentCreated.emit(true);
+                        this.commentCreated.emit(true);
                         this.showSnackBar('Se compartió tu comentario!');
                     },
                     error: (error) => {
-                        this.onCommentCreated.emit(false);
+                        this.commentCreated.emit(false);
                         this.showSnackBar('Error al crear el comentario');
                         console.error('Error creating comment:', error);
                     },
