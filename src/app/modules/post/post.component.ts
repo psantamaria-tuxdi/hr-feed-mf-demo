@@ -9,11 +9,11 @@ import { LikeService } from 'app/core/data/post/like.service';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
-import { FuseCardComponent } from '../../../../../@fuse/components/card';
-import { Likes, Post } from '../../../shared/types/post.types';
-import { CommentsComponent } from '../comments/comments.component';
-import { getImageComponent } from '../post-images/post-images.utils';
-import { LikesCountPipe } from './likes-count.pipe';
+import { FuseCardComponent } from '../../../@fuse/components/card';
+import { Likes, Post } from '../shared/types/post.types';
+import { CommentsComponent } from './components/comments/comments.component';
+import { getImageComponent } from './components/post-images/post-images.utils';
+import { LikesCountPipe } from './pipes/likes-count.pipe';
 
 @Component({
     selector: 'hr-post',
