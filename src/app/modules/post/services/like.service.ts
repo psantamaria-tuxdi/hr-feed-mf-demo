@@ -2,16 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
-import { ToggleLikeResponse } from '../../../modules/shared/types/like.types';
+import { ToggleLikeResponse } from '../../shared/types/like.types';
 
 @Injectable({
     providedIn: 'root',
 })
 export class LikeService {
     private http = inject(HttpClient);
-    private url = (postId: string) => environment.apiUrl + `posts/${postId}/`;
 
     toggleLike(postId: string): Observable<ToggleLikeResponse> {
-        return this.http.post<ToggleLikeResponse>(this.url(postId) + 'toggle-like', {});
+        return this.http.post<ToggleLikeResponse>(this.getUrl(postId) + 'toggle-like', {});
+    }
+
+    private getUrl(postId: string): string {
+        return environment.apiUrl + `posts/${postId}/`;
     }
 }

@@ -8,10 +8,10 @@ import { environment } from 'environments/environment';
 })
 export class PostService {
     private http = inject(HttpClient);
-    private url = environment.apiUrl + 'posts/';
+    private endpoint = environment.apiUrl + 'posts/';
 
     getAll(params: { lastSeen?: string; pageSize?: number } = {}) {
-        return this.http.get<Post[]>(this.url + 'feed', { params });
+        return this.http.get<Post[]>(this.endpoint + 'feed', { params });
     }
 
     create(postData: CreatePostDto) {
@@ -28,6 +28,6 @@ export class PostService {
             });
         }
 
-        return this.http.post<Post>(this.url, formData);
+        return this.http.post<Post>(this.endpoint, formData);
     }
 }

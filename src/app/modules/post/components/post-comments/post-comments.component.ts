@@ -1,7 +1,7 @@
 import { DatePipe, NgClass } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { CommentService } from 'app/core/data/post/comment.service';
+import { CommentService } from 'app/modules/post/services/comment.service';
 import { AvatarModule } from 'ngx-avatars';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
 
