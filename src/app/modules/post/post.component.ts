@@ -11,9 +11,9 @@ import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
 import { FuseCardComponent } from '../../../@fuse/components/card';
 import { Likes, Post } from '../shared/types/post.types';
-import { CommentsComponent } from './components/comments/comments.component';
 import { getImageComponent } from './components/post-images/post-images.utils';
 import { LikesCountPipe } from './pipes/likes-count.pipe';
+import { PostCommentsComponent } from './components/post-comments/post-comments.component';
 
 @Component({
     selector: 'hr-post',
@@ -24,7 +24,7 @@ import { LikesCountPipe } from './pipes/likes-count.pipe';
         MatMenuModule,
         DatePipe,
         NgClass,
-        CommentsComponent,
+        PostCommentsComponent,
         AvatarModule,
         LikesCountPipe,
         NgComponentOutlet,

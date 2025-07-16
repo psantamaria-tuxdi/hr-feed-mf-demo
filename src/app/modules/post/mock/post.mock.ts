@@ -1,5 +1,5 @@
 import { Comment } from 'app/modules/shared/types/comment.types';
-import { Post } from '../../../shared/types/post.types';
+import { Post } from '../../shared/types/post.types';
 
 export const commentsMock: Comment[] = [
     {
