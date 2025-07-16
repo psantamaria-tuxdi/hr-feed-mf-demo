@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { PostSkeletonComponent } from 'app/modules/shared/components/post-skeleton/post-skeleton.component';
+import { PostSkeletonComponent } from 'app/modules/post/components/post-skeleton.component';
 import { CreatePostComponent } from '../../components/create-post/create-post.component';
 import { PostComponent } from '../../../post/post.component';
 import { FeedService } from '../../services/feed.service';
