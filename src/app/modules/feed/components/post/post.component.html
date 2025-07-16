@@ -95,7 +95,12 @@
             }
             <span class="tw-ml-2">Me gusta</span>
         </button>
-        <button class="tw-mr-1 tw-px-3" mat-button>
+        <button
+            class="tw-mr-1 tw-px-3"
+            mat-button
+            (click)="expandableCard.expanded = !expandableCard.expanded"
+            aria-label="Toggle comments"
+        >
             <mat-icon
                 class="tw-icon-size-5"
                 [svgIcon]="'heroicons_solid:chat-bubble-left-ellipsis'"
@@ -166,6 +171,7 @@
     <!-- Expandable content -->
     <ng-container fuseCardExpansion>
         @if (expandableCard.expanded) {
+            <hr class="tw-m-0 tw-border-b" />
             <hr-comments [postId]="post()._id" />
         }
     </ng-container>

@@ -13,3 +13,8 @@ export interface ToggleLikeResponse {
     success: boolean;
     action: 'liked' | 'unliked';
 }
+
+export interface CreateCommentDto {
+    content: string;
+    parentCommentId?: string;
+}

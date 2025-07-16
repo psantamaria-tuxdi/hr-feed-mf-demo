@@ -3,7 +3,6 @@ import { PostService } from 'app/core/data/post/post.service';
 import { Post } from '../../shared/types/post.types';
 import { CreatePostDto } from 'app/core/data/post/post.types';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',

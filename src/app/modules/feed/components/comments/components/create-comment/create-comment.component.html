@@ -1,0 +1,38 @@
+<form
+    [formGroup]="commentForm"
+    (ngSubmit)="onSubmit()"
+    class="tw-mx-4 tw-mb-3 tw-mt-6 tw-flex tw-flex-col sm:tw-mx-8"
+>
+    <div class="tw-flex tw-items-start">
+        <ngx-avatars
+            class="tw-mr-4"
+            [name]="user()?.lastName + ', ' + user()?.firstName"
+            [src]="user()?.avatar"
+            [size]="40"
+            [round]="true"
+        ></ngx-avatars>
+        <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
+            <textarea
+                matInput
+                formControlName="content"
+                [placeholder]="'Escribe un comentario...'"
+                [rows]="3"
+                cdkTextareaAutosize
+            ></textarea>
+        </mat-form-field>
+    </div>
+    <div class="-tw-mr-3 tw-ml-auto tw-mt-3 tw-flex tw-items-center">
+        <button
+            mat-icon-button
+            type="submit"
+            [disabled]="
+                !commentForm.get('content')?.value || commentForm.pristine
+            "
+        >
+            <mat-icon
+                class="tw-icon-size-5"
+                [svgIcon]="'mat_solid:send'"
+            ></mat-icon>
+        </button>
+    </div>
+</form>
