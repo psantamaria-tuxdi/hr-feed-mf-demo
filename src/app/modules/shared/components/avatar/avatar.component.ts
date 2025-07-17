@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { User } from 'app/core/user/user.types';
 import { Author } from '../../types/author.types';
 import { AvatarModule } from 'ngx-avatars';
