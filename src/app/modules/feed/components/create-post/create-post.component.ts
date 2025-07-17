@@ -54,7 +54,7 @@ export class CreatePostComponent {
     imagePreviewUrls: string[] = [];
 
     // TODO: move to constants file
-    readonly maxAllowedImages = 10;
+    readonly maxAllowedImages = 3;
     readonly maxCharacters = 2000;
 
     constructor() {
