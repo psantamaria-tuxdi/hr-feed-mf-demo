@@ -15,10 +15,9 @@
             <span class="tw-font-semibold tw-leading-none">{{
                 post().author.displayName
             }}</span>
-            <!-- TODO timeago pipe -->
             <span
                 class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
-                >{{ post().createdAt | date }}</span
+                >{{ post().createdAt | timeAgo }}</span
             >
         </div>
 
