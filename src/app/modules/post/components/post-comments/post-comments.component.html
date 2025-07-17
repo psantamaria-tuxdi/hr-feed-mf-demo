@@ -1,7 +1,4 @@
-<hr-create-comment
-    [postId]="postId()"
-    (commentCreated)="onCreated($event)"
-/>
+<hr-create-comment [postId]="postId()" (commentCreated)="onCreated($event)" />
 
 <hr class="tw-mx-4 tw-my-0 tw-border-b sm:tw-mx-8" />
 
@@ -17,7 +14,9 @@
                     <ngx-avatars
                         class="tw-mr-4"
                         [name]="
-                            comment.author.lastName + ', ' + comment.author.firstName
+                            comment.author.lastName +
+                            ', ' +
+                            comment.author.firstName
                         "
                         [src]="comment.author.avatar"
                         [size]="32"
@@ -35,10 +34,12 @@
                                 class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                 >Me gusta</span
                             >
-                            <span
-                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                >Responder</span
-                            >
+                            <button (click)="onReply(comment._id)">
+                                <span
+                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                    >Responder</span
+                                >
+                            </button>
                             <span
                                 class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                 >Eliminar</span
@@ -86,6 +87,14 @@
                             </div>
                         </div>
                     </div>
+                }
+
+                @if (showReplyForm && replyId === comment._id) {
+                    <hr-create-reply
+                        [postId]="postId()"
+                        [commentId]="comment._id"
+                        (commentCreated)="onCreatedReply($event)"
+                    />
                 }
             } @empty {
                 <!-- No comments -->

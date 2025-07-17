@@ -4,13 +4,22 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { CommentService } from 'app/modules/post/services/comment.service';
 import { AvatarModule } from 'ngx-avatars';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
+import { CreateReplyComponent } from './components/create-reply/create-reply.component';
 
 @Component({
     selector: 'hr-comments',
-    imports: [DatePipe, NgClass, AvatarModule, CreateCommentComponent],
+    imports: [
+        DatePipe,
+        NgClass,
+        AvatarModule,
+        CreateCommentComponent,
+        CreateReplyComponent,
+    ],
     templateUrl: './post-comments.component.html',
 })
 export class PostCommentsComponent {
+    showReplyForm: boolean = false;
+    replyId: string;
     postId = input.required<string>();
     private readonly commentService = inject(CommentService);
 
@@ -25,5 +34,17 @@ export class PostCommentsComponent {
         if (isCreated) {
             this.resource.reload();
         }
+    }
+
+    onCreatedReply(isCreated: boolean) {
+        if (isCreated) {
+            this.onReply(null);
+            this.resource.reload();
+        }
+    }
+
+    onReply(commentId: string) {
+        this.showReplyForm = !this.showReplyForm;
+        this.replyId = commentId;
     }
 }
