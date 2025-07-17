@@ -127,11 +127,11 @@ export class CreatePostComponent {
                     finalize(() => {
                         this.isLoading.set(false);
                         this.postForm.enable();
-                        this.resetForm();
                     })
                 )
                 .subscribe({
                     next: () => {
+                        this.resetForm();
                         this.showSnackBar('Se compartió tu publicación!');
                         this.feedService.load();
                     },
