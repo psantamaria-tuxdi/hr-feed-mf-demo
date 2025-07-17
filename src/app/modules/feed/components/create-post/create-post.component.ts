@@ -61,7 +61,7 @@ export class CreatePostComponent {
         this.postForm = this.formBuilder.group({
             text: [
                 '',
-                [Validators.required, Validators.maxLength(this.maxCharacters)],
+                [Validators.maxLength(this.maxCharacters)],
             ],
             allowComments: [true],
         });
@@ -72,7 +72,7 @@ export class CreatePostComponent {
     }
 
     get canSubmit(): boolean {
-        return this.postForm.valid && !this.isLoading();
+        return this.postForm.valid && this.text?.value && !this.isLoading();
     }
 
     onFileSelected(event: Event): void {
