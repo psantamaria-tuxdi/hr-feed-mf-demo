@@ -12,6 +12,6 @@ import { NgClass } from '@angular/common';
 })
 export class AvatarComponent {
   data = input.required<User | Author>();
-  size = input<number>(48);
+  size = input.required<number>();
   ring = input<boolean>(false);
 }
