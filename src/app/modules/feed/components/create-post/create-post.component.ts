@@ -148,7 +148,6 @@ export class CreatePostComponent {
             text: '',
             allowComments: true,
         });
-        this.text?.setErrors(null);
 
         this.selectedImages = [];
         this.imagePreviewUrls = [];
