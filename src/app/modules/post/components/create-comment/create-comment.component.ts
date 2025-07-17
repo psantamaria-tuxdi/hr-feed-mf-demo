@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommentService } from '../../services/comment.service';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarModule } from 'ngx-avatars';
+import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { finalize } from 'rxjs';
 import { CreateCommentDto } from '../../../shared/types/comment.types';
 
@@ -27,6 +28,7 @@ import { CreateCommentDto } from '../../../shared/types/comment.types';
         MatMenuModule,
         MatDividerModule,
         AvatarModule,
+        AvatarComponent,
         MatFormField,
         MatInputModule,
         ReactiveFormsModule,

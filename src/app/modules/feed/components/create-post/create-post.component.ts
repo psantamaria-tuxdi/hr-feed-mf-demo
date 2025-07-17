@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuseCardComponent } from '@fuse/components/card';
 import { CreatePostDto } from '../../../shared/types/post.types';
 import { UserService } from 'app/core/user/user.service';
-import { AvatarModule } from 'ngx-avatars';
+import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { finalize } from 'rxjs';
 import { FeedService } from '../../services/feed.service';
 
@@ -33,7 +33,7 @@ import { FeedService } from '../../services/feed.service';
         MatFormFieldModule,
         MatInputModule,
         TextFieldModule,
-        AvatarModule,
+        AvatarComponent,
         MatSlideToggleModule,
         MatProgressBarModule,
         ReactiveFormsModule,
