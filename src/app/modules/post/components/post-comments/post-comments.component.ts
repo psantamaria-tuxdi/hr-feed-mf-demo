@@ -11,15 +11,15 @@ import { CreateCommentComponent } from '../create-comment/create-comment.compone
     templateUrl: './post-comments.component.html',
 })
 export class PostCommentsComponent {
+    postId = input.required<string>();
     private readonly commentService = inject(CommentService);
 
-    postId = input.required<string>();
-
-    resource = rxResource({
+    private resource = rxResource({
         loader: () => this.commentService.getAll(this.postId()),
     });
 
-    items = this.resource.value;
+    comments = this.resource.value.asReadonly();
+    isLoading = this.resource.isLoading;
 
     onCreated(isCreated: boolean) {
         if (isCreated) {

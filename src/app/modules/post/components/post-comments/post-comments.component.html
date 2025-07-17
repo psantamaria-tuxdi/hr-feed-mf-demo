@@ -7,8 +7,8 @@
 
 <div class="tw-max-h-120 tw-overflow-y-auto">
     <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
-        @if (items()) {
-            @for (item of items(); track item._id) {
+        @if (comments()) {
+            @for (comment of comments(); track comment._id) {
                 <!-- Comment -->
                 <div
                     [ngClass]="{ 'tw-mt-8': !$first }"
@@ -17,16 +17,16 @@
                     <ngx-avatars
                         class="tw-mr-4"
                         [name]="
-                            item.author.lastName + ', ' + item.author.firstName
+                            comment.author.lastName + ', ' + comment.author.firstName
                         "
-                        [src]="item.author.avatar"
+                        [src]="comment.author.avatar"
                         [size]="32"
                         [round]="true"
                     ></ngx-avatars>
                     <div class="tw-mt-0.5 tw-flex tw-flex-col">
                         <span>
-                            <b>{{ item.author.displayName }}</b>
-                            {{ item.content }}
+                            <b>{{ comment.author.displayName }}</b>
+                            {{ comment.content }}
                         </span>
                         <div
                             class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
@@ -45,13 +45,13 @@
                             >
                             <span class="tw-mr-2">&bull;</span>
                             <!-- TODO timeago pipe -->
-                            <span>{{ item.createdAt | date }}</span>
+                            <span>{{ comment.createdAt | date }}</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Replies -->
-                @for (reply of item.replies; track reply._id) {
+                @for (reply of comment.replies; track reply._id) {
                     <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
                         <ngx-avatars
                             class="tw-mr-4"
@@ -94,7 +94,7 @@
                     <p>¡Sé el primero en comentar!</p>
                 </div>
             }
-        } @else if (resource.isLoading()) {
+        } @else if (isLoading()) {
             <!-- TODO: add skeletons based on the number of comments -->
             <div class="tw-text-secondary tw-text-center">
                 <p>Cargando comentarios...</p>
