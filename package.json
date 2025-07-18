@@ -36,6 +36,7 @@
         "luxon": "3.5.0",
         "ng-apexcharts": "1.15.0",
         "ngx-avatars": "^1.9.3",
+        "ngx-infinite-scroll": "^20.0.0",
         "ngx-quill": "27.0.0",
         "perfect-scrollbar": "1.5.6",
         "quill": "2.0.3",
