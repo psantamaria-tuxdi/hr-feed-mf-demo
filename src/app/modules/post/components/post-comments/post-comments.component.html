@@ -89,8 +89,9 @@
                     </div>
                 }
 
-                @if (showReplyForm && replyId === comment._id) {
+                @if ( replyId === comment._id ) {
                     <hr-create-reply
+                        class="tw-ml-4"
                         [postId]="postId()"
                         [commentId]="comment._id"
                         (commentCreated)="onCreatedReply($event)"

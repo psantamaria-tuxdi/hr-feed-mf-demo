@@ -44,7 +44,11 @@ export class PostCommentsComponent {
     }
 
     onReply(commentId: string) {
-        this.showReplyForm = !this.showReplyForm;
-        this.replyId = commentId;
+        if(this.replyId != commentId)
+            this.replyId = commentId;
+        else
+        {
+            this.replyId = null;
+        }
     }
 }

@@ -67,12 +67,12 @@ export class CreateReplyComponent {
                 .subscribe({
                     next: () => {
                         this.commentCreated.emit(true);
-                        this.showSnackBar('Se compartió tu comentario!');
+                        this.showSnackBar('Se compartió tu respuesta!');
                     },
                     error: (error) => {
                         this.commentCreated.emit(false);
-                        this.showSnackBar('Error al crear el comentario');
-                        console.error('Error creating comment:', error);
+                        this.showSnackBar('Error al crear la respuesta');
+                        console.error('Error creating reply:', error);
                     },
                 });
         }

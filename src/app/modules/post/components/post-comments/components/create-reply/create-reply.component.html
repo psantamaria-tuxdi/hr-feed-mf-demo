@@ -5,7 +5,7 @@
 >
     <div class="tw-flex tw-items-start">
         <ngx-avatars
-            class="tw-mr-4"
+            class="tw-mr-4 tw-mt-2"
             [name]="user()?.lastName + ', ' + user()?.firstName"
             [src]="user()?.avatar"
             [size]="32"
@@ -15,24 +15,23 @@
             <textarea
                 matInput
                 formControlName="content"
-                [placeholder]="'Escribe un comentario...'"
-                [rows]="3"
+                [placeholder]="'Escribe tu respuesta...'"
+                [rows]="1"
                 cdkTextareaAutosize
             ></textarea>
+            <button
+                mat-icon-button
+                class="-tw-mr-3"
+                type="submit"
+                [disabled]="
+                    !commentForm.get('content')?.value || commentForm.pristine
+                "
+            >
+                <mat-icon
+                    class="tw-icon-size-5"
+                    [svgIcon]="'mat_solid:send'"
+                ></mat-icon>
+            </button>
         </mat-form-field>
-    </div>
-    <div class="-tw-mr-3 tw-ml-auto tw-mt-3 tw-flex tw-items-center">
-        <button
-            mat-icon-button
-            type="submit"
-            [disabled]="
-                !commentForm.get('content')?.value || commentForm.pristine
-            "
-        >
-            <mat-icon
-                class="tw-icon-size-5"
-                [svgIcon]="'mat_solid:send'"
-            ></mat-icon>
-        </button>
     </div>
 </form>
