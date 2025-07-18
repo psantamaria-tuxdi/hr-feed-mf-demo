@@ -1,0 +1,9 @@
+<ngx-avatars
+  [ngClass]="{
+    'tw-flex tw-ring-2 tw-ring-white': ring(),
+  }"
+  [name]="data()?.lastName + ', ' + data()?.firstName"
+  [src]="data()?.avatar"
+  [size]="size()"
+  [round]="true"
+></ngx-avatars>
