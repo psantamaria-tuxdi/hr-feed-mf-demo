@@ -12,18 +12,23 @@ export class FeedService {
     postService = inject(PostService);
 
     feed = signal<Post[]>([]);
-    isLoading = signal<boolean>(true);
-    hasMore = signal<boolean>(true);
+    isLoading = signal<boolean>(false);
+    hasMore = signal<boolean>(false);
 
     pageSize = 10;
 
     load() {
         this.feed.set([]);
         this.hasMore.set(true);
-        this.getMore();
+        this.fetchMore();
     }
 
-    getMore() {
+    fetchMore() {
+        if (this.isLoading()) {
+            console.log('Already loading posts, skipping fetchMore call.');
+            return;
+        }
+
         this.isLoading.set(true);
         const feed = this.feed();
         const lastSeen = feed.length
