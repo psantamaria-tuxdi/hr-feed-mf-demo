@@ -6,13 +6,7 @@
     <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="tw-mt-8 tw-flex tw-flex-col tw-items-start sm:tw-flex-row">
             <div class="tw-mb-6 tw-flex tw-items-center sm:tw-mb-0">
-                <ngx-avatars
-                    class="tw-mr-4"
-                    [name]="user()?.lastName + ', ' + user()?.firstName"
-                    [src]="user()?.avatar"
-                    [size]="48"
-                    [round]="true"
-                ></ngx-avatars>
+                <hr-avatar class="tw-mr-4" [data]="user()" [size]="48"></hr-avatar>
                 <div class="sm:tw-hidden">{{ user()?.displayName }}</div>
             </div>
             <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
