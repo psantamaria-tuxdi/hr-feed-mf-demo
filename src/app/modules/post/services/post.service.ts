@@ -14,6 +14,10 @@ export class PostService {
         return this.http.get<Post[]>(this.endpoint + 'feed', { params });
     }
 
+    get(id: string) {
+        return this.http.get<Post>(this.endpoint + id);
+    }
+
     create(postData: CreatePostDto) {
         const formData = new FormData();
         formData.append('text', postData.text);
