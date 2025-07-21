@@ -59,10 +59,14 @@
         @let images = post().content.images;
 
         @if (images && images.length > 0) {
-            <ng-container
-                [ngComponentOutlet]="getImageComponent(images.length)"
-                [ngComponentOutletInputs]="{ images }"
-            ></ng-container>
+            @defer(on viewport) {
+                <ng-container
+                    [ngComponentOutlet]="getImageComponent(images.length)"
+                    [ngComponentOutletInputs]="{ images }"
+                ></ng-container>
+            } @placeholder {
+                <div class="tw-mt-4 tw-h-80 tw-w-full tw-bg-gray-200 tw-rounded"></div>
+            }
         }
     </div>
 
