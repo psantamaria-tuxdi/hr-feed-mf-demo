@@ -11,17 +11,7 @@
                     [ngClass]="{ 'tw-mt-8': !$first }"
                     class="tw-flex tw-items-start"
                 >
-                    <ngx-avatars
-                        class="tw-mr-4"
-                        [name]="
-                            comment.author.lastName +
-                            ', ' +
-                            comment.author.firstName
-                        "
-                        [src]="comment.author.avatar"
-                        [size]="32"
-                        [round]="true"
-                    ></ngx-avatars>
+                    <hr-avatar class="tw-mr-4" [data]="comment.author" [size]="32"></hr-avatar>
                     <div class="tw-mt-0.5 tw-flex tw-flex-col">
                         <span>
                             <b>{{ comment.author.displayName }}</b>
@@ -54,17 +44,7 @@
                 <!-- Replies -->
                 @for (reply of comment.replies; track reply._id) {
                     <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
-                        <ngx-avatars
-                            class="tw-mr-4"
-                            [name]="
-                                reply.author.lastName +
-                                ', ' +
-                                reply.author.firstName
-                            "
-                            [src]="reply.author.avatar"
-                            [size]="32"
-                            [round]="true"
-                        ></ngx-avatars>
+                        <hr-avatar class="tw-mr-4" [data]="reply.author" [size]="32"></hr-avatar>
                         <div class="tw-mt-0.5 tw-flex tw-flex-col">
                             <span>
                                 <b>{{ reply.author.displayName }}</b>

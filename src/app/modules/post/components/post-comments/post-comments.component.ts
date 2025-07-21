@@ -2,19 +2,13 @@ import { DatePipe, NgClass } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { CommentService } from 'app/modules/post/services/comment.service';
-import { AvatarModule } from 'ngx-avatars';
+import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
 import { CreateReplyComponent } from './components/create-reply/create-reply.component';
 
 @Component({
     selector: 'hr-comments',
-    imports: [
-        DatePipe,
-        NgClass,
-        AvatarModule,
-        CreateCommentComponent,
-        CreateReplyComponent,
-    ],
+    imports: [DatePipe, NgClass, CreateCommentComponent, AvatarComponent, CreateReplyComponent,],
     templateUrl: './post-comments.component.html',
 })
 export class PostCommentsComponent {
