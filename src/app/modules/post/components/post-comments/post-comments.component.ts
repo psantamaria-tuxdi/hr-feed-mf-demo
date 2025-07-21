@@ -5,13 +5,15 @@ import { CommentService } from 'app/modules/post/services/comment.service';
 import { TimeAgoPipe } from 'app/modules/shared/pipes/time-ago.pipe';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
+import { CreateReplyComponent } from '../create-reply/create-reply.component';
 
 @Component({
     selector: 'hr-comments',
-    imports: [TimeAgoPipe, NgClass, CreateCommentComponent, AvatarComponent],
+    imports: [TimeAgoPipe, NgClass, CreateCommentComponent, AvatarComponent, CreateReplyComponent],
     templateUrl: './post-comments.component.html',
 })
 export class PostCommentsComponent {
+    replyId: string;
     postId = input.required<string>();
     commentsChange = output<void>();
 
@@ -29,5 +31,17 @@ export class PostCommentsComponent {
             this.resource.reload();
             this.commentsChange.emit();
         }
+    }
+
+    onCreatedReply(isCreated: boolean) {
+        if (isCreated) {
+            this.onReply(null);
+            this.resource.reload();
+            this.commentsChange.emit();
+        }
+    }
+
+    onReply(commentId: string) {
+        this.replyId = commentId;
     }
 }
