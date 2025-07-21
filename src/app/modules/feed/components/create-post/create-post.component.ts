@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuseCardComponent } from '@fuse/components/card';
 import { CreatePostDto } from '../../../shared/types/post.types';
 import { UserService } from 'app/core/user/user.service';
-import { AvatarModule } from 'ngx-avatars';
+import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { finalize } from 'rxjs';
 import { FeedService } from '../../services/feed.service';
 
@@ -33,7 +33,7 @@ import { FeedService } from '../../services/feed.service';
         MatFormFieldModule,
         MatInputModule,
         TextFieldModule,
-        AvatarModule,
+        AvatarComponent,
         MatSlideToggleModule,
         MatProgressBarModule,
         ReactiveFormsModule,
@@ -54,14 +54,14 @@ export class CreatePostComponent {
     imagePreviewUrls: string[] = [];
 
     // TODO: move to constants file
-    readonly maxAllowedImages = 10;
+    readonly maxAllowedImages = 3;
     readonly maxCharacters = 2000;
 
     constructor() {
         this.postForm = this.formBuilder.group({
             text: [
                 '',
-                [Validators.required, Validators.maxLength(this.maxCharacters)],
+                [Validators.maxLength(this.maxCharacters)],
             ],
             allowComments: [true],
         });
@@ -72,7 +72,7 @@ export class CreatePostComponent {
     }
 
     get canSubmit(): boolean {
-        return this.postForm.valid && !this.isLoading();
+        return this.postForm.valid && this.text?.value && !this.isLoading();
     }
 
     onFileSelected(event: Event): void {
@@ -127,11 +127,11 @@ export class CreatePostComponent {
                     finalize(() => {
                         this.isLoading.set(false);
                         this.postForm.enable();
-                        this.resetForm();
                     })
                 )
                 .subscribe({
                     next: () => {
+                        this.resetForm();
                         this.showSnackBar('Se compartió tu publicación!');
                         this.feedService.load();
                     },
@@ -148,7 +148,6 @@ export class CreatePostComponent {
             text: '',
             allowComments: true,
         });
-        this.text?.setErrors(null);
 
         this.selectedImages = [];
         this.imagePreviewUrls = [];

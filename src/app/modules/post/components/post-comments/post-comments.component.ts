@@ -3,12 +3,12 @@ import { Component, inject, input } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { CommentService } from 'app/modules/post/services/comment.service';
 import { TimeAgoPipe } from 'app/modules/shared/pipes/time-ago.pipe';
-import { AvatarModule } from 'ngx-avatars';
+import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
 
 @Component({
     selector: 'hr-comments',
-    imports: [TimeAgoPipe, NgClass, AvatarModule, CreateCommentComponent],
+    imports: [TimeAgoPipe, NgClass, CreateCommentComponent, AvatarComponent],
     templateUrl: './post-comments.component.html',
 })
 export class PostCommentsComponent {

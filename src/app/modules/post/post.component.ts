@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikeService } from 'app/modules/post/services/like.service';
 import { UserService } from 'app/core/user/user.service';
-import { AvatarModule } from 'ngx-avatars';
+import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { finalize } from 'rxjs';
 import { FuseCardComponent } from '../../../@fuse/components/card';
 import { Post } from '../shared/types/post.types';
@@ -27,7 +27,7 @@ import { PostCommentsComponent } from './components/post-comments/post-comments.
         TimeAgoPipe,
         NgClass,
         PostCommentsComponent,
-        AvatarModule,
+        AvatarComponent,
         LikesCountPipe,
         NgComponentOutlet,
     ],

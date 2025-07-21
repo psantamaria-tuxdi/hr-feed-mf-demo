@@ -4,13 +4,7 @@
 >
     <!-- Header -->
     <div class="tw-mx-6 tw-mb-1 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
-        <ngx-avatars
-            class="tw-mr-4"
-            [name]="post().author.lastName + ', ' + post().author.firstName"
-            [src]="post().author.avatar"
-            [size]="40"
-            [round]="true"
-        ></ngx-avatars>
+        <hr-avatar class="tw-mr-4" [data]="post().author" [size]="40"></hr-avatar>
         <div class="tw-flex tw-flex-col">
             <span class="tw-font-semibold tw-leading-none">{{
                 post().author.displayName
@@ -118,16 +112,15 @@
 
         <div class="tw-flex tw-items-center">
             @for (user of likes().topLikers; track user._id) {
-                <ngx-avatars
+                <hr-avatar
                     [ngClass]="{
                         'tw--ml-3': !$first,
                     }"
-                    class="tw-text-card tw-m-0.5 tw-ring-2 tw-ring-white"
-                    [name]="user.lastName + ', ' + user.firstName"
-                    [src]="user.avatar"
+                    class="tw-m-0.5"
+                    [data]="user"
                     [size]="24"
-                    [round]="true"
-                ></ngx-avatars>
+                    [ring]="true"
+                ></hr-avatar>
             }
             @if (likes().count > 0) {
                 <div class="tw-ml-3 tw-text-md tw-tracking-tight">
