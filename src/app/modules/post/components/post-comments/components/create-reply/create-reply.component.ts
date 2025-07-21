@@ -1,6 +1,12 @@
 import { Component, inject, input, output } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -51,13 +57,10 @@ export class CreateReplyComponent {
             this.commentForm.disable();
             const replyDto: CreateCommentDto = {
                 content: this.commentForm.value.content,
-                parentCommentId: this.commentId()
-            }
+                parentCommentId: this.commentId(),
+            };
             this.commentService
-                .create(
-                    this.postId(),
-                    replyDto
-                )
+                .create(this.postId(), replyDto)
                 .pipe(
                     finalize(() => {
                         this.commentForm.enable();
