@@ -4,13 +4,11 @@
     class="tw-mx-4 tw-mb-3 tw-mt-6 tw-flex tw-flex-col sm:tw-mx-8"
 >
     <div class="tw-flex tw-items-start">
-        <ngx-avatars
+        <hr-avatar
             class="tw-mr-4 tw-mt-2"
-            [name]="user()?.lastName + ', ' + user()?.firstName"
-            [src]="user()?.avatar"
+            [data]="user()"
             [size]="32"
-            [round]="true"
-        ></ngx-avatars>
+        ></hr-avatar>
         <mat-form-field class="tw-w-full" [subscriptSizing]="'dynamic'">
             <textarea
                 matInput

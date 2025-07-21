@@ -4,15 +4,14 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { CommentService } from 'app/modules/post/services/comment.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
-import { CreateReplyComponent } from './components/create-reply/create-reply.component';
+import { CreateReplyComponent } from '../create-reply/create-reply.component';
 
 @Component({
     selector: 'hr-comments',
-    imports: [DatePipe, NgClass, CreateCommentComponent, AvatarComponent, CreateReplyComponent,],
+    imports: [DatePipe, NgClass, CreateCommentComponent, AvatarComponent, CreateReplyComponent],
     templateUrl: './post-comments.component.html',
 })
 export class PostCommentsComponent {
-    showReplyForm: boolean = false;
     replyId: string;
     postId = input.required<string>();
     private readonly commentService = inject(CommentService);

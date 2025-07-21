@@ -16,21 +16,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'app/core/user/user.service';
 import { CommentService } from 'app/modules/post/services/comment.service';
 import { CreateCommentDto } from 'app/modules/shared/types/comment.types';
-import { AvatarModule } from 'ngx-avatars';
 import { finalize } from 'rxjs';
+import { AvatarComponent } from "app/modules/shared/components/avatar/avatar.component";
 
 @Component({
     selector: 'hr-create-reply',
     imports: [
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatDividerModule,
-        AvatarModule,
-        MatFormField,
-        MatInputModule,
-        ReactiveFormsModule,
-    ],
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatFormField,
+    MatInputModule,
+    ReactiveFormsModule,
+    AvatarComponent
+],
     templateUrl: './create-reply.component.html',
 })
 export class CreateReplyComponent {
