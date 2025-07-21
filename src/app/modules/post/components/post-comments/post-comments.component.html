@@ -36,8 +36,7 @@
                                 >Eliminar</span
                             >
                             <span class="tw-mr-2">&bull;</span>
-                            <!-- TODO timeago pipe -->
-                            <span>{{ comment.createdAt | date }}</span>
+                            <span>{{ comment.createdAt | timeAgo }}</span>
                         </div>
                     </div>
                 </div>
@@ -63,8 +62,7 @@
                                     >Eliminar</span
                                 >
                                 <span class="tw-mr-2">&bull;</span>
-                                <!-- TODO timeago pipe -->
-                                <span>{{ reply.createdAt | date }}</span>
+                                <span>{{ reply.createdAt | timeAgo }}</span>
                             </div>
                         </div>
                     </div>

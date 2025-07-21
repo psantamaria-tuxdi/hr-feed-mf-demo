@@ -1,4 +1,4 @@
-import { DatePipe, NgClass, NgComponentOutlet } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import { Component, inject, input, linkedSignal, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,6 +11,7 @@ import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.com
 import { finalize } from 'rxjs';
 import { FuseCardComponent } from '../../../@fuse/components/card';
 import { Post } from '../shared/types/post.types';
+import { TimeAgoPipe } from '../shared/pipes/time-ago.pipe';
 import { Likes } from '../shared/types/like.types';
 import { getImageComponent } from './components/post-images/post-images.utils';
 import { LikesCountPipe } from './pipes/likes-count.pipe';
@@ -24,7 +25,7 @@ import { PostService } from './services/post.service';
         MatIconModule,
         MatButtonModule,
         MatMenuModule,
-        DatePipe,
+        TimeAgoPipe,
         NgClass,
         PostCommentsComponent,
         AvatarComponent,
