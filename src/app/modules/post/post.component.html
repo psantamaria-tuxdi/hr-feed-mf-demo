@@ -164,7 +164,7 @@
     <ng-container fuseCardExpansion>
         @if (expandableCard.expanded) {
             <hr class="tw-m-0 tw-border-b" />
-            <hr-comments [postId]="post()._id" />
+            <hr-comments [postId]="post()._id" (commentsChange)="refresh()" />
         }
     </ng-container>
 </fuse-card>

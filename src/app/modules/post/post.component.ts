@@ -16,6 +16,7 @@ import { Likes } from '../shared/types/like.types';
 import { getImageComponent } from './components/post-images/post-images.utils';
 import { LikesCountPipe } from './pipes/likes-count.pipe';
 import { PostCommentsComponent } from './components/post-comments/post-comments.component';
+import { PostService } from './services/post.service';
 
 @Component({
     selector: 'hr-post',
@@ -34,12 +35,13 @@ import { PostCommentsComponent } from './components/post-comments/post-comments.
     templateUrl: './post.component.html',
 })
 export class PostComponent {
+    private readonly postService = inject(PostService);
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
     user = toSignal(inject(UserService).user$);
 
-    post = input.required<Post>();
-
+    postInput = input.required<Post>({alias: 'post'});
+    post = linkedSignal<Post>(() => this.postInput());
     likes = linkedSignal<Likes>(() => this.post().engagement.likes);
 
     isRequesting = signal<boolean>(false);
@@ -93,5 +95,24 @@ export class PostComponent {
             }
         );
         this.toggleLikeState();
+    }
+
+    refresh(): void {
+        this.postService.get(this.post()._id)
+            .pipe(finalize(() => this.isRequesting.set(false)))
+            .subscribe({
+                next: (post) => {
+                    this.post.set(post);
+                },
+                error: () => {
+                    this.snackBar.open(
+                        'Error al actualizar la publicación',
+                        'Cerrar',
+                        {
+                            duration: 3000,
+                        }
+                    );
+                },
+            });
     }
 }
