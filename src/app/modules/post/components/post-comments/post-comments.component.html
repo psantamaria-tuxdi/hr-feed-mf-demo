@@ -1,7 +1,4 @@
-<hr-create-comment
-    [postId]="postId()"
-    (commentCreated)="onCreated($event)"
-/>
+<hr-create-comment [postId]="postId()" (commentCreated)="onCreated($event)" />
 
 <hr class="tw-mx-4 tw-my-0 tw-border-b sm:tw-mx-8" />
 
@@ -27,17 +24,18 @@
                                 class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                 >Me gusta</span
                             >
-                            <span
-                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                >Responder</span
-                            >
+                            <a (click)="onReply(comment._id)">
+                                <span
+                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                                    >Responder</span
+                                >
+                            </a>
                             <span
                                 class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                                 >Eliminar</span
                             >
                             <span class="tw-mr-2">&bull;</span>
-                            <!-- TODO timeago pipe -->
-                            <span>{{ comment.createdAt | date }}</span>
+                            <span>{{ comment.createdAt | timeAgo }}</span>
                         </div>
                     </div>
                 </div>
@@ -63,11 +61,19 @@
                                     >Eliminar</span
                                 >
                                 <span class="tw-mr-2">&bull;</span>
-                                <!-- TODO timeago pipe -->
-                                <span>{{ reply.createdAt | date }}</span>
+                                <span>{{ reply.createdAt | timeAgo }}</span>
                             </div>
                         </div>
                     </div>
+                }
+
+                @if ( replyId === comment._id ) {
+                    <hr-create-reply
+                        class="tw-ml-4"
+                        [postId]="postId()"
+                        [commentId]="comment._id"
+                        (commentCreated)="onCreatedReply($event)"
+                    />
                 }
             } @empty {
                 <!-- No comments -->

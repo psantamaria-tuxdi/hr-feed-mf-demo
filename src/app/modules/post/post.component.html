@@ -9,10 +9,9 @@
             <span class="tw-font-semibold tw-leading-none">{{
                 post().author.displayName
             }}</span>
-            <!-- TODO timeago pipe -->
             <span
                 class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
-                >{{ post().createdAt | date }}</span
+                >{{ post().createdAt | timeAgo }}</span
             >
         </div>
 
@@ -60,10 +59,14 @@
         @let images = post().content.images;
 
         @if (images && images.length > 0) {
-            <ng-container
-                [ngComponentOutlet]="getImageComponent(images.length)"
-                [ngComponentOutletInputs]="{ images }"
-            ></ng-container>
+            @defer(on viewport) {
+                <ng-container
+                    [ngComponentOutlet]="getImageComponent(images.length)"
+                    [ngComponentOutletInputs]="{ images }"
+                ></ng-container>
+            } @placeholder {
+                <div class="tw-mt-4 tw-h-80 tw-w-full tw-bg-gray-200 tw-rounded"></div>
+            }
         }
     </div>
 
@@ -165,7 +168,7 @@
     <ng-container fuseCardExpansion>
         @if (expandableCard.expanded) {
             <hr class="tw-m-0 tw-border-b" />
-            <hr-comments [postId]="post()._id" />
+            <hr-comments [postId]="post()._id" (commentsChange)="refresh()" />
         }
     </ng-container>
 </fuse-card>
