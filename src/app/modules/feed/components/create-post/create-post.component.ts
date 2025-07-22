@@ -1,6 +1,6 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnDestroy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
     FormBuilder,
@@ -17,11 +17,13 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuseCardComponent } from '@fuse/components/card';
-import { CreatePostDto } from '../../../shared/types/post.types';
+import { CreatePostDto, LinkPreview } from '../../../shared/types/post.types';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
-import { finalize } from 'rxjs';
+import { finalize, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs';
 import { FeedService } from '../../services/feed.service';
+import { LinkPreviewService } from '../../../post/services/link-preview.service';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'hr-create-post',
@@ -41,10 +43,12 @@ import { FeedService } from '../../services/feed.service';
     ],
     templateUrl: './create-post.component.html',
 })
-export class CreatePostComponent {
+export class CreatePostComponent implements OnDestroy {
     private formBuilder = inject(FormBuilder);
     private snackBar = inject(MatSnackBar);
     private feedService = inject(FeedService);
+    private linkPreviewService = inject(LinkPreviewService);
+    private destroy$ = new Subject<void>();
 
     user = toSignal(inject(UserService).user$);
 
@@ -52,6 +56,10 @@ export class CreatePostComponent {
     selectedImages: File[] = [];
     isLoading = signal(false);
     imagePreviewUrls: string[] = [];
+    
+    linkPreview: LinkPreview | null = null;
+    isLoadingPreview = signal(false);
+    private urlRegex = /(https?:\/\/[^\s]+)/;
 
     // TODO: move to constants file
     readonly maxAllowedImages = 3;
@@ -65,6 +73,19 @@ export class CreatePostComponent {
             ],
             allowComments: [true],
         });
+
+        this.text?.valueChanges.pipe(
+            debounceTime(1000),
+            distinctUntilChanged(),
+            takeUntil(this.destroy$)
+        ).subscribe((text: string) => {
+            this.handleTextChange(text);
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 
     get text() {
@@ -143,6 +164,39 @@ export class CreatePostComponent {
         }
     }
 
+    removeLinkPreview(): void {
+        this.linkPreview = null;
+    }
+
+    private handleTextChange(text: string): void {
+        if (!text || !this.urlRegex.test(text)) {
+            this.removeLinkPreview();
+            this.isLoadingPreview.set(false);
+            return;
+        }
+
+        const url = text.match(this.urlRegex)?.[0];
+        if (url && (!this.linkPreview || this.linkPreview.url !== url)) {
+            this.loadLinkPreview(url);
+        }
+    }
+
+    private loadLinkPreview(url: string): void {
+        this.isLoadingPreview.set(true);
+        this.linkPreviewService.getPreview(url).pipe(
+            takeUntil(this.destroy$)
+        ).subscribe({
+            next: (data) => {
+                this.linkPreview = data;
+                this.isLoadingPreview.set(false);
+            },
+            error: () => {
+                this.removeLinkPreview();
+                this.isLoadingPreview.set(false);
+            }
+        });
+    }
+
     private resetForm(): void {
         this.postForm.reset({
             text: '',
@@ -151,6 +205,7 @@ export class CreatePostComponent {
 
         this.selectedImages = [];
         this.imagePreviewUrls = [];
+        this.removeLinkPreview();
     }
 
     // TODO: migrate to a snackbar service
