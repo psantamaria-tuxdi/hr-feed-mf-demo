@@ -20,6 +20,7 @@
             <!-- Infinite Scroll -->
             <div
                 infiniteScroll
+                [infiniteScrollContainer]="scrollContainerElement"
                 [infiniteScrollDistance]="2"
                 [infiniteScrollThrottle]="500"
                 [infiniteScrollDisabled]="isLoading() || !hasMore()"

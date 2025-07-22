@@ -4,6 +4,7 @@ import { CreatePostComponent } from '../../components/create-post/create-post.co
 import { PostComponent } from '../../../post/post.component';
 import { FeedService } from '../../services/feed.service';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'hr-feed-page',
@@ -15,6 +16,12 @@ export class FeedPage implements OnInit {
     posts = this.feedService.feed;
     isLoading = this.feedService.isLoading;
     hasMore = this.feedService.hasMore;
+
+    /**
+     * Determines the scroll container for infinite scrolling.
+     * The scroll container varies according to the environment.
+     */
+    scrollContainerElement = environment.name === 'humanage' ? document.querySelector('mf-hr-root') : document;
 
     ngOnInit() {
         this.feedService.load();
@@ -28,4 +35,5 @@ export class FeedPage implements OnInit {
      * Constructor
      */
     constructor() {}
+}
 }
