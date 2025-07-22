@@ -7,15 +7,25 @@
         <div class="tw--mt-8 tw-flex tw-max-w-140 tw-grow tw-flex-col">
             <!-- Create Post -->
             <hr-create-post />
-            @if (isLoading()) {
-            <!-- skeleton -->
-            @for (_ of [1, 2]; track $index) {
-            <hr-post-skeleton />
-            }} @else {
             <!-- Posts -->
-            @for(post of posts(); track post._id) {
-            <hr-post [post]="post" />
-            } }
+            @for (post of posts(); track post._id) {
+                <hr-post [post]="post" />
+            }
+            @if (isLoading()) {
+                <!-- skeleton -->
+                @for (_ of [1, 2]; track $index) {
+                    <hr-post-skeleton />
+                }
+            }
+            <!-- Infinite Scroll -->
+            <div
+                infiniteScroll
+                [infiniteScrollContainer]="scrollContainerElement"
+                [infiniteScrollDistance]="2"
+                [infiniteScrollThrottle]="500"
+                [infiniteScrollDisabled]="isLoading() || !hasMore()"
+                (scrolled)="fetchMore()"
+            ></div>
         </div>
     </div>
 </div>
