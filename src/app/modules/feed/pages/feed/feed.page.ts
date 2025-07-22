@@ -36,4 +36,3 @@ export class FeedPage implements OnInit {
      */
     constructor() {}
 }
-}
