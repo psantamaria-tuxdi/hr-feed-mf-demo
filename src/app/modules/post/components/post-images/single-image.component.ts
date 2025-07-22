@@ -5,14 +5,12 @@ import { getImageSrc } from './post-images.utils';
     standalone: true,
     template: `
         <div class="tw-mt-4">
-            <div class="tw-relative tw-mb-4">
-                <img
-                    class="tw-w-full tw-rounded-lg tw-object-cover"
-                    [src]="getImageSrc(images()[0])"
-                    [alt]="'Imagen del post'"
-                    loading="lazy"
-                />
-            </div>
+            <img
+                class="tw-w-full tw-h-80 tw-rounded-lg tw-object-cover"
+                [src]="getImageSrc(images()[0])"
+                [alt]="'Imagen del post'"
+                loading="lazy"
+            />
         </div>
     `,
 })
