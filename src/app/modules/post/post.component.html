@@ -114,7 +114,7 @@
     >
         <!-- Likes -->
 
-        <div class="tw-flex tw-items-center">
+        <a class="tw-flex tw-items-center tw-cursor-pointer" (click)="openLikedList()">
             @for (user of likes().topLikers; track user._id) {
                 <hr-avatar
                     [ngClass]="{
@@ -127,11 +127,11 @@
                 ></hr-avatar>
             }
             @if (likes().count > 0) {
-                <div class="tw-ml-3 tw-text-md tw-tracking-tight">
+                <div class="tw-ml-3 tw-text-md tw-tracking-tight hover:tw-underline">
                     {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
                 </div>
             }
-        </div>
+        </a>
         <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
 
         <!-- Comments -->

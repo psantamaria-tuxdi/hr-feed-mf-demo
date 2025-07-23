@@ -10,3 +10,9 @@ export interface ToggleLikeResponse {
     success: boolean;
     action: 'liked' | 'unliked';
 }
+
+export interface LikeResponseDto {
+    _id: string;
+    createdAt: string;
+    author: Author;
+}
