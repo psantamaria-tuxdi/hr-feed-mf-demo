@@ -5,13 +5,13 @@ import { MatIcon } from '@angular/material/icon';
 import { LikeService } from 'app/modules/post/services/like.service';
 import { AvatarModule } from 'ngx-avatars';
 import { AvatarComponent } from '../avatar/avatar.component';
-import { LieListSkeletonComponent } from './like-list-skeleton.component';
+import { LikeSkeletonComponent } from '../like-skeleton.component';
 
 @Component({
     selector: 'hr-like-list',
     templateUrl: './like-list.component.html',
     standalone: true,
-    imports: [AvatarModule, MatIcon, AvatarComponent, LieListSkeletonComponent],
+    imports: [AvatarModule, MatIcon, AvatarComponent, LikeSkeletonComponent],
 })
 export class LikeListComponent {
     private readonly likeService = inject(LikeService);

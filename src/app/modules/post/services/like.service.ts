@@ -15,7 +15,7 @@ export class LikeService {
     }
 
     getAllByPost(postId: string) {
-        return this.http.get<LikeResponseDto[]>(this.getUrl(postId) + 'likes', {});
+        return this.http.get<LikeResponseDto[]>(this.getUrl(postId) + 'likes');
     }
 
     private getUrl(postId: string): string {

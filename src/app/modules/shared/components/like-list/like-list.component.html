@@ -1,15 +1,12 @@
-<div class="tw-flex tw-w-full tw-justify-between tw-mb-4">
+<div class="tw-mb-4 tw-flex tw-w-full tw-justify-between">
     <span class="tw-text-2xl tw-font-bold">Me gustas</span>
     <button class="tw-flex tw-items-center" (click)="onClose()">
-        <mat-icon
-            class="tw-icon-size-6"
-            [svgIcon]="'mat_solid:close'"
-        ></mat-icon>
+        <mat-icon class="!tw-icon-size-6" [svgIcon]="'feather:x'"></mat-icon>
     </button>
 </div>
 
 @if (isLoading()) {
-    <hr-like-list-skeleton />
+    <hr-like-skeleton />
 } @else {
     <div class="tw-overflow-y-auto">
         @for (like of likeList(); track $index) {
