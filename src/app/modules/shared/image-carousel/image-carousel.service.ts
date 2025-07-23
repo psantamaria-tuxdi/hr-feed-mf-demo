@@ -15,7 +15,7 @@ export class ImageCarouselService {
         images: images,
         startIndex: index,
       },
-      panelClass: ['mf-tw-container'],
+      panelClass: ['mf-tw-container', 'mf-hr-transparent-dialog'],
       autoFocus: false,
       hasBackdrop: true,
       enterAnimationDuration: '0ms',

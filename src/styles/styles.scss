@@ -28,3 +28,11 @@ mf-hr-root {
         color: rgba(var(--fuse-mat-icon-rgb), var(--tw-text-opacity));
     }
 }
+
+/* Transparent MatDialog for image carousel */
+.mf-hr-transparent-dialog {
+    .mat-mdc-dialog-surface {
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+}
