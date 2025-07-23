@@ -17,32 +17,36 @@ import { getImageComponent } from './components/post-images/post-images.utils';
 import { LikesCountPipe } from './pipes/likes-count.pipe';
 import { PostCommentsComponent } from './components/post-comments/post-comments.component';
 import { PostService } from './services/post.service';
+import { LikeListComponent } from '../shared/components/like-list/like-list.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'hr-post',
     imports: [
-        FuseCardComponent,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        TimeAgoPipe,
-        NgClass,
-        PostCommentsComponent,
-        AvatarComponent,
-        LikesCountPipe,
-        NgComponentOutlet,
-    ],
+    FuseCardComponent,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    TimeAgoPipe,
+    NgClass,
+    PostCommentsComponent,
+    AvatarComponent,
+    LikesCountPipe,
+    NgComponentOutlet,
+],
     templateUrl: './post.component.html',
 })
 export class PostComponent {
     private readonly postService = inject(PostService);
     private readonly likeService = inject(LikeService);
     private readonly snackBar = inject(MatSnackBar);
+    readonly dialog = inject(MatDialog);
     user = toSignal(inject(UserService).user$);
 
     postInput = input.required<Post>({alias: 'post'});
     post = linkedSignal<Post>(() => this.postInput());
     likes = linkedSignal<Likes>(() => this.post().engagement.likes);
+    onLikedList: boolean = false;
 
     isRequesting = signal<boolean>(false);
 
@@ -73,6 +77,15 @@ export class PostComponent {
 
     getImageComponent(imageCount: number) {
         return getImageComponent(imageCount);
+    }
+
+    openLikedList(){
+        this.dialog.open(LikeListComponent, {
+            data: this.post()._id,
+            width: '580px',
+            panelClass: 'mf-tw-container',
+            maxHeight: '550px'
+        });
     }
 
     private toggleLikeState() {

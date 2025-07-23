@@ -1,0 +1,45 @@
+<div class="tw-flex tw-w-full tw-justify-between tw-mb-4">
+    <span class="tw-text-2xl tw-font-bold">Me gustas</span>
+    <button class="tw-flex tw-items-center" (click)="onClose()">
+        <mat-icon
+            class="tw-icon-size-6"
+            [svgIcon]="'mat_solid:close'"
+        ></mat-icon>
+    </button>
+</div>
+
+@if (isLoading()) {
+    <hr-like-list-skeleton />
+} @else {
+    <div class="tw-overflow-y-auto">
+        @for (like of likeList(); track $index) {
+            <div class="tw-mx-2 tw-my-4 tw-flex tw-items-center">
+                <hr-avatar
+                    class="tw-mr-4"
+                    [data]="like.author"
+                    [size]="36"
+                ></hr-avatar>
+                <div>
+                    <div>
+                        <span>
+                            {{ like.author.displayName }}
+                        </span>
+                    </div>
+                    <div>
+                        @for (item of like.author.roles; track $index) {
+                            <span class="tw-text-stone-500">
+                                {{ like.author.roles }}
+                            </span>
+
+                            @if (!$last) {
+                                <span>, </span>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <hr class="tw-my-2 tw-mr-2 tw-border-b" />
+        }
+    </div>
+}
