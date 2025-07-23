@@ -1,0 +1,34 @@
+<div
+  class="tw-fixed tw-inset-0 tw-z-50 tw-flex tw-h-full tw-w-full tw-justify-center tw-bg-black/80"
+>
+  <!-- Close button -->
+  <button
+    class="tw-absolute tw-right-4 tw-top-4 tw-z-50 tw-flex tw-rounded-full tw-bg-black/50 tw-p-2"
+    (click)="close()"
+  >
+    <mat-icon
+      [svgIcon]="'feather:x'"
+      class="tw-text-white !tw-icon-size-6"
+    ></mat-icon>
+  </button>
+
+  <!-- Carousel -->
+  <swiper-container
+    #swiperRef
+    slides-per-view="1"
+    navigation="true"
+    pagination="true"
+    pagination-clickable="true"
+    keyboard="true"
+    mousewheel="true"
+    class="tw-h-full tw-w-full"
+  >
+    <swiper-slide *ngFor="let image of images()">
+      <img
+        [src]="getImageSrc(image)"
+        class="tw-h-full tw-w-full tw-rounded-lg tw-object-scale-down"
+        alt="Imagen del post"
+      />
+    </swiper-slide>
+  </swiper-container>
+</div>
