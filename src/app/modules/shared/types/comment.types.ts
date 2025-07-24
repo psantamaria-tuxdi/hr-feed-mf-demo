@@ -1,24 +1,24 @@
 import { Author } from './author.types';
 
 export interface Comments {
-    count: number;
+  count: number;
 }
 
 export interface Comment {
-    _id: string;
-    author: Author;
-    content: string;
-    isLikedByCurrentUser: boolean;
-    replies: Reply[];
-    createdAt: string;
-    likes: number;
+  _id: string;
+  author: Author;
+  content: string;
+  isLikedByCurrentUser: boolean;
+  replies: Reply[];
+  createdAt: string;
+  likes: number;
 }
 
 export interface Reply extends Omit<Comment, 'replies'> {
-    parentCommentId: string;
+  parentCommentId: string;
 }
 
 export interface CreateCommentDto {
-    content: string;
-    parentCommentId?: string;
+  content: string;
+  parentCommentId?: string;
 }

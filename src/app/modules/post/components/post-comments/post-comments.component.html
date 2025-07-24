@@ -3,96 +3,96 @@
 <hr class="tw-mx-4 tw-my-0 tw-border-b sm:tw-mx-8" />
 
 <div class="tw-max-h-120 tw-overflow-y-auto">
-    <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
-        @if (comments()) {
-            @for (comment of comments(); track comment._id) {
-                <!-- Comment -->
-                <div
-                    [ngClass]="{ 'tw-mt-8': !$first }"
-                    class="tw-flex tw-items-start"
+  <div class="tw-relative tw-mx-4 tw-my-6 tw-flex tw-flex-col sm:tw-mx-8">
+    @if (comments()) {
+      @for (comment of comments(); track comment._id) {
+        <!-- Comment -->
+        <div [ngClass]="{ 'tw-mt-8': !$first }" class="tw-flex tw-items-start">
+          <hr-avatar
+            class="tw-mr-4"
+            [data]="comment.author"
+            [size]="32"
+          ></hr-avatar>
+          <div class="tw-mt-0.5 tw-flex tw-flex-col">
+            <span>
+              <b>{{ comment.author.displayName }}</b>
+              {{ comment.content }}
+            </span>
+            <div
+              class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
+            >
+              <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                >Me gusta</span
+              >
+              <a (click)="onReply(comment._id)">
+                <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                  >Responder</span
                 >
-                    <hr-avatar class="tw-mr-4" [data]="comment.author" [size]="32"></hr-avatar>
-                    <div class="tw-mt-0.5 tw-flex tw-flex-col">
-                        <span>
-                            <b>{{ comment.author.displayName }}</b>
-                            {{ comment.content }}
-                        </span>
-                        <div
-                            class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
-                        >
-                            <span
-                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                >Me gusta</span
-                            >
-                            <a (click)="onReply(comment._id)">
-                                <span
-                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                    >Responder</span
-                                >
-                            </a>
-                            <span
-                                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                >Eliminar</span
-                            >
-                            <span class="tw-mr-2">&bull;</span>
-                            <span>{{ comment.createdAt | timeAgo }}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Replies -->
-                @for (reply of comment.replies; track reply._id) {
-                    <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
-                        <hr-avatar class="tw-mr-4" [data]="reply.author" [size]="32"></hr-avatar>
-                        <div class="tw-mt-0.5 tw-flex tw-flex-col">
-                            <span>
-                                <b>{{ reply.author.displayName }}</b>
-                                {{ reply.content }}
-                            </span>
-                            <div
-                                class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
-                            >
-                                <span
-                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                    >Me gusta</span
-                                >
-                                <span
-                                    class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                                    >Eliminar</span
-                                >
-                                <span class="tw-mr-2">&bull;</span>
-                                <span>{{ reply.createdAt | timeAgo }}</span>
-                            </div>
-                        </div>
-                    </div>
-                }
-
-                @if ( replyId === comment._id ) {
-                    <hr-create-reply
-                        class="tw-ml-4"
-                        [postId]="postId()"
-                        [commentId]="comment._id"
-                        (commentCreated)="onCreatedReply($event)"
-                    />
-                }
-            } @empty {
-                <!-- No comments -->
-                <div class="tw-text-secondary tw-text-center">
-                    <p>No hay comentarios para esta publicación.</p>
-                    <p>¡Sé el primero en comentar!</p>
-                </div>
-            }
-        } @else if (isLoading()) {
-            <!-- TODO: add skeletons based on the number of comments -->
-            <div class="tw-text-secondary tw-text-center">
-                <p>Cargando comentarios...</p>
-                <p>Por favor, espera un momento.</p>
+              </a>
+              <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                >Eliminar</span
+              >
+              <span class="tw-mr-2">&bull;</span>
+              <span>{{ comment.createdAt | timeAgo }}</span>
             </div>
-        } @else {
-            <div class="tw-text-secondary tw-text-center">
-                <p>Ocurrió un error al cargar los comentarios.</p>
-                <p>Por favor, intenta recargar la página.</p>
+          </div>
+        </div>
+
+        <!-- Replies -->
+        @for (reply of comment.replies; track reply._id) {
+          <div class="tw-ml-12 tw-mt-8 tw-flex tw-items-start">
+            <hr-avatar
+              class="tw-mr-4"
+              [data]="reply.author"
+              [size]="32"
+            ></hr-avatar>
+            <div class="tw-mt-0.5 tw-flex tw-flex-col">
+              <span>
+                <b>{{ reply.author.displayName }}</b>
+                {{ reply.content }}
+              </span>
+              <div
+                class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
+              >
+                <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                  >Me gusta</span
+                >
+                <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                  >Eliminar</span
+                >
+                <span class="tw-mr-2">&bull;</span>
+                <span>{{ reply.createdAt | timeAgo }}</span>
+              </div>
             </div>
+          </div>
         }
-    </div>
+
+        @if (replyId === comment._id) {
+          <hr-create-reply
+            class="tw-ml-4"
+            [postId]="postId()"
+            [commentId]="comment._id"
+            (commentCreated)="onCreatedReply($event)"
+          />
+        }
+      } @empty {
+        <!-- No comments -->
+        <div class="tw-text-secondary tw-text-center">
+          <p>No hay comentarios para esta publicación.</p>
+          <p>¡Sé el primero en comentar!</p>
+        </div>
+      }
+    } @else if (isLoading()) {
+      <!-- TODO: add skeletons based on the number of comments -->
+      <div class="tw-text-secondary tw-text-center">
+        <p>Cargando comentarios...</p>
+        <p>Por favor, espera un momento.</p>
+      </div>
+    } @else {
+      <div class="tw-text-secondary tw-text-center">
+        <p>Ocurrió un error al cargar los comentarios.</p>
+        <p>Por favor, intenta recargar la página.</p>
+      </div>
+    }
+  </div>
 </div>

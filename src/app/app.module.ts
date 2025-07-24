@@ -3,15 +3,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import {
-  ApplicationRef,
-  DoBootstrap,
-  inject,
-  Injector,
-  isDevMode,
-  NgModule,
-  provideAppInitializer,
-} from '@angular/core';
+import { ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -23,15 +15,12 @@ import {
   RouterOutlet,
   withInMemoryScrolling,
 } from '@angular/router';
-import { provideTransloco, TranslocoService } from '@jsverse/transloco';
-import { firstValueFrom } from 'rxjs';
 import { provideFuse } from '../@fuse';
-import { appRoutes } from './app.routes';
-import { provideIcons } from './core/icons/icons.provider';
-import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
 import { AppComponent } from './app.component';
-import { MockApiService } from './mock-api';
+import { appRoutes } from './app.routes';
 import { provideAuth } from './core/auth/auth.provider';
+import { provideIcons } from './core/icons/icons.provider';
+import { MockApiService } from './mock-api';
 
 @NgModule({
   declarations: [AppComponent],
@@ -98,8 +87,8 @@ import { provideAuth } from './core/auth/auth.provider';
     provideIcons(),
     provideFuse({
       mockApi: {
-          delay: 0,
-          service: MockApiService,
+        delay: 0,
+        service: MockApiService,
       },
       fuse: {
         layout: 'empty',

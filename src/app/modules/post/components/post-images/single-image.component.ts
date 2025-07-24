@@ -3,29 +3,29 @@ import { ImageCarouselService } from '../../../shared/image-carousel/image-carou
 import { getImageSrc } from './post-images.utils';
 
 @Component({
-    standalone: true,
-    template: `
-        <div class="tw-mt-4">
-            <img
-                class="tw-cursor-pointer tw-w-full tw-h-80 tw-rounded-lg tw-object-cover"
-                [src]="getImageSrc(images()[0])"
-                [alt]="'Imagen del post'"
-                loading="lazy"
-                (click)="openCarousel(0)"
-            />
-        </div>
-    `,
+  standalone: true,
+  template: `
+    <div class="tw-mt-4">
+      <img
+        class="tw-h-80 tw-w-full tw-cursor-pointer tw-rounded-lg tw-object-cover"
+        [src]="getImageSrc(images()[0])"
+        [alt]="'Imagen del post'"
+        loading="lazy"
+        (click)="openCarousel(0)"
+      />
+    </div>
+  `,
 })
 export class SingleImageComponent {
-    images = input.required<string[]>();
+  images = input.required<string[]>();
 
-    private readonly imageCarouselService = inject(ImageCarouselService);
+  private readonly imageCarouselService = inject(ImageCarouselService);
 
-    getImageSrc(image: string): string {
-        return getImageSrc(image);
-    }
+  getImageSrc(image: string): string {
+    return getImageSrc(image);
+  }
 
-    openCarousel(index: number) {
-        this.imageCarouselService.open(this.images(), index);
-    }
+  openCarousel(index: number) {
+    this.imageCarouselService.open(this.images(), index);
+  }
 }

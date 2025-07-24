@@ -3,73 +3,75 @@
 
 <!-- Navigation -->
 @if (isScreenSmall) {
-    <fuse-vertical-navigation
-        class="tw-dark tw-bg-gray-900 print:tw-hidden"
-        [mode]="'over'"
-        [name]="'mainNavigation'"
-        [navigation]="navigation.default"
-        [opened]="false"
-    >
-        <!-- Navigation header hook -->
-        <ng-container fuseVerticalNavigationContentHeader>
-            <!-- Logo -->
-            <div class="tw-flex tw-h-20 tw-items-center tw-px-8 tw-pt-6">
-                <img
-                    class="tw-w-24"
-                    [src]="`${baseUrl}/images/logo/logo-text-on-dark.svg`"
-                    alt="Logo image"
-                />
-            </div>
-        </ng-container>
-    </fuse-vertical-navigation>
+  <fuse-vertical-navigation
+    class="tw-dark tw-bg-gray-900 print:tw-hidden"
+    [mode]="'over'"
+    [name]="'mainNavigation'"
+    [navigation]="navigation.default"
+    [opened]="false"
+  >
+    <!-- Navigation header hook -->
+    <ng-container fuseVerticalNavigationContentHeader>
+      <!-- Logo -->
+      <div class="tw-flex tw-h-20 tw-items-center tw-px-8 tw-pt-6">
+        <img
+          class="tw-w-24"
+          [src]="`${baseUrl}/images/logo/logo-text-on-dark.svg`"
+          alt="Logo image"
+        />
+      </div>
+    </ng-container>
+  </fuse-vertical-navigation>
 }
 
 <!-- Wrapper -->
 <div class="tw-flex tw-w-full tw-min-w-0 tw-flex-auto tw-flex-col">
-    <!-- Header -->
+  <!-- Header -->
+  <div
+    class="tw-lex tw-bg-card tw-relative tw-z-49 tw-h-16 tw-w-full tw-flex-0 tw-items-center tw-px-4 tw-shadow sm:tw-h-20 md:tw-px-6 dark:tw-border-b dark:tw-bg-transparent dark:tw-shadow-none print:tw-hidden"
+  >
+    @if (!isScreenSmall) {
+      <!-- Logo -->
+      <div class="tw-mx-2 tw-flex tw-items-center lg:tw-mr-8">
+        <div class="tw-hidden lg:tw-flex">
+          <img
+            class="tw-w-24 dark:tw-hidden"
+            [src]="`${baseUrl}/images/logo/logo-text.svg`"
+          />
+          <img
+            class="tw-hidden tw-w-24 dark:tw-flex"
+            [src]="`${baseUrl}/images/logo/logo-text-on-dark.svg`"
+          />
+        </div>
+        <img
+          class="tw-flex tw-w-8 lg:tw-hidden"
+          [src]="`${baseUrl}/images/logo/logo.svg`"
+        />
+      </div>
+      <!-- Horizontal navigation -->
+      <fuse-horizontal-navigation
+        class="tw-mr-2"
+        [name]="'mainNavigation'"
+        [navigation]="navigation.horizontal"
+      ></fuse-horizontal-navigation>
+    }
+    <!-- Navigation toggle button -->
+    @if (isScreenSmall) {
+      <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
+        <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
+      </button>
+    }
+    <!-- Components -->
     <div
-        class="tw-bg-card tw-relative tw-z-49 tw-lex tw-h-16 tw-w-full tw-flex-0 tw-items-center tw-px-4 tw-shadow dark:tw-border-b dark:tw-bg-transparent dark:tw-shadow-none sm:tw-h-20 md:tw-px-6 print:tw-hidden"
+      class="tw-ml-auto tw-flex tw-items-center tw-space-x-0.5 tw-pl-2 sm:tw-space-x-2"
     >
-        @if (!isScreenSmall) {
-            <!-- Logo -->
-            <div class="tw-mx-2 tw-flex tw-items-center lg:tw-mr-8">
-                <div class="tw-hidden lg:tw-flex">
-                    <img
-                        class="tw-w-24 dark:tw-hidden"
-                        [src]="`${baseUrl}/images/logo/logo-text.svg`"
-                    />
-                    <img
-                        class="tw-hidden tw-w-24 dark:tw-flex"
-                        [src]="`${baseUrl}/images/logo/logo-text-on-dark.svg`"
-                    />
-                </div>
-                <img class="tw-flex tw-w-8 lg:tw-hidden" [src]="`${baseUrl}/images/logo/logo.svg`" />
-            </div>
-            <!-- Horizontal navigation -->
-            <fuse-horizontal-navigation
-                class="tw-mr-2"
-                [name]="'mainNavigation'"
-                [navigation]="navigation.horizontal"
-            ></fuse-horizontal-navigation>
-        }
-        <!-- Navigation toggle button -->
-        @if (isScreenSmall) {
-            <button
-                mat-icon-button
-                (click)="toggleNavigation('mainNavigation')"
-            >
-                <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
-            </button>
-        }
-        <!-- Components -->
-        <div class="tw-ml-auto tw-flex tw-items-center tw-space-x-0.5 tw-pl-2 sm:tw-space-x-2">
-            <!-- <languages></languages> -->
-            <!-- <fuse-fullscreen class="tw-hidden md:tw-block"></fuse-fullscreen> -->
-            <!-- <search [appearance]="'bar'"></search> -->
-            <!-- <shortcuts></shortcuts> -->
-            <!-- <messages></messages> -->
-            <!-- <notifications></notifications> -->
-            <!-- <button
+      <!-- <languages></languages> -->
+      <!-- <fuse-fullscreen class="tw-hidden md:tw-block"></fuse-fullscreen> -->
+      <!-- <search [appearance]="'bar'"></search> -->
+      <!-- <shortcuts></shortcuts> -->
+      <!-- <messages></messages> -->
+      <!-- <notifications></notifications> -->
+      <!-- <button
                 class="lg:tw-hidden"
                 mat-icon-button
                 (click)="quickChat.toggle()"
@@ -78,27 +80,27 @@
                     [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
                 ></mat-icon>
             </button> -->
-            <!-- <user></user> -->
-        </div>
+      <!-- <user></user> -->
     </div>
+  </div>
 
-    <!-- Content -->
-    <div class="tw-flex tw-w-full tw-flex-auto tw-flex-col">
-        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+  <!-- Content -->
+  <div class="tw-flex tw-w-full tw-flex-auto tw-flex-col">
+    <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
              Otherwise, layout changes won't be registered and the view won't be updated! -->
-        @if (true) {
-            <router-outlet></router-outlet>
-        }
-    </div>
+    @if (true) {
+      <router-outlet></router-outlet>
+    }
+  </div>
 
-    <!-- Footer -->
-    <div
-        class="tw-bg-card tw-relative tw-z-49 tw-flex tw-h-14 tw-w-full tw-flex-0 tw-items-center tw-border-t tw-px-4 dark:tw-bg-transparent sm:tw-h-20 md:tw-px-6 print:tw-hidden"
+  <!-- Footer -->
+  <div
+    class="tw-bg-card tw-relative tw-z-49 tw-flex tw-h-14 tw-w-full tw-flex-0 tw-items-center tw-border-t tw-px-4 sm:tw-h-20 md:tw-px-6 dark:tw-bg-transparent print:tw-hidden"
+  >
+    <span class="tw-text-secondary tw-font-medium"
+      >Fuse &copy; {{ currentYear }}</span
     >
-        <span class="tw-text-secondary tw-font-medium"
-            >Fuse &copy; {{ currentYear }}</span
-        >
-    </div>
+  </div>
 </div>
 
 <!-- Quick chat -->

@@ -1,31 +1,31 @@
 <div class="tw-flex tw-min-w-0 tw-flex-auto tw-flex-col">
-    <!-- Main -->
-    <div
-        class="tw-mx-auto tw-flex tw-w-full tw-max-w-5xl tw-flex-auto tw-justify-center tw-p-6 sm:tw-p-8"
-    >
-        <!-- Column -->
-        <div class="tw--mt-8 tw-flex tw-max-w-140 tw-grow tw-flex-col">
-            <!-- Create Post -->
-            <hr-create-post />
-            <!-- Posts -->
-            @for (post of posts(); track post._id) {
-                <hr-post [post]="post" />
-            }
-            @if (isLoading()) {
-                <!-- skeleton -->
-                @for (_ of [1, 2]; track $index) {
-                    <hr-post-skeleton />
-                }
-            }
-            <!-- Infinite Scroll -->
-            <div
-                infiniteScroll
-                [infiniteScrollContainer]="scrollContainerElement"
-                [infiniteScrollDistance]="2"
-                [infiniteScrollThrottle]="500"
-                [infiniteScrollDisabled]="isLoading() || !hasMore()"
-                (scrolled)="fetchMore()"
-            ></div>
-        </div>
+  <!-- Main -->
+  <div
+    class="tw-mx-auto tw-flex tw-w-full tw-max-w-5xl tw-flex-auto tw-justify-center tw-p-6 sm:tw-p-8"
+  >
+    <!-- Column -->
+    <div class="tw--mt-8 tw-flex tw-max-w-140 tw-grow tw-flex-col">
+      <!-- Create Post -->
+      <hr-create-post />
+      <!-- Posts -->
+      @for (post of posts(); track post._id) {
+        <hr-post [post]="post" />
+      }
+      @if (isLoading()) {
+        <!-- skeleton -->
+        @for (_ of [1, 2]; track $index) {
+          <hr-post-skeleton />
+        }
+      }
+      <!-- Infinite Scroll -->
+      <div
+        infiniteScroll
+        [infiniteScrollContainer]="scrollContainerElement"
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="500"
+        [infiniteScrollDisabled]="isLoading() || !hasMore()"
+        (scrolled)="fetchMore()"
+      ></div>
     </div>
+  </div>
 </div>
