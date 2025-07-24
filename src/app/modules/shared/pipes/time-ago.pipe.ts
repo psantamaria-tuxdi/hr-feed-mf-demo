@@ -11,9 +11,7 @@ export class TimeAgoPipe implements PipeTransform {
     if (isNaN(dateValue.getTime())) return '';
 
     const now = new Date();
-    const seconds = Math.floor(
-      (now.getTime() - dateValue.getTime()) / 1000
-    );
+    const seconds = Math.floor((now.getTime() - dateValue.getTime()) / 1000);
 
     const intervals = {
       año: 31536000,

@@ -8,25 +8,25 @@ import { AvatarComponent } from '../avatar/avatar.component';
 import { LikeSkeletonComponent } from '../like-skeleton.component';
 
 @Component({
-    selector: 'hr-like-list',
-    templateUrl: './like-list.component.html',
-    standalone: true,
-    imports: [AvatarModule, MatIcon, AvatarComponent, LikeSkeletonComponent],
+  selector: 'hr-like-list',
+  templateUrl: './like-list.component.html',
+  standalone: true,
+  imports: [AvatarModule, MatIcon, AvatarComponent, LikeSkeletonComponent],
 })
 export class LikeListComponent {
-    private readonly likeService = inject(LikeService);
+  private readonly likeService = inject(LikeService);
 
-    readonly dialogRef = inject(MatDialogRef<LikeListComponent>);
-    readonly data = inject<string>(MAT_DIALOG_DATA);
+  readonly dialogRef = inject(MatDialogRef<LikeListComponent>);
+  readonly data = inject<string>(MAT_DIALOG_DATA);
 
-    private resource = rxResource({
-        loader: () => this.likeService.getAllByPost(this.data),
-    });
+  private resource = rxResource({
+    loader: () => this.likeService.getAllByPost(this.data),
+  });
 
-    likeList = this.resource.value.asReadonly();
-    isLoading = this.resource.isLoading;
+  likeList = this.resource.value.asReadonly();
+  isLoading = this.resource.isLoading;
 
-    onClose() {
-        this.dialogRef.close();
-    }
+  onClose() {
+    this.dialogRef.close();
+  }
 }

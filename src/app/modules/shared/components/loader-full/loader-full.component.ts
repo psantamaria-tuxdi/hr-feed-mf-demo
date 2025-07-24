@@ -5,12 +5,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   selector: 'hr-loader-full',
   standalone: true,
   template: ` <div
-    class="tw-absolute tw-z-99 tw-w-full tw-h-full tw-grid tw-place-items-center tw-bg-default"
+    class="tw-bg-default tw-absolute tw-z-99 tw-grid tw-h-full tw-w-full tw-place-items-center"
   >
     <div class="tw-flex tw-flex-col tw-items-center tw-gap-4 tw-text-center">
-      <mat-progress-spinner [diameter]="48" [mode]="'indeterminate'"></mat-progress-spinner>
+      <mat-progress-spinner
+        [diameter]="48"
+        [mode]="'indeterminate'"
+      ></mat-progress-spinner>
       @if (text) {
-        <span class="tw-font-semibold tw-text-lg">{{ text }}</span>
+        <span class="tw-text-lg tw-font-semibold">{{ text }}</span>
       }
     </div>
   </div>`,
