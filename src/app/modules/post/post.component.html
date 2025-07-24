@@ -70,7 +70,13 @@
   </div>
 
   <!-- Actions -->
-  <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
+  <div
+    class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5"
+    [ngClass]="{
+      'tw-mb-6':
+        !(likes().count > 0) && !(post().engagement.comments.count > 0),
+    }"
+  >
     <button
       class="tw-mr-1 tw-px-3"
       mat-button
@@ -108,66 +114,62 @@
     }
   </div>
 
-  <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
+  @if (likes().count > 0 || post().engagement.comments.count > 0) {
+    <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
 
-  <!-- Engagement -->
-  <div
-    class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
-  >
-    <!-- Likes -->
-
-    <a
-      class="tw-flex tw-cursor-pointer tw-items-center"
-      (click)="openLikedList()"
+    <!-- Engagement -->
+    <div
+      class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
     >
-      @for (user of likes().topLikers; track user._id) {
-        <hr-avatar
-          [ngClass]="{
-            'tw--ml-3': !$first,
-          }"
-          class="tw-m-0.5"
-          [data]="user"
-          [size]="24"
-          [ring]="true"
-        ></hr-avatar>
-      }
-      @if (likes().count > 0) {
-        <div class="tw-ml-3 tw-text-md tw-tracking-tight hover:tw-underline">
-          {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
+      <!-- Likes -->
+      <a
+        class="tw-flex tw-cursor-pointer tw-items-center"
+        (click)="openLikedList()"
+      >
+        @for (user of likes().topLikers; track user._id) {
+          <hr-avatar
+            [ngClass]="{
+              'tw--ml-3': !$first,
+            }"
+            class="tw-m-0.5"
+            [data]="user"
+            [size]="24"
+            [ring]="true"
+          ></hr-avatar>
+        }
+        @if (likes().count > 0) {
+          <div class="tw-ml-3 tw-text-md tw-tracking-tight hover:tw-underline">
+            {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
+          </div>
+        }
+      </a>
+      <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+
+      <!-- Comments -->
+      @let comments = post().engagement.comments;
+
+      @if (post().allowComments) {
+        <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+          @if (comments.count > 0) {
+            <button
+              class="tw-px-3 sm:tw--mr-4"
+              mat-button
+              (click)="expandableCard.expanded = !expandableCard.expanded"
+            >
+              <span class="tw-mr-1">{{ comments.count }} comentarios</span>
+              <mat-icon
+                class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
+                [ngClass]="{
+                  'tw-rotate-180': expandableCard.expanded,
+                }"
+                [svgIcon]="'heroicons_mini:chevron-down'"
+              ></mat-icon>
+            </button>
+          }
         </div>
       }
-    </a>
-    <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
-
-    <!-- Comments -->
-    @let comments = post().engagement.comments;
-
-    @if (post().allowComments) {
-      <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
-        @if (comments.count === 0) {
-          <button class="tw-px-3 sm:tw--mr-3" mat-button>
-            Sin comentarios
-          </button>
-        }
-        @if (comments.count > 0) {
-          <button
-            class="tw-px-3 sm:tw--mr-4"
-            mat-button
-            (click)="expandableCard.expanded = !expandableCard.expanded"
-          >
-            <span class="tw-mr-1">{{ comments.count }} comentarios</span>
-            <mat-icon
-              class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
-              [ngClass]="{
-                'tw-rotate-180': expandableCard.expanded,
-              }"
-              [svgIcon]="'heroicons_mini:chevron-down'"
-            ></mat-icon>
-          </button>
-        }
-      </div>
-    }
-  </div>
+    </div>
+  }
 
   <!-- Expandable content -->
   <ng-container fuseCardExpansion>
