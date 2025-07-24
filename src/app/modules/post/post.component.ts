@@ -82,7 +82,7 @@ export class PostComponent {
     this.dialog.open(LikeListComponent, {
       data: this.post()._id,
       width: '580px',
-      panelClass: ['mf-tw-container', 'mf-hr-custom-dialog'],
+      panelClass: ['mf-tw-container', 'mf-hr-dialog'],
       maxHeight: '550px',
     });
   }
