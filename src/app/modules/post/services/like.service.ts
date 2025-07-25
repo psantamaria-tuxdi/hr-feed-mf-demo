@@ -20,8 +20,24 @@ export class LikeService {
     );
   }
 
+  toggleLikeComment(
+    postId: string,
+    commentId: string
+  ): Observable<ToggleLikeResponse> {
+    return this.http.post<ToggleLikeResponse>(
+      this.getUrl(postId) + `comments/` + commentId + '/toggle-like',
+      {}
+    );
+  }
+
   getAllByPost(postId: string) {
     return this.http.get<LikeResponseDto[]>(this.getUrl(postId) + 'likes');
+  }
+
+  getAllByComment(postId: string, commentId: string) {
+    return this.http.get<LikeResponseDto[]>(
+      this.getUrl(postId) + `comments/` + commentId + 'likes'
+    );
   }
 
   private getUrl(postId: string): string {

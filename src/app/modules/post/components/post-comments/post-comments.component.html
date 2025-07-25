@@ -21,8 +21,11 @@
             <div
               class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
             >
-              <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                >Me gusta</span
+              <a
+                (click)="toggleLikeComment(comment)"
+                class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                [ngClass]="{ 'tw-text-primary': comment.isLikedByCurrentUser }"
+                >Me gusta</a
               >
               <a (click)="onReply(comment._id)">
                 <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
@@ -54,8 +57,13 @@
               <div
                 class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
               >
-                <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
-                  >Me gusta</span
+                <a
+                  (click)="toggleLikeReply(comment, reply)"
+                  class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
+                  [ngClass]="{
+                    'tw-text-primary': reply.isLikedByCurrentUser,
+                  }"
+                  >Me gusta</a
                 >
                 <span class="tw-mr-2 tw-cursor-pointer hover:tw-underline"
                   >Eliminar</span
