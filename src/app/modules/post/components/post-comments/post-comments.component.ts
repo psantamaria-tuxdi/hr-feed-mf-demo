@@ -65,76 +65,70 @@ export class PostCommentsComponent {
     this.replyId = commentId;
   }
 
-  onCommentLike(commentId: string) {
-    this.likeService.toggleLikeComment(this.postId(), commentId);
-  }
-
   toggleLikeComment(comment: Comment): void {
+    this.toggleLike(comment, null, 'Error al dar like al comentario');
+  }
+
+  toggleLikeReply(comment: Comment, reply: Reply): void {
+    this.toggleLike(comment, reply, 'Error al dar like a la respuesta');
+  }
+
+  private toggleLike(
+    comment: Comment,
+    reply: Reply | null,
+    errorMessage: string
+  ): void {
     if (this.isRequesting()) return;
+
     this.isRequesting.set(true);
-    this.toggleLikeState(comment);
+    const targetItem = reply || comment;
+    const targetId = targetItem._id;
+
+    this.updateLikeState(comment, reply);
 
     this.likeService
-      .toggleLikeComment(this.postId(), comment._id)
+      .toggleLikeComment(this.postId(), targetId)
       .pipe(finalize(() => this.isRequesting.set(false)))
       .subscribe({
         next: (response) => {
           if (!response.success) {
-            this.handleLikeError(comment);
+            this.handleLikeError(comment, reply, errorMessage);
             return;
           }
 
           const shouldBeLiked = response.action === 'liked';
-          if (comment.isLikedByCurrentUser !== shouldBeLiked) {
-            this.toggleLikeState(comment);
+          if (targetItem.isLikedByCurrentUser !== shouldBeLiked) {
+            this.updateLikeState(comment, reply);
           }
         },
         error: () => {
-          this.handleLikeError(comment);
+          this.handleLikeError(comment, reply, errorMessage);
         },
       });
   }
 
-  handleLikeError(comment: Comment) {
-    this.snackBar.open('Error al dar like al comentario', 'Cerrar', {
+  // TODO: Migrate to a snackbar service
+  // This is a temporary solution to handle errors in the like functionality.
+  private handleLikeError(
+    comment: Comment,
+    reply: Reply | null,
+    errorMessage: string
+  ): void {
+    this.snackBar.open(errorMessage, 'Cerrar', {
       duration: 3000,
     });
-    this.toggleLikeState(comment);
+    this.updateLikeState(comment, reply);
   }
 
-  toggleLikeReply(comment: Comment, reply: Reply) {
-    if (this.isRequesting()) return;
-    this.isRequesting.set(true);
-    this.toggleReplyLikeState(comment, reply);
-    this.likeService
-      .toggleLikeComment(this.postId(), reply._id)
-      .pipe(finalize(() => this.isRequesting.set(false)))
-      .subscribe({
-        next: (response) => {
-          if (!response.success) {
-            this.handleLikeReplyError(comment, reply);
-            return;
-          }
-
-          const shouldBeLiked = response.action === 'liked';
-          if (reply.isLikedByCurrentUser !== shouldBeLiked) {
-            this.toggleReplyLikeState(comment, reply);
-          }
-        },
-        error: () => {
-          this.handleLikeReplyError(comment, reply);
-        },
-      });
+  private updateLikeState(comment: Comment, reply: Reply | null): void {
+    if (reply) {
+      this.toggleReplyLikeState(comment, reply);
+    } else {
+      this.toggleCommentLikeState(comment);
+    }
   }
 
-  handleLikeReplyError(comment: Comment, reply: Reply) {
-    this.snackBar.open('Error al dar like a la respuesta', 'Cerrar', {
-      duration: 3000,
-    });
-    this.toggleReplyLikeState(comment, reply);
-  }
-
-  private toggleLikeState(comment: Comment) {
+  private toggleCommentLikeState(comment: Comment): void {
     this.comments.update((previous) => {
       const newComments = Array.from(previous);
       const commentIndex = newComments.findIndex((c) => c._id === comment._id);
@@ -160,7 +154,7 @@ export class PostCommentsComponent {
       const isLiked = !reply.isLikedByCurrentUser;
       newComments[commentIndex].replies[replyIndex] = {
         ...reply,
-        likes: comment.likes + (isLiked ? 1 : -1),
+        likes: reply.likes + (isLiked ? 1 : -1),
         isLikedByCurrentUser: isLiked,
       };
       return newComments;
