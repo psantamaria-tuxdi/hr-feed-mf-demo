@@ -17,12 +17,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuseCardComponent } from '@fuse/components/card';
-import { CreatePostDto, LinkPreview } from '../../../shared/types/post.types';
+import { CreatePostDto } from '../../../shared/types/post.types';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
+import { LinkPreviewComponent } from 'app/modules/shared/components/link-preview/link-preview.component';
 import { finalize, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs';
 import { FeedService } from '../../services/feed.service';
-import { LinkPreviewService } from '../../../post/services/link-preview.service';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -36,6 +36,7 @@ import { Subject } from 'rxjs';
         MatInputModule,
         TextFieldModule,
         AvatarComponent,
+        LinkPreviewComponent,
         MatSlideToggleModule,
         MatProgressBarModule,
         ReactiveFormsModule,
@@ -47,7 +48,6 @@ export class CreatePostComponent implements OnDestroy {
     private formBuilder = inject(FormBuilder);
     private snackBar = inject(MatSnackBar);
     private feedService = inject(FeedService);
-    private linkPreviewService = inject(LinkPreviewService);
     private destroy$ = new Subject<void>();
 
     user = toSignal(inject(UserService).user$);
@@ -57,8 +57,7 @@ export class CreatePostComponent implements OnDestroy {
     isLoading = signal(false);
     imagePreviewUrls: string[] = [];
     
-    linkPreview: LinkPreview | null = null;
-    isLoadingPreview = signal(false);
+    detectedUrl = signal<string>('');
     private urlRegex = /(https?:\/\/[^\s]+)/;
 
     // TODO: move to constants file
@@ -165,36 +164,19 @@ export class CreatePostComponent implements OnDestroy {
     }
 
     removeLinkPreview(): void {
-        this.linkPreview = null;
+        this.detectedUrl.set('');
     }
 
     private handleTextChange(text: string): void {
         if (!text || !this.urlRegex.test(text)) {
-            this.removeLinkPreview();
-            this.isLoadingPreview.set(false);
+            this.detectedUrl.set('');
             return;
         }
 
         const url = text.match(this.urlRegex)?.[0];
-        if (url && (!this.linkPreview || this.linkPreview.url !== url)) {
-            this.loadLinkPreview(url);
+        if (url && this.detectedUrl() !== url) {
+            this.detectedUrl.set(url);
         }
-    }
-
-    private loadLinkPreview(url: string): void {
-        this.isLoadingPreview.set(true);
-        this.linkPreviewService.getPreview(url).pipe(
-            takeUntil(this.destroy$)
-        ).subscribe({
-            next: (data) => {
-                this.linkPreview = data;
-                this.isLoadingPreview.set(false);
-            },
-            error: () => {
-                this.removeLinkPreview();
-                this.isLoadingPreview.set(false);
-            }
-        });
     }
 
     private resetForm(): void {
@@ -205,7 +187,7 @@ export class CreatePostComponent implements OnDestroy {
 
         this.selectedImages = [];
         this.imagePreviewUrls = [];
-        this.removeLinkPreview();
+        this.detectedUrl.set('');
     }
 
     // TODO: migrate to a snackbar service
