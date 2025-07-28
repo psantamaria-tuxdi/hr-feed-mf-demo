@@ -21,6 +21,7 @@ import { CreatePostDto } from '../../../shared/types/post.types';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { LinkPreviewComponent } from 'app/modules/shared/components/link-preview/link-preview.component';
+import { extractUrlFromText } from 'app/modules/shared/utils/url.utils';
 import { finalize, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs';
 import { FeedService } from '../../services/feed.service';
 import { Subject } from 'rxjs';
@@ -58,7 +59,6 @@ export class CreatePostComponent implements OnDestroy {
     imagePreviewUrls: string[] = [];
     
     detectedUrl = signal<string>('');
-    private urlRegex = /(https?:\/\/[^\s]+)/;
 
     // TODO: move to constants file
     readonly maxAllowedImages = 3;
@@ -168,13 +168,9 @@ export class CreatePostComponent implements OnDestroy {
     }
 
     private handleTextChange(text: string): void {
-        if (!text || !this.urlRegex.test(text)) {
-            this.detectedUrl.set('');
-            return;
-        }
-
-        const url = text.match(this.urlRegex)?.[0];
-        if (url && this.detectedUrl() !== url) {
+        const url = extractUrlFromText(text);
+        
+        if (this.detectedUrl() !== url) {
             this.detectedUrl.set(url);
         }
     }
