@@ -1,25 +1,31 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { ImageCarouselService } from '../../../shared/image-carousel/image-carousel.service';
 import { getImageSrc } from './post-images.utils';
 
 @Component({
-    standalone: true,
-    template: `
-        <div class="tw-mt-4">
-            <div class="tw-relative tw-mb-4">
-                <img
-                    class="tw-w-full tw-rounded-lg tw-object-cover"
-                    [src]="getImageSrc(images()[0])"
-                    [alt]="'Imagen del post'"
-                    loading="lazy"
-                />
-            </div>
-        </div>
-    `,
+  standalone: true,
+  template: `
+    <div class="tw-mt-4">
+      <img
+        class="tw-h-80 tw-w-full tw-cursor-pointer tw-rounded-lg tw-object-cover"
+        [src]="getImageSrc(images()[0])"
+        [alt]="'Imagen del post'"
+        loading="lazy"
+        (click)="openCarousel(0)"
+      />
+    </div>
+  `,
 })
 export class SingleImageComponent {
-    images = input.required<string[]>();
+  images = input.required<string[]>();
 
-    getImageSrc(image: string): string {
-        return getImageSrc(image);
-    }
+  private readonly imageCarouselService = inject(ImageCarouselService);
+
+  getImageSrc(image: string): string {
+    return getImageSrc(image);
+  }
+
+  openCarousel(index: number) {
+    this.imageCarouselService.open(this.images(), index);
+  }
 }

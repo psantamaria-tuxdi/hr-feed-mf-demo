@@ -1,25 +1,46 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PostSkeletonComponent } from 'app/modules/post/components/post-skeleton.component';
-import { CreatePostComponent } from '../../components/create-post/create-post.component';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { environment } from '../../../../../environments/environment';
 import { PostComponent } from '../../../post/post.component';
+import { CreatePostComponent } from '../../components/create-post/create-post.component';
 import { FeedService } from '../../services/feed.service';
 
 @Component({
-    selector: 'hr-feed-page',
-    templateUrl: './feed.page.html',
-    imports: [PostComponent, CreatePostComponent, PostSkeletonComponent],
+  selector: 'hr-feed-page',
+  templateUrl: './feed.page.html',
+  imports: [
+    PostComponent,
+    CreatePostComponent,
+    PostSkeletonComponent,
+    InfiniteScrollDirective,
+  ],
 })
-export class FeedPage {
-    private readonly feedService = inject(FeedService);
-    posts = this.feedService.feed;
-    isLoading = this.feedService.isLoading;
+export class FeedPage implements OnInit {
+  private readonly feedService = inject(FeedService);
+  posts = this.feedService.feed;
+  isLoading = this.feedService.isLoading;
+  hasMore = this.feedService.hasMore;
 
-    ngOnInit() {
-        this.feedService.load();
-    }
+  /**
+   * Determines the scroll container for infinite scrolling.
+   * The scroll container varies according to the environment.
+   */
+  scrollContainerElement =
+    environment.name === 'humanage'
+      ? document.querySelector('mf-hr-root')
+      : document;
 
-    /**
-     * Constructor
-     */
-    constructor() {}
+  ngOnInit() {
+    this.feedService.load();
+  }
+
+  fetchMore() {
+    this.feedService.fetchMore();
+  }
+
+  /**
+   * Constructor
+   */
+  constructor() {}
 }

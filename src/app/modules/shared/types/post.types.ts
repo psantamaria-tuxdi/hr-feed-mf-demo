@@ -10,27 +10,27 @@ export interface LinkPreview {
 }
 
 export interface Post {
-    _id: string;
-    allowComments: boolean;
-    allowLikes: boolean;
-    author: Author;
-    content: Content;
-    engagement: Engagement;
-    createdAt: string;
+  _id: string;
+  allowComments: boolean;
+  allowLikes: boolean;
+  author: Author;
+  content: Content;
+  engagement: Engagement;
+  createdAt: string;
 }
 
 export interface Content {
-    text: string;
-    images: string[];
+  text: string;
+  images: string[];
 }
 
 export interface Engagement {
-    likes: Likes;
-    comments: Comments;
+  likes: Likes;
+  comments: Comments;
 }
 
 export interface CreatePostDto {
-    text: string;
-    allowComments?: boolean;
-    images?: File[];
+  text: string;
+  allowComments?: boolean;
+  images?: File[];
 }

@@ -1,9 +1,9 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgClass } from '@angular/common';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    ViewEncapsulation,
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -17,28 +17,28 @@ import { FuseCardComponent } from '@fuse/components/card';
 import { environment } from '../../../environments/environment';
 
 @Component({
-    selector: 'profile',
-    templateUrl: './profile.component.html',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        RouterLink,
-        FuseCardComponent,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatFormFieldModule,
-        MatInputModule,
-        TextFieldModule,
-        MatDividerModule,
-        MatTooltipModule,
-        NgClass,
-    ],
+  selector: 'profile',
+  templateUrl: './profile.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RouterLink,
+    FuseCardComponent,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    TextFieldModule,
+    MatDividerModule,
+    MatTooltipModule,
+    NgClass,
+  ],
 })
 export class ProfileComponent {
-    baseUrl = environment.baseUrl;
-    /**
-     * Constructor
-     */
-    constructor() {}
+  baseUrl = environment.baseUrl;
+  /**
+   * Constructor
+   */
+  constructor() {}
 }

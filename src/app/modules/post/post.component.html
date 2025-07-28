@@ -1,174 +1,181 @@
 <fuse-card
-    class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col"
-    #expandableCard="fuseCard"
+  class="tw-mt-8 tw-flex tw-w-full tw-max-w-140 tw-flex-col"
+  #expandableCard="fuseCard"
 >
-    <!-- Header -->
-    <div class="tw-mx-6 tw-mb-1 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
-        <hr-avatar class="tw-mr-4" [data]="post().author" [size]="40"></hr-avatar>
-        <div class="tw-flex tw-flex-col">
-            <span class="tw-font-semibold tw-leading-none">{{
-                post().author.displayName
-            }}</span>
-            <span
-                class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none"
-                >{{ post().createdAt | timeAgo }}</span
-            >
-        </div>
-
-        <!-- Menu -->
-        <!-- TODO menu only available for some roles -->
-        <button
-            class="tw--mr-4 tw-ml-auto"
-            mat-icon-button
-            [matMenuTriggerFor]="postMenu"
-        >
-            <mat-icon
-                class="tw-icon-size-5"
-                [svgIcon]="'heroicons_solid:ellipsis-vertical'"
-            ></mat-icon>
-        </button>
-        <mat-menu #postMenu="matMenu">
-            <button mat-menu-item>
-                <span class="tw-flex tw-items-center">
-                    <mat-icon
-                        class="tw-mr-3 tw-icon-size-5"
-                        [svgIcon]="'heroicons_solid:pencil'"
-                    ></mat-icon>
-                    <span>Editar publicación</span>
-                </span>
-            </button>
-            <button mat-menu-item>
-                <span class="tw-flex tw-items-center">
-                    <mat-icon
-                        class="tw-mr-3 tw-icon-size-5"
-                        [svgIcon]="'mat_solid:delete'"
-                    ></mat-icon>
-                    <span>Eliminar</span>
-                </span>
-            </button>
-        </mat-menu>
+  <!-- Header -->
+  <div class="tw-mx-6 tw-mb-1 tw-mt-6 tw-flex tw-items-center sm:tw-mx-8">
+    <hr-avatar class="tw-mr-4" [data]="post().author" [size]="40"></hr-avatar>
+    <div class="tw-flex tw-flex-col">
+      <span class="tw-font-semibold tw-leading-none">{{
+        post().author.displayName
+      }}</span>
+      <span class="tw-text-secondary tw-mt-1 tw-text-sm tw-leading-none">{{
+        post().createdAt | timeAgo
+      }}</span>
     </div>
 
-    <!-- Content -->
-    <div class="tw-m-6 sm:tw-mx-8">
-        <p>
-            {{ post().content.text }}
-        </p>
+    <!-- Menu -->
+    <!-- TODO menu only available for some roles -->
+    <button
+      class="tw--mr-4 tw-ml-auto"
+      mat-icon-button
+      [matMenuTriggerFor]="postMenu"
+    >
+      <mat-icon
+        class="tw-icon-size-5"
+        [svgIcon]="'heroicons_solid:ellipsis-vertical'"
+      ></mat-icon>
+    </button>
+    <mat-menu #postMenu="matMenu">
+      <button mat-menu-item>
+        <span class="tw-flex tw-items-center">
+          <mat-icon
+            class="tw-mr-3 tw-icon-size-5"
+            [svgIcon]="'heroicons_solid:pencil'"
+          ></mat-icon>
+          <span>Editar publicación</span>
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span class="tw-flex tw-items-center">
+          <mat-icon
+            class="tw-mr-3 tw-icon-size-5"
+            [svgIcon]="'mat_solid:delete'"
+          ></mat-icon>
+          <span>Eliminar</span>
+        </span>
+      </button>
+    </mat-menu>
+  </div>
 
-        <!-- Images -->
-        @let images = post().content.images;
+  <!-- Content -->
+  <div class="tw-m-6 sm:tw-mx-8">
+    <p>
+      {{ post().content.text }}
+    </p>
 
-        @if (images && images.length > 0) {
-            @defer(on viewport) {
-                <ng-container
-                    [ngComponentOutlet]="getImageComponent(images.length)"
-                    [ngComponentOutletInputs]="{ images }"
-                ></ng-container>
-            } @placeholder {
-                <div class="tw-mt-4 tw-h-80 tw-w-full tw-bg-gray-200 tw-rounded"></div>
-            }
-        }
-    </div>
+    <!-- Images -->
+    @let images = post().content.images;
 
-    <!-- Actions -->
-    <div class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5">
-        <button
-            class="tw-mr-1 tw-px-3"
-            mat-button
-            [disabled]="isRequesting()"
-            (click)="toggleLike()"
-            aria-label="Toggle like"
-        >
-            @if (likes().isLikedByCurrentUser) {
-                <mat-icon
-                    class="tw-text-red-500 tw-icon-size-5"
-                    [svgIcon]="'heroicons_solid:heart'"
-                ></mat-icon>
-            } @else {
-                <mat-icon
-                    class="tw-text-secondary tw-icon-size-5"
-                    [svgIcon]="'heroicons_outline:heart'"
-                ></mat-icon>
-            }
-            <span class="tw-ml-2">Me gusta</span>
-        </button>
-        <button
-            class="tw-mr-1 tw-px-3"
-            mat-button
-            (click)="expandableCard.expanded = !expandableCard.expanded"
-            aria-label="Toggle comments"
-        >
-            <mat-icon
-                class="tw-icon-size-5"
-                [svgIcon]="'heroicons_solid:chat-bubble-left-ellipsis'"
-            ></mat-icon>
-            <span class="tw-ml-2">Comentar</span>
-        </button>
-    </div>
+    @if (images && images.length > 0) {
+      @defer (on viewport) {
+        <ng-container
+          [ngComponentOutlet]="getImageComponent(images.length)"
+          [ngComponentOutletInputs]="{ images }"
+        ></ng-container>
+      } @placeholder {
+        <div class="tw-mt-4 tw-h-80 tw-w-full tw-rounded tw-bg-gray-200"></div>
+      }
+    }
+  </div>
 
+  <!-- Actions -->
+  <div
+    class="tw-mx-3 tw-flex tw-items-center sm:tw-mx-5"
+    [ngClass]="{
+      'tw-mb-6':
+        !(likes().count > 0) && !(post().engagement.comments.count > 0),
+    }"
+  >
+    <button
+      class="tw-mr-1 tw-px-3"
+      mat-button
+      [disabled]="isRequesting()"
+      (click)="toggleLike()"
+      aria-label="Toggle like"
+    >
+      @if (likes().isLikedByCurrentUser) {
+        <mat-icon
+          class="tw-text-red-500 tw-icon-size-5"
+          [svgIcon]="'heroicons_solid:heart'"
+        ></mat-icon>
+      } @else {
+        <mat-icon
+          class="tw-text-secondary tw-icon-size-5"
+          [svgIcon]="'heroicons_outline:heart'"
+        ></mat-icon>
+      }
+      <span class="tw-ml-2">Me gusta</span>
+    </button>
+
+    @if (post().allowComments) {
+      <button
+        class="tw-mr-1 tw-px-3"
+        mat-button
+        (click)="expandableCard.expanded = !expandableCard.expanded"
+        aria-label="Toggle comments"
+      >
+        <mat-icon
+          class="tw-icon-size-5"
+          [svgIcon]="'heroicons_solid:chat-bubble-left-ellipsis'"
+        ></mat-icon>
+        <span class="tw-ml-2">Comentar</span>
+      </button>
+    }
+  </div>
+
+  @if (likes().count > 0 || post().engagement.comments.count > 0) {
     <hr class="tw-mx-6 tw-mb-6 tw-mt-4 tw-border-b sm:tw-mx-8" />
 
     <!-- Engagement -->
     <div
-        class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
+      class="tw-mx-6 tw-mb-4 tw-flex tw-flex-col sm:tw-mx-8 sm:tw-mb-6 sm:tw-flex-row sm:tw-items-center"
     >
-        <!-- Likes -->
-
-        <div class="tw-flex tw-items-center">
-            @for (user of likes().topLikers; track user._id) {
-                <hr-avatar
-                    [ngClass]="{
-                        'tw--ml-3': !$first,
-                    }"
-                    class="tw-m-0.5"
-                    [data]="user"
-                    [size]="24"
-                    [ring]="true"
-                ></hr-avatar>
-            }
-            @if (likes().count > 0) {
-                <div class="tw-ml-3 tw-text-md tw-tracking-tight">
-                    {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
-                </div>
-            }
-        </div>
-        <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
-
-        <!-- Comments -->
-        @let comments = post().engagement.comments;
-
-        <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
-            @if (comments.count === 0) {
-                <button class="tw-px-3 sm:tw--mr-3" mat-button>
-                    Sin comentarios
-                </button>
-            }
-            @if (comments.count > 0) {
-                <button
-                    class="tw-px-3 sm:tw--mr-4"
-                    mat-button
-                    (click)="expandableCard.expanded = !expandableCard.expanded"
-                >
-                    <span class="tw-mr-1"
-                        >{{ comments.count }} comentarios</span
-                    >
-                    <mat-icon
-                        class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
-                        [ngClass]="{
-                            'tw-rotate-180': expandableCard.expanded,
-                        }"
-                        [svgIcon]="'heroicons_mini:chevron-down'"
-                    ></mat-icon>
-                </button>
-            }
-        </div>
-    </div>
-
-    <!-- Expandable content -->
-    <ng-container fuseCardExpansion>
-        @if (expandableCard.expanded) {
-            <hr class="tw-m-0 tw-border-b" />
-            <hr-comments [postId]="post()._id" (commentsChange)="refresh()" />
+      <!-- Likes -->
+      <a
+        class="tw-flex tw-cursor-pointer tw-items-center"
+        (click)="openLikedList()"
+      >
+        @for (user of likes().topLikers; track user._id) {
+          <hr-avatar
+            [ngClass]="{
+              'tw--ml-3': !$first,
+            }"
+            class="tw-m-0.5"
+            [data]="user"
+            [size]="24"
+            [ring]="true"
+          ></hr-avatar>
         }
-    </ng-container>
+        @if (likes().count > 0) {
+          <div class="tw-ml-3 tw-text-md tw-tracking-tight hover:tw-underline">
+            {{ likes().count | likesCount: likes().isLikedByCurrentUser }}
+          </div>
+        }
+      </a>
+      <div class="tw-hidden tw-flex-auto sm:tw-flex"></div>
+
+      <!-- Comments -->
+      @let comments = post().engagement.comments;
+
+      @if (post().allowComments) {
+        <div class="tw-mt-4 tw-flex tw-items-center sm:tw-mt-0">
+          @if (comments.count > 0) {
+            <button
+              class="tw-px-3 sm:tw--mr-4"
+              mat-button
+              (click)="expandableCard.expanded = !expandableCard.expanded"
+            >
+              <span class="tw-mr-1">{{ comments.count }} comentarios</span>
+              <mat-icon
+                class="tw-rotate-0 tw-transition-transform tw-duration-150 tw-ease-in-out tw-icon-size-5"
+                [ngClass]="{
+                  'tw-rotate-180': expandableCard.expanded,
+                }"
+                [svgIcon]="'heroicons_mini:chevron-down'"
+              ></mat-icon>
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Expandable content -->
+  <ng-container fuseCardExpansion>
+    @if (expandableCard.expanded) {
+      <hr class="tw-m-0 tw-border-b" />
+      <hr-comments [postId]="post()._id" (commentsChange)="refresh()" />
+    }
+  </ng-container>
 </fuse-card>

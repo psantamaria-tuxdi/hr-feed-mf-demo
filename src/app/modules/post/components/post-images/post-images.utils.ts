@@ -4,14 +4,14 @@ import { SingleImageComponent } from './single-image.component';
 import { TripleImagesComponent } from './triple-images.component';
 
 const imagesComponentMap = {
-    1: SingleImageComponent,
-    2: DualImagesComponent,
-    3: TripleImagesComponent,
+  1: SingleImageComponent,
+  2: DualImagesComponent,
+  3: TripleImagesComponent,
 };
 
 export function getImageComponent(imageCount: number) {
-    // Default to SingleImageComponent if count is not found
-    return imagesComponentMap[imageCount] || imagesComponentMap[1];
+  // Default to SingleImageComponent if count is not found
+  return imagesComponentMap[imageCount] || imagesComponentMap[1];
 }
 
 /**
@@ -21,5 +21,5 @@ export function getImageComponent(imageCount: number) {
  * when we move to a CDN or bucket
  */
 export function getImageSrc(image: string): string {
-    return image.startsWith('http') ? image : environment.apiUrl + image;
+  return image.startsWith('http') ? image : environment.apiUrl + image;
 }
