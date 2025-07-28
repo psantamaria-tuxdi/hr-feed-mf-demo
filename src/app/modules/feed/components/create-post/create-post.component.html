@@ -30,6 +30,16 @@
       </mat-form-field>
     </div>
 
+    <!-- Link preview -->
+    @if (detectedUrl()) {
+      <hr-link-preview
+        [url]="detectedUrl()"
+        [showRemoveButton]="true"
+        (onRemove)="removeLinkPreview()"
+      >
+      </hr-link-preview>
+    }
+
     <!-- Image previews -->
     @if (imagePreviewUrls.length > 0) {
       <div class="tw-mt-4">
@@ -52,16 +62,6 @@
           }
         </div>
       </div>
-    }
-
-    <!-- Link preview -->
-    @if (detectedUrl()) {
-      <hr-link-preview
-        [url]="detectedUrl()"
-        [showRemoveButton]="true"
-        (onRemove)="removeLinkPreview()"
-      >
-      </hr-link-preview>
     }
 
     <!-- Progress bar -->
