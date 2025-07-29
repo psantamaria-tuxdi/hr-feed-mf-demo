@@ -1,6 +1,5 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { CommonModule } from '@angular/common';
-import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
@@ -20,7 +19,7 @@ import { FuseCardComponent } from '@fuse/components/card';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { LinkPreviewComponent } from 'app/modules/shared/components/link-preview/link-preview.component';
-import { extractUrlFromText } from 'app/modules/shared/utils/url.utils';
+import { LinkPreviewService } from 'app/modules/shared/services/link-preview.service';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -46,7 +45,6 @@ import { FeedService } from '../../services/feed.service';
     MatSlideToggleModule,
     MatProgressBarModule,
     ReactiveFormsModule,
-    CommonModule,
   ],
   templateUrl: './create-post.component.html',
 })
@@ -54,6 +52,7 @@ export class CreatePostComponent implements OnDestroy {
   private formBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
   private feedService = inject(FeedService);
+  private linkPreviewService = inject(LinkPreviewService);
   private destroy$ = new Subject<void>();
   user = toSignal(inject(UserService).user$);
 
@@ -62,13 +61,8 @@ export class CreatePostComponent implements OnDestroy {
   isLoading = signal(false);
   imagePreviewUrls: string[] = [];
 
-  detectedUrl = signal<string>('');
-  isPreviewManuallyRemoved = signal<boolean>(false);
-  manuallyRemovedUrl = signal<string>('');
-
-  hasActiveLinkPreview = computed(
-    () => this.detectedUrl() && !this.isPreviewManuallyRemoved()
-  );
+  detectedUrl = this.linkPreviewService.detectedUrl;
+  shouldShowPreview = this.linkPreviewService.shouldShowPreview;
 
   // TODO: move to constants file
   readonly maxAllowedImages = 3;
@@ -87,7 +81,7 @@ export class CreatePostComponent implements OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((text: string) => {
-        this.handleTextChange(text);
+        this.linkPreviewService.setInputText(text || '');
       });
   }
 
@@ -171,42 +165,11 @@ export class CreatePostComponent implements OnDestroy {
       images: this.selectedImages,
     };
 
-    if (this.hasActiveLinkPreview()) {
+    if (this.shouldShowPreview()) {
       baseData.previewUrl = this.detectedUrl();
     }
 
     return baseData;
-  }
-
-  removeLinkPreview(): void {
-    this.manuallyRemovedUrl.set(this.detectedUrl());
-    this.detectedUrl.set('');
-    this.isPreviewManuallyRemoved.set(true);
-  }
-
-  private handleTextChange(text: string): void {
-    const url = extractUrlFromText(text);
-
-    if (!text || !url) {
-      this.resetUrlState();
-      return;
-    }
-
-    if (!this.isPreviewManuallyRemoved()) {
-      if (this.detectedUrl() !== url) {
-        this.detectedUrl.set(url);
-      }
-    } else if (this.manuallyRemovedUrl() !== url) {
-      this.detectedUrl.set(url);
-      this.isPreviewManuallyRemoved.set(false);
-      this.manuallyRemovedUrl.set('');
-    }
-  }
-
-  private resetUrlState(): void {
-    this.detectedUrl.set('');
-    this.isPreviewManuallyRemoved.set(false);
-    this.manuallyRemovedUrl.set('');
   }
 
   private resetForm(): void {
@@ -217,7 +180,7 @@ export class CreatePostComponent implements OnDestroy {
 
     this.selectedImages = [];
     this.imagePreviewUrls = [];
-    this.resetUrlState();
+    this.linkPreviewService.setInputText('');
   }
 
   // TODO: migrate to a snackbar service
