@@ -1,6 +1,6 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnDestroy, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
@@ -63,6 +63,12 @@ export class CreatePostComponent implements OnDestroy {
   imagePreviewUrls: string[] = [];
 
   detectedUrl = signal<string>('');
+  isPreviewManuallyRemoved = signal<boolean>(false);
+  manuallyRemovedUrl = signal<string>('');
+
+  hasActiveLinkPreview = computed(
+    () => this.detectedUrl() && !this.isPreviewManuallyRemoved()
+  );
 
   // TODO: move to constants file
   readonly maxAllowedImages = 3;
@@ -131,48 +137,76 @@ export class CreatePostComponent implements OnDestroy {
   }
 
   onSubmit(): void {
-    if (this.postForm.valid) {
-      this.isLoading.set(true);
+    if (!this.postForm.valid) return;
 
-      const postData: CreatePostDto = {
-        text: this.text?.value,
-        allowComments: this.postForm.get('allowComments')?.value,
-        images: this.selectedImages,
-      };
-      this.postForm.disable();
+    this.isLoading.set(true);
+    const postData = this.buildPostData();
+    this.postForm.disable();
 
-      this.feedService
-        .createPost(postData)
-        .pipe(
-          finalize(() => {
-            this.isLoading.set(false);
-            this.postForm.enable();
-          })
-        )
-        .subscribe({
-          next: () => {
-            this.resetForm();
-            this.showSnackBar('Se compartió tu publicación!');
-            this.feedService.load();
-          },
-          error: (error) => {
-            this.showSnackBar('Error al crear la publicación');
-            console.error('Error creating post:', error);
-          },
-        });
+    this.feedService
+      .createPost(postData)
+      .pipe(
+        finalize(() => {
+          this.isLoading.set(false);
+          this.postForm.enable();
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.resetForm();
+          this.showSnackBar('Se compartió tu publicación!');
+          this.feedService.load();
+        },
+        error: (error) => {
+          this.showSnackBar('Error al crear la publicación');
+          console.error('Error creating post:', error);
+        },
+      });
+  }
+
+  private buildPostData(): CreatePostDto {
+    const baseData: CreatePostDto = {
+      text: this.text?.value,
+      allowComments: this.postForm.get('allowComments')?.value,
+      images: this.selectedImages,
+    };
+
+    if (this.hasActiveLinkPreview()) {
+      baseData.previewUrl = this.detectedUrl();
     }
+
+    return baseData;
   }
 
   removeLinkPreview(): void {
+    this.manuallyRemovedUrl.set(this.detectedUrl());
     this.detectedUrl.set('');
+    this.isPreviewManuallyRemoved.set(true);
   }
 
   private handleTextChange(text: string): void {
     const url = extractUrlFromText(text);
 
-    if (this.detectedUrl() !== url) {
-      this.detectedUrl.set(url);
+    if (!text || !url) {
+      this.resetUrlState();
+      return;
     }
+
+    if (!this.isPreviewManuallyRemoved()) {
+      if (this.detectedUrl() !== url) {
+        this.detectedUrl.set(url);
+      }
+    } else if (this.manuallyRemovedUrl() !== url) {
+      this.detectedUrl.set(url);
+      this.isPreviewManuallyRemoved.set(false);
+      this.manuallyRemovedUrl.set('');
+    }
+  }
+
+  private resetUrlState(): void {
+    this.detectedUrl.set('');
+    this.isPreviewManuallyRemoved.set(false);
+    this.manuallyRemovedUrl.set('');
   }
 
   private resetForm(): void {
@@ -183,7 +217,7 @@ export class CreatePostComponent implements OnDestroy {
 
     this.selectedImages = [];
     this.imagePreviewUrls = [];
-    this.detectedUrl.set('');
+    this.resetUrlState();
   }
 
   // TODO: migrate to a snackbar service

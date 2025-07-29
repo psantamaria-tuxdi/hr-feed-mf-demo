@@ -3,10 +3,10 @@ import { Comments } from './comment.types';
 import { Likes } from './like.types';
 
 export interface LinkPreview {
-    title: string;
-    description: string;
-    image: string;
-    url?: string;
+  title: string;
+  description: string;
+  image: string;
+  url?: string;
 }
 
 export interface Post {
@@ -33,4 +33,5 @@ export interface CreatePostDto {
   text: string;
   allowComments?: boolean;
   images?: File[];
+  previewUrl?: string;
 }

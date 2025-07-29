@@ -26,6 +26,10 @@ export class PostService {
       formData.append('allowComments', postData.allowComments.toString());
     }
 
+    if (postData.previewUrl) {
+      formData.append('previewUrl', postData.previewUrl);
+    }
+
     if (postData.images?.length > 0) {
       postData.images.forEach((file) => {
         formData.append('images', file);
