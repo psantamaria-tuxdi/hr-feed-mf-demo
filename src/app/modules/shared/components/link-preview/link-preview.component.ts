@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { finalize, Subject, takeUntil } from 'rxjs';
-import { LinkPreviewService } from '../../../post/services/link-preview.service';
+import { LinkPreviewService } from '../../services/link-preview.service';
 import { LinkPreview } from '../../types/post.types';
 
 @Component({
