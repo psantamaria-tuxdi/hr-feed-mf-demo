@@ -42,8 +42,8 @@ export class LinkPreviewService {
     },
   });
 
-  linkPreview = computed(() => this.linkPreviewResource.value() ?? null);
-  isLoading = computed(() => this.linkPreviewResource.isLoading());
+  linkPreview = this.linkPreviewResource.value;
+  isLoading = this.linkPreviewResource.isLoading;
 
   /**
    * Updates the input text and triggers URL detection
