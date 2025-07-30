@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { LinkPreview } from 'app/modules/shared/types/post.types';
@@ -72,10 +72,9 @@ export class LinkPreviewService {
    * Private method to fetch preview data from API
    */
   private fetchPreview(url: string): Observable<LinkPreview | null> {
-    const encodedUrl = encodeURIComponent(url);
-    const params = `?url=${encodedUrl}`;
+    const params = new HttpParams().set('url', url);
 
-    return this.http.get<LinkPreview>(`${this.endpoint}${params}`).pipe(
+    return this.http.get<LinkPreview>(this.endpoint, { params }).pipe(
       catchError(() => of(null)),
       map((response: LinkPreview | null) => {
         if (!response) return null;

@@ -76,7 +76,7 @@ export class CreatePostComponent implements OnDestroy {
 
     this.text?.valueChanges
       .pipe(
-        debounceTime(1000),
+        debounceTime(500),
         distinctUntilChanged(),
         takeUntil(this.destroy$)
       )
