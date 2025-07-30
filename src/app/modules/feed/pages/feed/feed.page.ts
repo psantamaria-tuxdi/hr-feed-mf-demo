@@ -29,7 +29,7 @@ export class FeedPage implements OnInit {
   scrollContainerElement =
     environment.name === 'humanage'
       ? document.querySelector('mf-hr-root')
-      : document;
+      : undefined;
 
   ngOnInit() {
     this.feedService.load();
