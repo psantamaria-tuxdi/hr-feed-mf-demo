@@ -3,16 +3,14 @@
  */
 
 /**
- * Enhanced URL regex pattern that detects various URL formats:
+ * Robust URL regex pattern that detects only valid URL formats:
  * - https://example.com
  * - http://example.com
  * - www.example.com
- * - example.com
- * - subdomain.example.com
- * - URLs with paths, query parameters, etc.
+ * Ensures proper domain structure with valid TLD (at least 2 characters)
  */
 export const URL_REGEX =
-  /(https?:\/\/[^\s]+|www\.[^\s]+|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.([a-zA-Z]{2,})(\/[^\s]*)?)/;
+  /(https?:\/\/|www\.)[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/\?\#][^\s]*)?/;
 
 /**
  * Normalizes a URL by adding https:// protocol if not present

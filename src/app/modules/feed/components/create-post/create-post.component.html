@@ -31,8 +31,12 @@
     </div>
 
     <!-- Link preview -->
-    @if (shouldShowPreview()) {
-      <hr-link-preview [showRemoveButton]="true" />
+    @if (detectedUrl() && !isPreviewManuallyRemoved()) {
+      <hr-link-preview 
+        [url]="detectedUrl()" 
+        [showRemoveButton]="true"
+        (previewRemoved)="onPreviewRemoved()"
+      />
     }
 
     <!-- Image previews -->

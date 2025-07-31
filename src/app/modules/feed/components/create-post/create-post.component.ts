@@ -19,7 +19,7 @@ import { FuseCardComponent } from '@fuse/components/card';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
 import { LinkPreviewComponent } from 'app/modules/shared/components/link-preview/link-preview.component';
-import { LinkPreviewService } from 'app/modules/shared/services/link-preview.service';
+import { extractUrlFromText } from 'app/modules/shared/utils/url.utils';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -52,7 +52,6 @@ export class CreatePostComponent implements OnDestroy {
   private formBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
   private feedService = inject(FeedService);
-  private linkPreviewService = inject(LinkPreviewService);
   private destroy$ = new Subject<void>();
   user = toSignal(inject(UserService).user$);
 
@@ -61,8 +60,8 @@ export class CreatePostComponent implements OnDestroy {
   isLoading = signal(false);
   imagePreviewUrls: string[] = [];
 
-  detectedUrl = this.linkPreviewService.detectedUrl;
-  shouldShowPreview = this.linkPreviewService.shouldShowPreview;
+  detectedUrl = signal<string>('');
+  isPreviewManuallyRemoved = signal<boolean>(false);
 
   // TODO: move to constants file
   readonly maxAllowedImages = 3;
@@ -81,7 +80,12 @@ export class CreatePostComponent implements OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((text: string) => {
-        this.linkPreviewService.setInputText(text || '');
+        const url = text ? extractUrlFromText(text) : '';
+        this.detectedUrl.set(url);
+
+        if (!text || !url) {
+          this.isPreviewManuallyRemoved.set(false);
+        }
       });
   }
 
@@ -165,8 +169,10 @@ export class CreatePostComponent implements OnDestroy {
       images: this.selectedImages,
     };
 
-    if (this.shouldShowPreview()) {
-      baseData.previewUrl = this.detectedUrl();
+    const detectedUrl = this.detectedUrl();
+    const isManuallyRemoved = this.isPreviewManuallyRemoved();
+    if (detectedUrl && !isManuallyRemoved) {
+      baseData.previewUrl = detectedUrl;
     }
 
     return baseData;
@@ -180,7 +186,12 @@ export class CreatePostComponent implements OnDestroy {
 
     this.selectedImages = [];
     this.imagePreviewUrls = [];
-    this.linkPreviewService.setInputText('');
+    this.detectedUrl.set('');
+    this.isPreviewManuallyRemoved.set(false);
+  }
+
+  onPreviewRemoved(): void {
+    this.isPreviewManuallyRemoved.set(true);
   }
 
   // TODO: migrate to a snackbar service

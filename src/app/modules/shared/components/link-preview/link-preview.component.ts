@@ -1,10 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { of } from 'rxjs';
 import { LinkPreviewService } from '../../services/link-preview.service';
-import { LinkPreview } from '../../types/post.types';
 
 @Component({
   selector: 'hr-link-preview',
@@ -14,19 +22,37 @@ import { LinkPreview } from '../../types/post.types';
 export class LinkPreviewComponent {
   private linkPreviewService = inject(LinkPreviewService);
 
+  url = input.required<string>();
   showRemoveButton = input<boolean>(false);
-  linkPreviewData = input<LinkPreview | null>(null);
 
-  linkPreview = computed(() => {
-    const inputData = this.linkPreviewData();
-    return inputData || this.linkPreviewService.linkPreview();
+  previewRemoved = output<void>();
+
+  private _isPreviewManuallyRemoved = signal(false);
+
+  shouldFetchPreview = computed(() => {
+    const url = this.url();
+    return url && !this._isPreviewManuallyRemoved();
   });
 
-  isLoading = computed(() => {
-    return !this.linkPreviewData() && this.linkPreviewService.isLoading();
+  private linkPreviewResource = rxResource({
+    request: () => ({
+      url: this.shouldFetchPreview() ? this.url() : '',
+    }),
+    loader: ({ request }) => {
+      if (!request.url) return of(null);
+      return this.linkPreviewService.fetchPreview(request.url);
+    },
+  });
+
+  linkPreview = this.linkPreviewResource.value;
+  isLoading = this.linkPreviewResource.isLoading;
+
+  hasPreview = computed(() => {
+    return !!this.linkPreview() && this.shouldFetchPreview();
   });
 
   removeLinkPreview(): void {
-    this.linkPreviewService.removeLinkPreview();
+    this._isPreviewManuallyRemoved.set(true);
+    this.previewRemoved.emit();
   }
 }
