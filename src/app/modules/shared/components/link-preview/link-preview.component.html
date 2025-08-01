@@ -1,0 +1,60 @@
+@if (isLoading()) {
+  <div
+    class="tw-mt-4 tw-flex tw-items-center tw-gap-3 tw-rounded-lg tw-bg-gray-50 tw-p-4"
+  >
+    <mat-progress-bar mode="indeterminate" class="tw-flex-1"></mat-progress-bar>
+    <span class="tw-text-sm tw-text-gray-600"
+      >Cargando vista previa del enlace...</span
+    >
+  </div>
+}
+
+@if (linkPreview()) {
+  <div class="tw-group tw-relative tw-mt-4">
+    <div
+      class="tw-flex tw-overflow-hidden tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-shadow-sm"
+    >
+      @if (linkPreview()?.image) {
+        <div class="tw-flex-shrink-0 tw-bg-slate-200">
+          <img
+            [src]="linkPreview()!.image"
+            [alt]="linkPreview()!.title"
+            class="tw-h-24 tw-w-24 tw-flex-shrink-0 tw-object-contain sm:tw-h-32 sm:tw-w-32"
+          />
+        </div>
+      }
+      <div class="tw-flex tw-flex-1 tw-flex-col tw-justify-between tw-p-4">
+        <div>
+          <h4
+            class="tw-line-clamp-2 tw-text-sm tw-font-semibold tw-text-gray-900"
+          >
+            {{ linkPreview()?.title }}
+          </h4>
+          <p class="tw-mt-1 tw-line-clamp-2 tw-text-xs tw-text-gray-600">
+            {{ linkPreview()?.description }}
+          </p>
+        </div>
+        <a
+          [href]="linkPreview()?.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tw-mt-2 tw-text-xs tw-text-blue-600 tw-no-underline hover:tw-underline"
+        >
+          {{ linkPreview()?.url }}
+        </a>
+      </div>
+    </div>
+
+    @if (showRemoveButton()) {
+      <button
+        type="button"
+        (click)="removeLinkPreview()"
+        class="tw-absolute tw-right-2 tw-top-2 tw-flex tw-h-6 tw-w-6 tw-items-center tw-justify-center tw-rounded-full tw-bg-neutral-400 tw-text-white tw-opacity-0 tw-transition-opacity group-hover:tw-opacity-100"
+        title="Eliminar vista previa"
+        aria-label="Remove link preview"
+      >
+        <mat-icon class="tw-text-lg tw-text-black">close</mat-icon>
+      </button>
+    }
+  </div>
+}

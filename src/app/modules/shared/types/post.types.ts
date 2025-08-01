@@ -2,6 +2,13 @@ import { Author } from './author.types';
 import { Comments } from './comment.types';
 import { Likes } from './like.types';
 
+export interface LinkPreview {
+  title: string;
+  description: string;
+  image: string;
+  url?: string;
+}
+
 export interface Post {
   _id: string;
   allowComments: boolean;
@@ -26,4 +33,5 @@ export interface CreatePostDto {
   text: string;
   allowComments?: boolean;
   images?: File[];
+  previewUrl?: string;
 }

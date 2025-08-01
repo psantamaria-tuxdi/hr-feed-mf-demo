@@ -1,6 +1,5 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
@@ -19,7 +18,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FuseCardComponent } from '@fuse/components/card';
 import { UserService } from 'app/core/user/user.service';
 import { AvatarComponent } from 'app/modules/shared/components/avatar/avatar.component';
-import { finalize } from 'rxjs';
+import { LinkPreviewComponent } from 'app/modules/shared/components/link-preview/link-preview.component';
+import { extractUrlFromText } from 'app/modules/shared/utils/url.utils';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  finalize,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { CreatePostDto } from '../../../shared/types/post.types';
 import { FeedService } from '../../services/feed.service';
 
@@ -34,24 +41,27 @@ import { FeedService } from '../../services/feed.service';
     MatInputModule,
     TextFieldModule,
     AvatarComponent,
+    LinkPreviewComponent,
     MatSlideToggleModule,
     MatProgressBarModule,
     ReactiveFormsModule,
-    CommonModule,
   ],
   templateUrl: './create-post.component.html',
 })
-export class CreatePostComponent {
+export class CreatePostComponent implements OnDestroy {
   private formBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
   private feedService = inject(FeedService);
-
+  private destroy$ = new Subject<void>();
   user = toSignal(inject(UserService).user$);
 
   postForm: FormGroup;
   selectedImages: File[] = [];
   isLoading = signal(false);
   imagePreviewUrls: string[] = [];
+
+  detectedUrl = signal<string>('');
+  isPreviewManuallyRemoved = signal<boolean>(false);
 
   // TODO: move to constants file
   readonly maxAllowedImages = 3;
@@ -62,6 +72,26 @@ export class CreatePostComponent {
       text: ['', [Validators.maxLength(this.maxCharacters)]],
       allowComments: [true],
     });
+
+    this.text?.valueChanges
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((text: string) => {
+        const url = text ? extractUrlFromText(text) : '';
+        this.detectedUrl.set(url);
+
+        if (!text || !url) {
+          this.isPreviewManuallyRemoved.set(false);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   get text() {
@@ -105,36 +135,47 @@ export class CreatePostComponent {
   }
 
   onSubmit(): void {
-    if (this.postForm.valid) {
-      this.isLoading.set(true);
+    if (!this.postForm.valid) return;
 
-      const postData: CreatePostDto = {
-        text: this.text?.value,
-        allowComments: this.postForm.get('allowComments')?.value,
-        images: this.selectedImages,
-      };
-      this.postForm.disable();
+    this.isLoading.set(true);
+    const postData = this.buildPostData();
+    this.postForm.disable();
 
-      this.feedService
-        .createPost(postData)
-        .pipe(
-          finalize(() => {
-            this.isLoading.set(false);
-            this.postForm.enable();
-          })
-        )
-        .subscribe({
-          next: () => {
-            this.resetForm();
-            this.showSnackBar('Se compartió tu publicación!');
-            this.feedService.load();
-          },
-          error: (error) => {
-            this.showSnackBar('Error al crear la publicación');
-            console.error('Error creating post:', error);
-          },
-        });
+    this.feedService
+      .createPost(postData)
+      .pipe(
+        finalize(() => {
+          this.isLoading.set(false);
+          this.postForm.enable();
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.resetForm();
+          this.showSnackBar('Se compartió tu publicación!');
+          this.feedService.load();
+        },
+        error: (error) => {
+          this.showSnackBar('Error al crear la publicación');
+          console.error('Error creating post:', error);
+        },
+      });
+  }
+
+  private buildPostData(): CreatePostDto {
+    const baseData: CreatePostDto = {
+      text: this.text?.value,
+      allowComments: this.postForm.get('allowComments')?.value,
+      images: this.selectedImages,
+    };
+
+    const detectedUrl = this.detectedUrl();
+    const isManuallyRemoved = this.isPreviewManuallyRemoved();
+    if (detectedUrl && !isManuallyRemoved) {
+      baseData.previewUrl = detectedUrl;
     }
+
+    return baseData;
   }
 
   private resetForm(): void {
@@ -145,6 +186,12 @@ export class CreatePostComponent {
 
     this.selectedImages = [];
     this.imagePreviewUrls = [];
+    this.detectedUrl.set('');
+    this.isPreviewManuallyRemoved.set(false);
+  }
+
+  onPreviewRemoved(): void {
+    this.isPreviewManuallyRemoved.set(true);
   }
 
   // TODO: migrate to a snackbar service

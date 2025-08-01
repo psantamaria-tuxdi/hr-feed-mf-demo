@@ -21,44 +21,52 @@
         <mat-hint align="end"
           >{{ text?.value?.length || 0 }}/{{ maxCharacters }}</mat-hint
         >
-        <mat-error *ngIf="text?.hasError('required')">
-          El texto es requerido
-        </mat-error>
-        <mat-error *ngIf="text?.hasError('maxlength')">
-          El texto no puede exceder 2000 caracteres
-        </mat-error>
+        @if (text?.hasError('required')) {
+          <mat-error> El texto es requerido </mat-error>
+        }
+        @if (text?.hasError('maxlength')) {
+          <mat-error> El texto no puede exceder 2000 caracteres </mat-error>
+        }
       </mat-form-field>
     </div>
 
+    <!-- Link preview -->
+    @if (detectedUrl() && !isPreviewManuallyRemoved()) {
+      <hr-link-preview 
+        [url]="detectedUrl()" 
+        [showRemoveButton]="true"
+        (previewRemoved)="onPreviewRemoved()"
+      />
+    }
+
     <!-- Image previews -->
-    <div class="tw-mt-4" *ngIf="imagePreviewUrls.length > 0">
-      <div class="tw-grid tw-grid-cols-2 tw-gap-4 sm:tw-grid-cols-3">
-        <div
-          *ngFor="let imageUrl of imagePreviewUrls; index as i"
-          class="tw-group tw-relative"
-        >
-          <img
-            [src]="imageUrl"
-            alt="Preview"
-            class="tw-h-32 tw-w-full tw-rounded-lg tw-object-cover"
-          />
-          <button
-            type="button"
-            (click)="removeImage(i)"
-            class="tw-absolute tw-right-1 tw-top-1 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-bg-neutral-400 tw-opacity-0 tw-transition-opacity group-hover:tw-opacity-100"
-          >
-            <mat-icon class="tw-text-lg tw-text-black">close</mat-icon>
-          </button>
+    @if (imagePreviewUrls.length > 0) {
+      <div class="tw-mt-4">
+        <div class="tw-grid tw-grid-cols-2 tw-gap-4 sm:tw-grid-cols-3">
+          @for (imageUrl of imagePreviewUrls; track $index) {
+            <div class="tw-group tw-relative">
+              <img
+                [src]="imageUrl"
+                alt="Preview"
+                class="tw-h-32 tw-w-full tw-rounded-lg tw-object-cover"
+              />
+              <button
+                type="button"
+                (click)="removeImage($index)"
+                class="tw-absolute tw-right-1 tw-top-1 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-bg-neutral-400 tw-opacity-0 tw-transition-opacity group-hover:tw-opacity-100"
+              >
+                <mat-icon class="tw-text-lg tw-text-black">close</mat-icon>
+              </button>
+            </div>
+          }
         </div>
       </div>
-    </div>
+    }
 
     <!-- Progress bar -->
-    <mat-progress-bar
-      *ngIf="isLoading()"
-      mode="indeterminate"
-      class="tw-mt-4"
-    ></mat-progress-bar>
+    @if (isLoading()) {
+      <mat-progress-bar mode="indeterminate" class="tw-mt-4"></mat-progress-bar>
+    }
 
     <div class="tw--mx-3 tw-mt-6 tw-flex tw-items-center sm:tw-mt-8">
       <input
