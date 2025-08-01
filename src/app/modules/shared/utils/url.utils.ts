@@ -10,7 +10,7 @@
  * Ensures proper domain structure with valid TLD (at least 2 characters)
  */
 export const URL_REGEX =
-  /(https?:\/\/|www\.)[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/\?\#][^\s]*)?/;
+  /(https?:\/\/|www\.)[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/\?\#][^\s]*)?/g;
 
 /**
  * Normalizes a URL by adding https:// protocol if not present
@@ -33,10 +33,13 @@ export function normalizeUrl(url: string): string {
  * @returns The normalized URL if found, empty string otherwise
  */
 export function extractUrlFromText(text: string): string {
-  if (!text || !URL_REGEX.test(text)) {
+  if (!text) {
     return '';
   }
 
-  const matchedUrl = text.match(URL_REGEX)?.[0];
-  return matchedUrl ? normalizeUrl(matchedUrl) : '';
+  // Reset the regex lastIndex to ensure consistent results with global flag
+  URL_REGEX.lastIndex = 0;
+  const match = URL_REGEX.exec(text);
+  
+  return match ? normalizeUrl(match[0]) : '';
 }

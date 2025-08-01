@@ -12,7 +12,12 @@
 @if (linkPreview()) {
   <div class="tw-group tw-relative tw-mt-4">
     <div
+      [ngClass]="{
+        'tw-cursor-pointer tw-transition-all tw-duration-200 hover:tw-border-gray-300 hover:tw-shadow-md':
+          !showRemoveButton(),
+      }"
       class="tw-flex tw-overflow-hidden tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-shadow-sm"
+      (click)="handleCardClick()"
     >
       @if (linkPreview()?.image) {
         <div class="tw-flex-shrink-0 tw-bg-slate-200">
@@ -23,9 +28,15 @@
           />
         </div>
       }
-      <div class="tw-flex tw-flex-1 tw-flex-col tw-justify-between tw-p-4">
+      <div
+        class="tw-flex tw-min-w-0 tw-flex-1 tw-flex-col tw-justify-between tw-p-4"
+      >
         <div>
           <h4
+            [ngClass]="{
+              'tw-transition-colors tw-duration-200 group-hover:tw-text-blue-600':
+                !showRemoveButton(),
+            }"
             class="tw-line-clamp-2 tw-text-sm tw-font-semibold tw-text-gray-900"
           >
             {{ linkPreview()?.title }}
@@ -34,14 +45,22 @@
             {{ linkPreview()?.description }}
           </p>
         </div>
-        <a
-          [href]="linkPreview()?.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="tw-mt-2 tw-text-xs tw-text-blue-600 tw-no-underline hover:tw-underline"
-        >
-          {{ linkPreview()?.url }}
-        </a>
+        @if (showRemoveButton()) {
+          <a
+            [href]="linkPreview()?.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tw-mt-2 tw-block tw-min-w-0 tw-truncate tw-text-xs tw-text-blue-600 tw-no-underline hover:tw-underline"
+          >
+            {{ linkPreview()?.url }}
+          </a>
+        } @else {
+          <span
+            class="tw-mt-2 tw-block tw-min-w-0 tw-truncate tw-text-xs tw-text-blue-600 tw-no-underline"
+          >
+            {{ linkPreview()?.url }}
+          </span>
+        }
       </div>
     </div>
 

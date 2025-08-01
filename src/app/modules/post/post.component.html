@@ -50,9 +50,10 @@
 
   <!-- Content -->
   <div class="tw-m-6 sm:tw-mx-8">
-    <p class="tw-whitespace-pre-line">
-      {{ post().content.text }}
-    </p>
+    <p
+      class="tw-whitespace-pre-line"
+      [innerHTML]="post().content.text | linkify"
+    ></p>
 
     <!-- Link preview -->
     @if (post().content.previewUrl) {
