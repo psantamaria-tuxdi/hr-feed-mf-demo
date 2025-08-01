@@ -19,6 +19,7 @@ import { PostCommentsComponent } from './components/post-comments/post-comments.
 import { getImageComponent } from './components/post-images/post-images.utils';
 import { LikesCountPipe } from './pipes/likes-count.pipe';
 import { PostService } from './services/post.service';
+import { LinkPreviewComponent } from '../shared/components/link-preview/link-preview.component';
 
 @Component({
   selector: 'hr-post',
@@ -33,6 +34,7 @@ import { PostService } from './services/post.service';
     AvatarComponent,
     LikesCountPipe,
     NgComponentOutlet,
+    LinkPreviewComponent
   ],
   templateUrl: './post.component.html',
 })
