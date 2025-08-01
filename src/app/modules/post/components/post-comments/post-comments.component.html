@@ -16,7 +16,9 @@
           <div class="tw-mt-0.5 tw-flex tw-flex-col">
             <span>
               <b>{{ comment.author.displayName }}</b>
-              {{ comment.content }}
+              <span class="tw-ml-1 tw-whitespace-pre-line">
+                {{ comment.content }}
+              </span>
             </span>
             <div
               class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
@@ -52,7 +54,9 @@
             <div class="tw-mt-0.5 tw-flex tw-flex-col">
               <span>
                 <b>{{ reply.author.displayName }}</b>
-                <span class="tw-whitespace-pre-line">{{ reply.content }}</span>
+                <span class="tw-ml-1 tw-whitespace-pre-line">
+                  {{ reply.content }}
+                </span>
               </span>
               <div
                 class="tw-text-secondary tw-mt-2 tw-flex tw-items-center tw-text-sm"
