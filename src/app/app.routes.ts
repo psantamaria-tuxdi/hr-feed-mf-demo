@@ -4,10 +4,10 @@ import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { environment } from 'environments/environment';
 
-const hrSocialMediaPaths =
+const hrFeedPaths =
   environment.name === 'humanage'
     ? // HUMANAGE:
-      ['employee/HR-social-media', 'employer/HR-social-media']
+      ['employee/hr-feed', 'employer/hr-feed']
     : // AXTON:
       ['employer/HR-social-media'];
 
@@ -17,7 +17,7 @@ const hrSocialMediaPaths =
 export const appRoutes: Route[] = [
   // Redirect empty path to '/example'
   //   { path: '', pathMatch: 'full', redirectTo: 'employer/HR-social-media' },
-  ...hrSocialMediaPaths.map((path) => ({
+  ...hrFeedPaths.map((path) => ({
     path,
     component: LayoutComponent,
     data: {
