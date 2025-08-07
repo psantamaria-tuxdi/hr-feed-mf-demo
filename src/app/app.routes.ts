@@ -15,7 +15,7 @@ const hrFeedPaths =
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 export const appRoutes: Route[] = [
-  // Redirect empty path to '/example'
+  // TODO add default redirect
   //   { path: '', pathMatch: 'full', redirectTo: 'employer/HR-social-media' },
   ...hrFeedPaths.map((path) => ({
     path,
