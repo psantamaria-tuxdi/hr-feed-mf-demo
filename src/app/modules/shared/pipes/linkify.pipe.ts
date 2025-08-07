@@ -14,6 +14,17 @@ export class LinkifyPipe implements PipeTransform {
       return text;
     }
 
+    // TODO ver PR 47
+    // Using the global URL_REGEX directly in replace() can cause inconsistent behavior due to the regex's lastIndex property
+    // being modified between calls. Consider creating a new regex instance or cloning the regex within this function.
+
+    // Copilot suggestion:
+    // ? borrar: const linkifiedText = text.replace(URL_REGEX, (match) => {
+
+    // Clone the URL_REGEX to avoid lastIndex issues
+    // const urlRegex = new RegExp(URL_REGEX.source, URL_REGEX.flags);
+    // const linkifiedText = text.replace(urlRegex, (match) => {
+
     // Replace URLs with anchor tags
     const linkifiedText = text.replace(URL_REGEX, (match) => {
       const normalizedUrl = normalizeUrl(match);
