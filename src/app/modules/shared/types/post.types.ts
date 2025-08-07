@@ -22,6 +22,7 @@ export interface Post {
 export interface Content {
   text: string;
   images: string[];
+  previewUrl?: string;
 }
 
 export interface Engagement {

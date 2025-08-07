@@ -55,4 +55,17 @@ export class LinkPreviewComponent {
     this._isPreviewManuallyRemoved.set(true);
     this.previewRemoved.emit();
   }
+
+  handleCardClick(): void {
+    if (!this.showRemoveButton()) {
+      this.openLink();
+    }
+  }
+
+  openLink(): void {
+    const url = this.linkPreview()?.url;
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }
 }

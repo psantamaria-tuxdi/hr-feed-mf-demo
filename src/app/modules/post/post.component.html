@@ -50,9 +50,21 @@
 
   <!-- Content -->
   <div class="tw-m-6 sm:tw-mx-8">
-    <p class="tw-whitespace-pre-line">
-      {{ post().content.text }}
-    </p>
+    <p
+      class="tw-whitespace-pre-line"
+      [innerHTML]="post().content.text | linkify"
+    ></p>
+
+    <!-- Link preview -->
+    @if (post().content.previewUrl) {
+      @defer (on viewport) {
+        <hr-link-preview [url]="post().content.previewUrl" />
+      } @placeholder {
+        <div
+          class="tw-mt-4 tw-h-20 tw-w-full tw-animate-pulse tw-rounded tw-bg-gray-200"
+        ></div>
+      }
+    }
 
     <!-- Images -->
     @let images = post().content.images;
