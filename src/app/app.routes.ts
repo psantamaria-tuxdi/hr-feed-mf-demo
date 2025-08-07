@@ -9,7 +9,7 @@ const hrFeedPaths =
     ? // HUMANAGE:
       ['employee/hr-feed', 'employer/hr-feed']
     : // AXTON:
-      ['employer/HR-social-media'];
+      ['hr-feed'];
 
 // @formatter:off
 /* eslint-disable max-len */
