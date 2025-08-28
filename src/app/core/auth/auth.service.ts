@@ -235,9 +235,9 @@ export class AuthService {
       // TODO: Implement Axton-specific login payload logic
       // For now, returning a mock payload
       return {
-        externalUserId: 'axton-user-id',
-        displayName: 'Axton User',
-        firstName: 'Axton',
+        externalUserId: 'demo-user-id',
+        displayName: 'Demo User',
+        firstName: 'Demo',
         lastName: 'User',
         roles: [],
         expiresIn: 3600,
