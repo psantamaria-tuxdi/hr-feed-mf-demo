@@ -34,6 +34,16 @@ export class AuthService {
   // -----------------------------------------------------------------------------------------------------
 
   signIn(): Observable<boolean> {
+    // Login with storage data if available
+    if (
+      this.accessToken &&
+      !AuthUtils.isTokenExpired(this.accessToken)
+    ) {
+      this._userService.refresh();
+      this._authenticated = true;
+      return of(true);
+    }
+
     const payload = this.getLoginPayload();
     return this._httpClient
       .post<LoginResponseDTO>(environment.apiUrl + 'auth/login', payload)
@@ -232,16 +242,7 @@ export class AuthService {
     }
 
     if (environment.name === 'axton') {
-      // TODO: Implement Axton-specific login payload logic
-      // For now, returning a mock payload
-      return {
-        externalUserId: 'axton-user-id',
-        displayName: 'Axton User',
-        firstName: 'Axton',
-        lastName: 'User',
-        roles: [],
-        expiresIn: 3600,
-      };
+        throw new Error('Axton login is implemented in host application');
     }
 
     if (!environment.production) {
