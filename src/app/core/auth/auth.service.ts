@@ -223,7 +223,7 @@ export class AuthService {
   }
 
   private getLoginPayload(): LoginPayloadDTO {
-    if (environment.name === 'humanage') {
+    if (environment.clientName === 'humanage') {
       const payload: LoginPayloadDTO = {
         externalUserId: localStorage.getItem('userId'),
         displayName: `${localStorage.getItem('userFirstname')} ${localStorage.getItem('userLastname')}`,
@@ -241,7 +241,7 @@ export class AuthService {
       return payload;
     }
 
-    if (environment.name === 'axton') {
+    if (environment.clientName === 'axton') {
         throw new Error('Axton login is implemented in host application');
     }
 

@@ -5,9 +5,9 @@ import { LayoutComponent } from 'app/layout/layout.component';
 import { environment } from 'environments/environment';
 
 const hrFeedPaths =
-  environment.name === 'humanage'
+  environment.clientName === 'humanage'
     ? // HUMANAGE:
-      ['employee/hr-feed', 'employer/hr-feed']
+      ['employee/humanage-connect', 'employer/humanage-connect']
     : // AXTON:
       ['hr-feed'];
 

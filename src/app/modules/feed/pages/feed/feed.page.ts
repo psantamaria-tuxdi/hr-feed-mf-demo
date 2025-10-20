@@ -27,7 +27,7 @@ export class FeedPage implements OnInit {
    * The scroll container varies according to the environment.
    */
   scrollContainerElement =
-    environment.name === 'humanage'
+    environment.clientName === 'humanage'
       ? document.querySelector('mf-hr-root')
       : undefined;
 
